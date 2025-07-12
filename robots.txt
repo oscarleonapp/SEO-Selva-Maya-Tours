@@ -1,0 +1,8 @@
+# robots.txt for Selvamayatours
+User-agent: *
+Allow: /
+
+User-agent: BadBot
+Disallow: /
+
+Sitemap: https://selvamayatours.com/sitemap.xml
