@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Flores a Antigua Guatemala - Directo",
+  "description": "Traslado directo de Flores, Petén, a Antigua Guatemala. Reserva en línea o por WhatsApp.",
+  "url": "https://www.jaguarmayatours.com/service-page/flores-a-antigua-guatemala-directo",
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Selva Maya Tours",
+    "url": "https://www.jaguarmayatours.com/"
+  },
+  "serviceType": "Traslado",
+  "areaServed": "Antigua Guatemala",
+  "offers": {
+    "@type": "Offer",
+    "price": "300",
+    "priceCurrency": "GTQ",
+    "url": "https://www.jaguarmayatours.com/service-page/flores-a-antigua-guatemala-directo"
+  }
+}
