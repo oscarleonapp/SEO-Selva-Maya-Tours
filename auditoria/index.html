@@ -215,7 +215,7 @@ details>.in{padding:0 14px 14px}
       <li><b>Tikal Go compra tráfico</b> (display 16 %, búsqueda de pago 6,9 %) y el 36 % de su audiencia está en EE. UU. con un sitio en inglés.</li>
       <li><b>Referidos y afiliados</b> (enlaces de otros sitios) suman 15,3 % en Tikal Go, 11,4 % en Expedition y 14,3 % en Adventures; en Selva Maya, 12,8 %. En porcentaje no hay una brecha grande: lo que cambia es el volumen total.</li></ul></div>
   <h3 id="posSheet">Hoja de medición de posiciones en Google</h3>
-  <p class="small"><b>Cómo llenarla (≈15 minutos):</b> abrir una ventana de incógnito, entrar a <code>google.com.gt</code> y buscar cada consulta. Anotar la <b>posición orgánica</b> (sin contar anuncios) del primer resultado de cada sitio. Si no aparece en los primeros 30, escribir <b>31</b>. La columna de Selva Maya ya viene con el promedio real de Search Console (16 meses, mejor de ambos dominios), así que no hay que llenarla.</p>
+  <p class="small"><b>Cómo llenarla (≈15 minutos):</b> abrir una ventana de incógnito y hacer clic en cada consulta (🔎 abre la búsqueda en <code>google.com.gt</code>). <i>Google bloquea las búsquedas automáticas con un captcha, por eso esta hoja se llena a mano.</i> Anotar la <b>posición orgánica</b> (sin contar anuncios) del primer resultado de cada sitio. Si no aparece en los primeros 30, escribir <b>31</b>. La columna de Selva Maya ya viene con el promedio real de Search Console (16 meses, mejor de ambos dominios), así que no hay que llenarla.</p>
   <div class="tw"><table id="tPos"><thead><tr><th>Consulta</th><th>Selva Maya <span class="small">(Search Console)</span></th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody></tbody><tfoot id="fPos"></tfoot></table></div>
   <div class="card" id="posRes" style="margin-top:12px"><span class="small">Complete las posiciones de la competencia para ver el resultado.</span></div>
   <div class="card"><b>Para medir tráfico y enlaces reales de la competencia</b> hace falta una herramienta con datos propios. Opciones: autorizar el conector de <b>Similarweb</b> o de <b>Ahrefs</b> en la configuración de conectores de Claude (entonces se traen tráfico orgánico estimado, palabras clave y enlaces de los cuatro dominios), o una cuenta de Semrush/DataForSEO. Sin ellas, esta hoja es la forma de medir sin pagar.</div>
@@ -693,7 +693,7 @@ st.pos=st.pos||{};
 function drawPos(){
   st.pos=st.pos||{};
   $("#tPos tbody").innerHTML=QS.map(function(q,i){
-    return "<tr><td>"+esc(q[0])+'</td><td><b>'+String(q[1]).replace(".",",")+'</b></td>'+[1,2,3].map(function(c){var v=(st.pos[i]||{})[c];return '<td><input type="number" min="1" max="31" style="width:72px" data-pi="'+i+'" data-pc="'+c+'" value="'+(v==null?"":v)+'"></td>'}).join("")+"</tr>"}).join("");
+    return '<tr><td><a href="https://www.google.com.gt/search?q='+encodeURIComponent(q[0])+'&hl=es&gl=gt&num=30&pws=0" target="_blank" rel="noopener noreferrer" title="Abrir esta búsqueda en Google Guatemala">🔎 '+esc(q[0])+'</a></td><td><b>'+String(q[1]).replace(".",",")+'</b></td>'+[1,2,3].map(function(c){var v=(st.pos[i]||{})[c];return '<td><input type="number" min="1" max="31" style="width:72px" data-pi="'+i+'" data-pc="'+c+'" value="'+(v==null?"":v)+'"></td>'}).join("")+"</tr>"}).join("");
   calcPos();
 }
 function calcPos(){
