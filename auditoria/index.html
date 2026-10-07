@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Auditoría Fase 1 · Selva Maya Tours</title>
+<style>
+:root{
+  --bg:#f6f7f4;--card:#fff;--ink:#1c2420;--mute:#5d6a63;--line:#dfe4de;
+  --brand:#2a4931;--brand2:#3f6b4a;--soft:#e8f0e9;
+  --ok:#1f7a3d;--okbg:#e3f3e8;--warn:#9a6700;--warnbg:#fff3d1;--bad:#b42318;--badbg:#fde7e4;--pend:#475467;--pendbg:#eceff3;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#111613;--card:#192019;--ink:#e8eee9;--mute:#9db0a3;--line:#2a352d;--brand:#7fc18e;--brand2:#9bd3a7;--soft:#1f2c22;
+  --ok:#6fd08a;--okbg:#18311f;--warn:#f0c14b;--warnbg:#3a2f0e;--bad:#ff8f84;--badbg:#3d1815;--pend:#b4bfcc;--pendbg:#232a33;}}
+:root[data-theme=dark]{--bg:#111613;--card:#192019;--ink:#e8eee9;--mute:#9db0a3;--line:#2a352d;--brand:#7fc18e;--brand2:#9bd3a7;--soft:#1f2c22;--ok:#6fd08a;--okbg:#18311f;--warn:#f0c14b;--warnbg:#3a2f0e;--bad:#ff8f84;--badbg:#3d1815;--pend:#b4bfcc;--pendbg:#232a33}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--brand2)}
+code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:.88em;word-break:break-all}
+header.top{background:var(--brand);color:#fff;padding:28px 16px 22px}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) header.top{background:#1d3324;color:#e8eee9}}
+:root[data-theme=dark] header.top{background:#1d3324;color:#e8eee9}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header.top h1{margin:0 0 4px;font-size:26px}
+header.top p{margin:0;opacity:.85}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:13px;opacity:.9}
+nav.tabs{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 8px;align-items:center}
+nav.tabs a{padding:12px 11px;text-decoration:none;color:var(--mute);white-space:nowrap;font-size:14px;border-bottom:3px solid transparent}
+nav.tabs a:hover,nav.tabs a.on{color:var(--brand);border-bottom-color:var(--brand)}
+nav.tabs button{margin-left:auto;flex:none}
+main{padding:22px 0 60px}
+section{margin:0 0 34px}
+h2{font-size:21px;margin:0 0 6px;color:var(--brand)}
+h3{font-size:16px;margin:18px 0 8px}
+.lead{color:var(--mute);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:26px;line-height:1.1;color:var(--brand)}
+.kpi span{color:var(--mute);font-size:13px}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.b-ok{background:var(--okbg);color:var(--ok)}.b-warn{background:var(--warnbg);color:var(--warn)}.b-bad{background:var(--badbg);color:var(--bad)}.b-pend{background:var(--pendbg);color:var(--pend)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th,td{padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--soft);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--mute);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto;border-radius:10px}
+.tw.tall{max-height:560px;overflow:auto}
+.find{border-left:5px solid var(--line)}
+.find.p1{border-left-color:var(--bad)}.find.p2{border-left-color:var(--warn)}.find.p3{border-left-color:var(--brand2)}
+.find h3{margin:0 0 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.find p{margin:6px 0}
+.find .ev{font-size:13px;color:var(--mute)}
+.find .act{background:var(--soft);padding:8px 10px;border-radius:8px;font-size:14px;margin-top:8px}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand2);width:0;transition:width .3s}
+.chk{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+.chk:last-child{border-bottom:0}
+.chk input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--brand2)}
+.chk label{flex:1;cursor:pointer}
+.chk .note{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.chk.done label>span:first-child{text-decoration:line-through;opacity:.6}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+input[type=search],select,textarea,input[type=text]{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+textarea{width:100%;min-height:54px;resize:vertical}
+button,.btn{font:inherit;cursor:pointer;background:var(--brand);color:#fff;border:0;border-radius:8px;padding:7px 13px;text-decoration:none;display:inline-block}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) button,:root:not([data-theme=light]) .btn{color:#10200f}}
+:root[data-theme=dark] button,:root[data-theme=dark] .btn{color:#10200f}
+button.ghost{background:transparent;color:var(--brand);border:1px solid var(--line)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"▸";color:var(--brand2);transition:transform .15s}
+details[open]>summary:before{transform:rotate(90deg)}
+details>.in{padding:0 14px 14px}
+.flow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:14px}
+.flow span.n{background:var(--soft);padding:6px 10px;border-radius:8px;border:1px solid var(--line)}
+.flow span.n.x{background:var(--badbg);color:var(--bad);border-color:transparent}
+.two{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.small{font-size:13px;color:var(--mute)}
+.tag{background:var(--soft);border-radius:6px;padding:1px 7px;font-size:12px;margin-right:4px;display:inline-block}
+@media print{nav.tabs,.tools,button,.noprint{display:none!important}details{break-inside:avoid}details>.in{display:block}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>Auditoría técnica y SEO — Fase 1</h1>
+  <p>Selva Maya Tours · respuesta al Plan Estratégico Digital 2026–2027</p>
+  <div class="meta"><span>📅 Revisión: 7 de octubre de 2026</span><span>🌐 selvamayatours.com · jaguarmayatours.com</span><span>🔎 Solo lectura: no se modificó ningún sitio, DNS ni correo</span></div>
+</div></header>
+
+<nav class="tabs"><div class="wrap">
+  <a href="#resumen">Resumen</a><a href="#hallazgos">Hallazgos</a><a href="#base">Línea base</a><a href="#criterios">Criterios Fase 1</a>
+  <a href="#redirecciones">Redirecciones</a><a href="#urls">URLs del sitio</a><a href="#correo">DNS y correo</a><a href="#hosting">Hosting antiguo</a>
+  <a href="#fases">Fases 2–8</a><a href="#pendientes">Pendientes</a><a href="#decisiones">Decisiones</a>
+  <button class="ghost" id="theme" title="Cambiar tema">◐</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<section id="resumen">
+  <h2>1. Resumen ejecutivo</h2>
+  <p class="lead">La auditoría confirma el principio del plan: <b>antes de migrar hay que ordenar</b>. Hoy el dominio principal real ya es <code>jaguarmayatours.com</code>, y <code>selvamayatours.com</code> ya redirige hacia él. El plan propone lo contrario, y hay varios riesgos que resolver antes de invertir esa dirección.</p>
+
+  <div class="card">
+    <div class="flow">
+      <span class="n">selvamayatours.com</span>→<span class="n">301</span>→<span class="n">www.jaguarmayatours.com</span><span class="badge b-warn">situación actual</span>
+    </div>
+    <p class="small" style="margin:8px 0 0">El plan 2026 propone la dirección inversa: <b>selvamayatours.com como principal</b> y jaguarmayatours.com con 301 hacia él. Esa decisión sigue <b>sin aprobarse</b> hasta responder las 7 preguntas de la sección «Criterios Fase 1» (faltan datos de Search Console, GA4 y Business Profile).</p>
+  </div>
+
+  <div class="grid" id="kpis"></div>
+
+  <h3>Veredicto sobre el criterio de aprobación de la Fase 1</h3>
+  <div class="card"><span class="badge b-bad">No aprobada</span> De las 7 preguntas obligatorias, <b id="kpiAns">0</b> tienen respuesta documentada. Las restantes dependen de accesos que el cliente debe dar (ver «Pendientes»). <b>No se debe ejecutar la migración de dominios todavía.</b></div>
+
+  <div class="card noprint"><b>Progreso de la Fase 1</b> <span class="small" id="pgTxt"></span>
+    <div class="bar" style="margin-top:8px"><i id="pgBar"></i></div></div>
+</section>
+
+<section id="hallazgos">
+  <h2>2. Hallazgos priorizados</h2>
+  <p class="lead">Ordenados por impacto en visibilidad e ingresos. Cada uno incluye la evidencia medida y la acción propuesta.</p>
+  <div class="tools noprint">
+    <select id="fPrio"><option value="">Todas las prioridades</option><option value="p1">Críticos</option><option value="p2">Importantes</option><option value="p3">Mejoras</option></select>
+    <input type="search" id="fTxt" placeholder="Buscar en hallazgos…">
+  </div>
+  <div id="finds"></div>
+</section>
+
+<section id="base">
+  <h2>3. Línea base: situación actual</h2>
+  <p class="lead">Sección 2 del plan, completada con lo que se pudo verificar desde fuera. <b>Pendiente</b> = requiere acceso del cliente.</p>
+  <div class="tw"><table id="tBase"><thead><tr><th>Área</th><th>Estado</th><th>Lo que encontramos</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section id="criterios">
+  <h2>4. Criterios de aprobación de la Fase 1</h2>
+  <p class="lead">Las 7 preguntas que el plan exige responder antes de migrar.</p>
+  <div id="crit"></div>
+  <h3>Checklist de la Fase 1</h3>
+  <div class="card" id="f1list"></div>
+</section>
+
+<section id="redirecciones">
+  <h2>5. Pruebas de redirección</h2>
+  <p class="lead">Se siguieron las redirecciones reales de cada variante del dominio.</p>
+  <div class="tw"><table><thead><tr><th>URL probada</th><th>Resultado</th><th>Lectura</th></tr></thead><tbody id="tRed"></tbody></table></div>
+</section>
+
+<section id="urls">
+  <h2>6. Inventario de URLs del sitio actual (Wix)</h2>
+  <p class="lead">53 URLs únicas publicadas en el sitemap de <code>www.jaguarmayatours.com</code>. Se revisó título, descripción, H1, contenido e imágenes de cada una.</p>
+  <div class="tools noprint">
+    <input type="search" id="uTxt" placeholder="Filtrar por URL o título…">
+    <select id="uTipo"><option value="">Todos los tipos</option><option>página</option><option>servicio</option><option>blog</option></select>
+    <select id="uFlag"><option value="">Todos los estados</option><option value="cp">Páginas «copia-de»</option><option value="mis">Título no corresponde a la URL</option><option value="dl0">Sin meta descripción</option><option value="thin">Contenido corto (&lt;300 palabras)</option><option value="na">Imágenes sin texto alternativo</option><option value="empty">Página vacía</option></select>
+    <span class="small" id="uCount"></span>
+  </div>
+  <div class="tw tall"><table><thead><tr><th>URL</th><th>Tipo</th><th>Título (&lt;title&gt;)</th><th>Desc.</th><th>H1</th><th>Palabras</th><th>Imgs sin alt</th><th>Señales</th></tr></thead><tbody id="tUrls"></tbody></table></div>
+</section>
+
+<section id="correo">
+  <h2>7. DNS y correo</h2>
+  <p class="lead">Es el punto más sensible: el plan dice «NO cambiar el correo comercial sin comprobar continuidad».</p>
+  <div class="two">
+    <div class="card"><h3 style="margin-top:0">selvamayatours.com</h3>
+      <p><b>Nameservers:</b> <code>ns14/ns15.wixdns.net</code> (Wix)</p>
+      <p><b>Web:</b> IPs de Wix → 301 a jaguarmayatours.com</p>
+      <p><b>Correo (MX):</b> <code>mx1/mx2/mx3-hosting.jellyfish.systems</code> → <span class="badge b-warn">hosting cPanel antiguo</span></p>
+      <p><b>SPF:</b> incluye IPs y <code>spf.web-hosting.com</code> del hosting</p>
+      <p><b>Verificación Google:</b> no hay registro TXT visible</p></div>
+    <div class="card"><h3 style="margin-top:0">jaguarmayatours.com</h3>
+      <p><b>Nameservers:</b> <code>ns14/ns15.wixdns.net</code> (Wix)</p>
+      <p><b>Web:</b> sitio Wix (<code>www</code>)</p>
+      <p><b>Correo (MX):</b> <code>aspmx.l.google.com</code> → <span class="badge b-ok">Google Workspace</span></p>
+      <p><b>SPF:</b> <code>_spf.google.com</code></p>
+      <p><b>Verificación Google:</b> TXT <code>google-site-verification</code> presente → <span class="badge b-ok">Search Console probable</span></p></div>
+  </div>
+  <div class="card"><span class="badge b-bad">Riesgo</span> El correo de <b>selvamayatours.com</b> depende del hosting cPanel antiguo, que ya no sirve la web. Si ese hosting se cancela, vence o se cambian los DNS sin copiar el registro MX, <b>se pierde el correo</b> de ese dominio. El sitio publica <code>selvamaya@jaguarmayatours.com</code> (Google Workspace).<br><span class="small">Acción: antes de tocar DNS, exportar la zona DNS completa desde Wix, respaldar buzones del hosting y decidir un único dominio de correo.</span></div>
+</section>
+
+<section id="hosting">
+  <h2>8. Hosting antiguo (cPanel)</h2>
+  <p class="lead">Se accedió por FTP en solo lectura y se hizo un respaldo completo fuera del repositorio.</p>
+  <div class="grid">
+    <div class="kpi"><b>466</b><span>páginas HTML en <code>public_html</code> (de ellas 65 no estaban en el repositorio)</span></div>
+    <div class="kpi"><b>202</b><span>páginas en el subdominio <code>seo.</code></span></div>
+    <div class="kpi"><b>0</b><span>robots.txt / .htaccess en el hosting</span></div>
+    <div class="kpi"><b>mayo 2025</b><span>fecha de los archivos: nunca se desplegaron las mejoras SEO posteriores</span></div>
+  </div>
+  <div class="card" style="margin-top:12px"><b>Lectura:</b> son páginas casi idénticas por país o ciudad (<code>amanecer-tikal-belleza-nuevo-dia-alemania.html</code>, <code>…-benin.html</code>, <code>…-bermuda.html</code>…). El propio plan pide <i>evitar crear cientos de páginas casi idénticas</i>. Hoy <b>ya no se sirven</b>: el dominio apunta a Wix y las URLs probadas responden error 400.</div>
+</section>
+
+<section id="fases">
+  <h2>9. Fases 2 a 8 del plan: estado y próximo paso</h2>
+  <p class="lead">Marque lo que se vaya completando; el avance se guarda en este navegador.</p>
+  <div id="fases-list"></div>
+</section>
+
+<section id="pendientes">
+  <h2>10. Pendientes del cliente</h2>
+  <p class="lead">Accesos o datos que no se pueden obtener desde fuera y bloquean el cierre de la Fase 1.</p>
+  <div class="card" id="pend"></div>
+</section>
+
+<section id="decisiones">
+  <h2>11. Riesgos y registro de decisiones</h2>
+  <h3>Reglas de seguridad del plan (sección 11)</h3>
+  <div class="card" id="reglas"></div>
+  <h3>Registro de decisiones y avances</h3>
+  <div class="tools noprint"><button id="addDec">+ Agregar fila</button><button class="ghost" id="expJson">Exportar estado (JSON)</button><button class="ghost" onclick="window.print()">Imprimir / PDF</button><button class="ghost" id="reset">Reiniciar marcas</button></div>
+  <div class="tw"><table><thead><tr><th style="width:120px">Fecha</th><th>Decisión</th><th>Motivo</th><th style="width:130px">Responsable</th><th style="width:130px">Estado</th></tr></thead><tbody id="tDec"></tbody></table></div>
+  <p class="small">Las marcas y notas se guardan solo en este navegador. Use «Exportar estado» para compartirlas.</p>
+</section>
+
+</div></main>
+
+<script id="urlData" type="application/json">[{"p": "/copia-de-tours", "t": "página", "title": "TRANSFERS", "dl": 166, "h1": 1, "w": 387, "i": 15, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-bacalar-méxico", "t": "página", "title": "Lanquín", "dl": 167, "h1": 1, "w": 375, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-lanquín", "t": "página", "title": "Río Dulce", "dl": 168, "h1": 1, "w": 318, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-chetumal-méxico", "t": "página", "title": "Bacalar, México", "dl": 173, "h1": 1, "w": 384, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/contacto", "t": "página", "title": "Contactar", "dl": 130, "h1": 1, "w": 130, "i": 3, "na": 1, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-livingston", "t": "página", "title": "Ciudad de Guatemala", "dl": 155, "h1": 1, "w": 378, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-caye-san-pedro", "t": "página", "title": "Chetumal, México", "dl": 162, "h1": 1, "w": 363, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/", "t": "página", "title": "Tikal Sunrise | Tikal a Tours", "dl": 157, "h1": 2, "w": 400, "i": 23, "na": 2, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-tikal", "t": "página", "title": "TIKAL TOURS", "dl": 163, "h1": 1, "w": 325, "i": 7, "na": 0, "cp": true, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-treks", "t": "página", "title": "Tikal Tour", "dl": 149, "h1": 1, "w": 273, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-caye-caulker", "t": "página", "title": "Caye San Pedro", "dl": 154, "h1": 1, "w": 485, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/términos-y-condiciones", "t": "página", "title": "Términos y Condiciones", "dl": 202, "h1": 1, "w": 217, "i": 2, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-tikal-día-en-grupo", "t": "página", "title": "Tikal Amanecer", "dl": 161, "h1": 1, "w": 334, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-río-dulce", "t": "página", "title": "Livingston", "dl": 165, "h1": 1, "w": 353, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-flores-a-san-ignacio-belize", "t": "página", "title": "Ciudad de Belice", "dl": 172, "h1": 1, "w": 349, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-atardecer-yaxha", "t": "página", "title": "San Ignacio Belize", "dl": 187, "h1": 1, "w": 398, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/acerca-de", "t": "página", "title": "Acerca de", "dl": 161, "h1": 1, "w": 460, "i": 6, "na": 1, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/team", "t": "página", "title": "Team (List)", "dl": 0, "h1": 1, "w": 120, "i": 3, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/faqs", "t": "página", "title": "GALLERIA", "dl": 202, "h1": 0, "w": 92, "i": 11, "na": 8, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-antigua-guatemala", "t": "página", "title": "Panajachel", "dl": 166, "h1": 1, "w": 322, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/tours", "t": "página", "title": "TIKAL", "dl": 160, "h1": 1, "w": 812, "i": 21, "na": 16, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-términos-y-condiciones", "t": "página", "title": "FAQs", "dl": 202, "h1": 0, "w": 569, "i": 2, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-ejemplo-de-categorias", "t": "página", "title": "", "dl": 0, "h1": 0, "w": 0, "i": 0, "na": 0, "cp": true, "mis": false, "en": false, "empty": true}, {"p": "/nosotros", "t": "página", "title": "NOSOTROS", "dl": 330, "h1": 0, "w": 256, "i": 3, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-treks-aventura", "t": "página", "title": "TOURS", "dl": 147, "h1": 1, "w": 360, "i": 10, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-tikal-amanecer-atardecer-g-1", "t": "página", "title": "Tikal Atardecer", "dl": 150, "h1": 1, "w": 432, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/política-de-privacidad", "t": "página", "title": "Política de Privacidad", "dl": 200, "h1": 1, "w": 282, "i": 2, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-ciudad-de-belice", "t": "página", "title": "Caye Caulker", "dl": 159, "h1": 1, "w": 498, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-ciudad-de-guatemala", "t": "página", "title": "Antigua Guatemala", "dl": 183, "h1": 1, "w": 322, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-tikal-atardecer", "t": "página", "title": "Atardecer Yaxha", "dl": 168, "h1": 1, "w": 377, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/blog", "t": "blog", "title": "BLOG", "dl": 135, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/service-page/flores-a-caye-san-pedro", "t": "servicio", "title": "Flores a Caye San Pedro", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-lanquín", "t": "servicio", "title": "Flores a Lanquín", "dl": 0, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/tikal-amanecer-tour-grupo-1", "t": "servicio", "title": "Tikal Amanecer - Tour Grupo", "dl": 56, "h1": 1, "w": 146, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-caye-caulker", "t": "servicio", "title": "Flores a Caye Caulker", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-chetumal-méxico", "t": "servicio", "title": "Flores a Chetumal, México", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/yaxha-de-día-tour-grupo", "t": "servicio", "title": "Yaxha de Día - Tour Grupo", "dl": 0, "h1": 1, "w": 146, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-ciudad-de-belice", "t": "servicio", "title": "Flores a Ciudad de Belice", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-ciudad-de-guatemala", "t": "servicio", "title": "Flores a Ciudad de Guatemala", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-livingston", "t": "servicio", "title": "Flores a Livingston", "dl": 0, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-bacalar-méxico", "t": "servicio", "title": "Flores a Bacalar, México", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-san-ignacio-belice", "t": "servicio", "title": "Flores a San Ignacio Belice", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/tikal-de-día-tour-grupo-1", "t": "servicio", "title": "Tikal de Día - Tour Grupo", "dl": 56, "h1": 1, "w": 224, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/tikal-atardecer-tour-grupo", "t": "servicio", "title": "Tikal Atardecer - Tour Grupo", "dl": 0, "h1": 1, "w": 152, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-panajachel", "t": "servicio", "title": "Flores a Panajachel", "dl": 0, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/atardecer-yaxha-tour-grupo-1", "t": "servicio", "title": "Atardecer Yaxha - Tour Grupo", "dl": 55, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-río-dulce", "t": "servicio", "title": "Flores a Río Dulce", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-antigua-guatemala-directo", "t": "servicio", "title": "Flores a Antigua Guatemala - Directo", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/post/jaguar-live-in-tikal", "t": "blog", "title": "JAGUAR LIVES IN TIKAL", "dl": 0, "h1": 1, "w": 195, "i": 3, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/turismo", "t": "blog", "title": "Turismo", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/tikal-1", "t": "blog", "title": "Tikal", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/tours-1", "t": "blog", "title": "Tours", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/guatemala", "t": "blog", "title": "Guatemala", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}]</script>
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var KEY="smt-auditoria-f1-v1", st={chk:{},ans:{},dec:[],note:{}};
+try{var s=localStorage.getItem(KEY);if(s)st=Object.assign(st,JSON.parse(s))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+
+/* ---------- theme ---------- */
+$("#theme").onclick=function(){var r=document.documentElement,d=r.getAttribute("data-theme");
+  var dark=d?d==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.setAttribute("data-theme",dark?"light":"dark")};
+
+/* ---------- data ---------- */
+var URLS=JSON.parse($("#urlData").textContent);
+var cnt=function(f){return URLS.filter(f).length};
+var N=URLS.length, nCopia=cnt(function(u){return u.cp}), nMis=cnt(function(u){return u.mis}), nDl0=cnt(function(u){return !u.dl});
+var nThin=cnt(function(u){return u.w<300}), nNa=URLS.reduce(function(a,u){return a+u.na},0), nImg=URLS.reduce(function(a,u){return a+u.i},0);
+
+$("#kpis").innerHTML=[
+ [N,"URLs indexables en el sitemap de Wix"],
+ [nCopia,"páginas «copia-de-…» publicadas (duplicados/borradores)"],
+ [nMis+" de "+nCopia,"copias con título SEO de otra página"],
+ [nDl0,"URLs sin meta descripción"],
+ ["466","páginas del sitio antiguo; las 3 probadas responden error 400 (falta verificar el resto)"],
+ ["1","artículo en el blog (el plan pide 2–3 por semana)"]
+].map(function(k){return '<div class="kpi"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join("");
+
+/* ---------- hallazgos ---------- */
+var FIND=[
+{p:"p1",t:"Las URLs del sitio antiguo probadas responden error 400 (ni 404 ni 301)",
+ d:"El sitio estático anterior (páginas <code>.html</code> por país/ciudad) ya no existe en el dominio actual. Cualquier URL antigua que Google, enlaces externos o campañas aún conserven llega a un error.",
+ ev:"Pruebas: <code>/amanecer-tikal-belleza-nuevo-dia-alemania.html</code> y <code>/index.html</code> → 400 en jaguarmayatours.com; en selvamayatours.com → 301 hacia la misma ruta en jaguarmayatours.com → 400. Una URL inexistente normal da 404.",
+ a:"Definir un mapa de redirecciones 301 por patrón (p. ej. <code>amanecer-tikal-*</code> → página de Tikal amanecer) y no una por una. Confirmar primero en Search Console cuáles tuvieron impresiones/enlaces."},
+{p:"p1",t:"El dominio principal real hoy es jaguarmayatours.com; el plan propone invertirlo",
+ d:"selvamayatours.com ya redirige 301 a www.jaguarmayatours.com. Invertir exige mover el sitio Wix, el sitemap, Google Business Profile, enlaces y correo, con riesgo de perder el posicionamiento acumulado.",
+ ev:"Redirección en un solo salto (https). Desde http hay 2 saltos. Hay verificación de Search Console solo en jaguarmayatours.com (TXT en DNS).",
+ a:"No migrar hasta tener datos de Search Console de ambos dominios (tráfico, páginas indexadas, enlaces). Si jaguarmayatours.com concentra el valor, evaluar mantenerlo como principal y usar «Selva Maya Tours» como marca visible."},
+{p:"p1",t:"El correo @selvamayatours.com depende del hosting antiguo",
+ d:"Los registros MX de selvamayatours.com apuntan al hosting cPanel (jellyfish.systems). jaguarmayatours.com usa Google Workspace.",
+ ev:"MX y SPF verificados por DNS. El hosting conserva la carpeta <code>mail/</code> con datos de correo; falta confirmar qué buzones están activos.",
+ a:"Exportar la zona DNS de Wix, listar buzones activos, respaldarlos y decidir un solo dominio de correo antes de cancelar el hosting o tocar DNS."},
+{p:"p1",t:"19 de 21 páginas «copia-de-…» tienen el título SEO de otra página",
+ d:"El texto que Google muestra como título no coincide con la página. Ejemplos: <code>/copia-de-bacalar-méxico</code> se titula «Lanquín»; <code>/copia-de-livingston</code>, «Ciudad de Guatemala»; <code>/copia-de-términos-y-condiciones</code>, «FAQs». Además están en el sitemap, es decir, se piden a Google como páginas válidas.",
+ ev:"Comparación del slug contra el <code>&lt;title&gt;</code> de las 21 páginas «copia-de» (ver tabla de URLs, filtro «Título no corresponde»). Hay también una página vacía: <code>/copia-de-ejemplo-de-categorias</code>.",
+ a:"Decidir qué páginas se conservan, consolidar el resto con 301 o quitarlas del sitemap, y reescribir título y descripción de las que queden."},
+{p:"p1",t:"Las páginas que el plan quiere (/tikal, /yaxha, /transfers, /reservar…) no existen",
+ d:"La estructura actual mezcla páginas «copia-de-…» con 17 páginas de servicio. Faltan páginas ancla por intención de búsqueda (Tikal desde Flores, tour privado, amanecer/atardecer, Yaxhá, qué hacer en Flores, aeropuerto).",
+ ev:"Sitemap: 31 páginas, 17 servicios, 1 artículo, 4 categorías de blog. Ninguna ruta coincide con la Fase 3.",
+ a:"Crear las páginas prioritarias de la Fase 3 con contenido útil y único, y redirigir las «copia-de» a ellas."},
+{p:"p2",t:"Páginas de servicio: canonical con ruta /en/ que a su vez redirige",
+ d:"Las 17 páginas de servicio declaran como canonical una URL <code>/en/service-page/…</code>, y esa URL redirige a la versión sin <code>/en</code>. Google recibe una señal contradictoria sobre cuál es la URL oficial.",
+ ev:"Ej.: <code>/service-page/flores-a-caye-caulker</code> → canonical <code>/en/service-page/flores-a-caye-caulker</code> → 200 final en la ruta sin /en. Además no incluyen hreflang.",
+ a:"Corregir la configuración de idiomas de Wix para que el canonical coincida con la URL servida."},
+{p:"p2",t:"Páginas de servicio sin meta descripción y con poco contenido",
+ d:"Son las páginas que más deberían vender (Flores a Caye Caulker, Tikal amanecer, etc.). Tienen unas 150 palabras, 2 imágenes y casi ninguna tiene descripción.",
+ ev:"21 de 53 URLs sin meta descripción; 31 de 53 con menos de 300 palabras. El plan (Fase 4) pide qué incluye, duración, horarios, punto de recogida, política de cancelación y FAQ.",
+ a:"Plantilla de página de servicio con esos bloques y descripción única de 140–160 caracteres."},
+{p:"p2",t:"Página de inicio: título débil y etiqueta de idioma inconsistente",
+ d:"Título: «Tikal Sunrise | Tikal a Tours | Selva Maya Tours». Es confuso y mezcla idiomas. La raíz declara <code>lang=\"en\"</code> y hreflang <code>en-us</code>, aunque el contenido está en español; existe una copia en <code>/es</code> con el mismo título.",
+ ev:"Dos H1 en la home. La versión <code>/es</code> tiene <code>lang=\"es\"</code> y hreflang <code>es-gt</code>.",
+ a:"Un título claro (p. ej. «Tours a Tikal desde Flores, Petén | Selva Maya Tours»), un solo H1 y decidir cuál es el idioma principal."},
+{p:"p2",t:"Otros títulos mal puestos en páginas principales",
+ d:"<code>/faqs</code> se titula «GALLERIA», <code>/team</code> «Team (List)», <code>/tours</code> «TIKAL»; <code>/faqs</code> y <code>/nosotros</code> no tienen H1.",
+ ev:"Ver tabla de URLs.",a:"Reescribir título, descripción y H1 de las 9 páginas principales."},
+{p:"p2",t:"Blog casi vacío",
+ d:"Un solo artículo («Jaguar lives in Tikal», en inglés, sin meta descripción) y 4 páginas de categoría con unas 113 palabras. El plan prevé 2–3 piezas por semana.",
+ ev:"Sitemap de blog: 1 entrada.",a:"Calendario editorial por pilares (educación, autoridad, confianza, prueba social, inspiración, venta)."},
+{p:"p2",t:"Páginas legales y FAQ duplicadas",
+ d:"Hay «Términos y condiciones» y su «copia», con título distinto («FAQs»). Hay página de FAQs y la copia de términos se titula FAQs.",ev:"Tabla de URLs.",a:"Una sola versión de cada página legal y de FAQ."},
+{p:"p3",t:"Imágenes sin texto alternativo",
+ d:nNa+" de "+nImg+" imágenes sin <code>alt</code>, concentradas en <code>/tours</code> (16 de 21), <code>/faqs</code> (8 de 11) y la home (2 de 23).",
+ ev:"Conteo sobre el HTML publicado.",a:"Completar el texto alternativo en el editor de Wix."},
+{p:"p3",t:"Peso de la página de inicio",
+ d:"El HTML de la home pesa casi 1 MB antes de imágenes y scripts. Es probable que afecte la velocidad en móvil.",
+ ev:"La medición con PageSpeed no pudo completarse (cuota diaria de la API agotada). Quedó pendiente.",a:"Repetir con PageSpeed Insights o Search Console (Core Web Vitals)."},
+{p:"p3",t:"Datos de contacto: dos números según el sitio",
+ d:"El sitio Wix usa +502 5203 8784; el sitio antiguo declaraba +502 5466 7703. Ya no están publicados en paralelo, pero conviene unificar en Business Profile y redes.",
+ ev:"Enlaces <code>api.whatsapp.com/send?phone=50252038784</code> y <code>wa.me/message/…</code> en la home.",a:"Un único número de WhatsApp en toda la presencia digital."},
+{p:"p3",t:"Lo que ya está bien",
+ d:"HTTPS correcto; robots.txt permite el rastreo y declara el sitemap; el sitemap está generado y es válido; todas las páginas indexables tienen etiqueta canonical; JSON-LD de <code>LocalBusiness</code>; botón de WhatsApp visible en todas las páginas; redirecciones de variantes del dominio en un salto.",
+ ev:"Pruebas directas contra el sitio en vivo.",a:"Conservar."}
+];
+function drawFinds(){
+  var p=$("#fPrio").value,q=$("#fTxt").value.toLowerCase();
+  var L={p1:"Crítico",p2:"Importante",p3:"Mejora"},C={p1:"b-bad",p2:"b-warn",p3:"b-ok"};
+  $("#finds").innerHTML=FIND.filter(function(f){return (!p||f.p===p)&&(!q||(f.t+f.d).toLowerCase().indexOf(q)>-1)}).map(function(f){
+    return '<div class="card find '+f.p+'"><h3><span class="badge '+C[f.p]+'">'+L[f.p]+'</span>'+f.t+'</h3><p>'+f.d+'</p><p class="ev"><b>Evidencia:</b> '+f.ev+'</p><div class="act"><b>Acción:</b> '+f.a+'</div></div>'}).join("")||'<p class="small">Sin resultados.</p>';
+}
+$("#fPrio").onchange=drawFinds;$("#fTxt").oninput=drawFinds;drawFinds();
+
+/* ---------- línea base ---------- */
+var B=[
+["Marca","ok","«Selva Maya Tours» en título y descripción de la home. El dominio principal real es jaguarmayatours.com y el sitio muestra «La Ruta del Jaguar» en el encabezado."],
+["Sitio Wix","ok","Confirmado: www.jaguarmayatours.com sirve desde Wix. 53 URLs en sitemap, robots.txt y sitemap correctos."],
+["Dominio selvamayatours.com","warn","Nameservers de Wix; redirige 301 a jaguarmayatours.com. El registrador (¿Namecheap?) no se pudo confirmar desde fuera; falta quién es el titular y quién tiene el acceso administrativo."],
+["DNS","warn","Ambos dominios usan <code>ns14/ns15.wixdns.net</code>. Se documentaron A, MX, TXT y NS. Falta la captura de la zona desde el panel de Wix."],
+["Search Console","pend","Solo se ve el TXT de verificación en jaguarmayatours.com. No hay TXT en selvamayatours.com (puede haberse verificado de otra forma). Requiere acceso."],
+["Analytics","pend","No se pudo verificar desde fuera si hay GA4 instalado ni qué conversiones tiene. Requiere acceso."],
+["Google Business Profile","pend","Requiere acceso: nombre, categoría, URL, teléfono y enlaces."],
+["Correo","warn","@selvamayatours.com → hosting cPanel; @jaguarmayatours.com → Google Workspace. El sitio publica selvamaya@jaguarmayatours.com. Ver sección 7."],
+["Backlinks","pend","Requiere herramienta (Search Console, Ahrefs, Semrush). Sin esos datos no se puede estimar la pérdida de la migración."],
+["Indexación Google","pend","No se puede consultar el índice sin Search Console. Lo que sí se midió: 53 URLs enviadas en sitemap; las ~466 del sitio antiguo dan error 400."],
+["Reservas / WhatsApp","ok","Botón de WhatsApp (<code>api.whatsapp.com/send?phone=50252038784</code>) y enlace <code>wa.me/message/…</code> en todas las páginas. Falta medir clics y conversión."]
+];
+var BL={ok:["b-ok","Verificado"],warn:["b-warn","Parcial"],pend:["b-pend","Pendiente"]};
+$("#tBase tbody").innerHTML=B.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td><span class="badge '+BL[r[1]][0]+'">'+BL[r[1]][1]+'</span></td><td>'+r[2]+'</td></tr>'}).join("");
+
+/* ---------- criterios ---------- */
+var CR=[
+["¿Qué dominio recibe actualmente más tráfico orgánico?","pend","Sin datos de Search Console/GA4. Hipótesis: jaguarmayatours.com, porque es el sitio activo y está verificado."],
+["¿Cuál tiene más páginas indexadas?","pend","Sin acceso al índice. El sitio Wix tiene 53 URLs enviadas; el sitio antiguo tenía ~466 páginas en el hosting pero hoy no responden."],
+["¿Cuál tiene más enlaces externos de calidad?","pend","Requiere herramienta de backlinks."],
+["¿Qué dominio aparece en Google Business Profile?","pend","Requiere acceso al perfil."],
+["¿Qué dominio usa el correo comercial?","ok","Ambos. El sitio publica selvamaya@jaguarmayatours.com (Google Workspace); selvamayatours.com mantiene buzones en el hosting antiguo."],
+["¿Qué URLs reciben más visitas y reservas?","pend","Requiere GA4. Se sabe que las páginas de servicio y /tours son las que venden."],
+["¿Qué pérdidas podríamos tener si hacemos una migración?","warn","Riesgos identificados: URLs antiguas en error 400, pérdida de correo de selvamayatours.com, 19 páginas con título cruzado, y posible pérdida de posicionamiento de jaguarmayatours.com si se invierte la redirección."]
+];
+function ansCount(){return CR.filter(function(c,i){return (st.ans[i]&&st.ans[i].done)||c[1]==="ok"}).length}
+function drawCrit(){
+  $("#crit").innerHTML=CR.map(function(c,i){
+    var a=st.ans[i]||{},done=a.done||c[1]==="ok",b=BL[done?"ok":c[1]];
+    return '<div class="card"><div><span class="badge '+b[0]+'">'+(done?"Respondida":b[1])+'</span> <b>'+(i+1)+'. '+c[0]+'</b></div><p style="margin:6px 0">'+c[2]+'</p>'+
+    '<textarea data-ans="'+i+'" placeholder="Respuesta documentada del cliente / equipo…">'+esc(a.txt||"")+'</textarea>'+
+    '<label class="small noprint"><input type="checkbox" data-done="'+i+'" '+(a.done?"checked":"")+'> Marcar como respondida</label></div>'}).join("");
+  $("#kpiAns").textContent=ansCount();
+}
+$("#crit").addEventListener("input",function(e){var i=e.target.getAttribute("data-ans");if(i!==null){(st.ans[i]=st.ans[i]||{}).txt=e.target.value;save()}});
+$("#crit").addEventListener("change",function(e){var i=e.target.getAttribute("data-done");if(i!==null){(st.ans[i]=st.ans[i]||{}).done=e.target.checked;save();drawCrit();progress()}});
+
+/* ---------- checklists ---------- */
+var F1=[
+["f1a","Confirmar propietario de cada dominio y quién tiene acceso administrativo","Pendiente de datos del cliente (registrador y cuentas)."],
+["f1b","Guardar capturas y exportaciones de la configuración DNS actual","Hecho desde fuera: registros A, NS, MX y TXT documentados en la sección 7. Falta exportar la zona desde el panel."],
+["f1c","Confirmar dónde está alojado cada dominio y qué responde en cada uno","Hecho: ambos en Wix (web); selvamayatours.com con correo en cPanel (server164.web-hosting.com)."],
+["f1d","Revisar Search Console de jaguarmayatours.com y selvamayatours.com","Requiere acceso."],
+["f1e","Revisar páginas indexadas y consultas con impresiones/clics","Requiere acceso."],
+["f1f","Revisar Google Analytics/GA4 y conversiones","Requiere acceso."],
+["f1g","Revisar Google Business Profile","Requiere acceso."],
+["f1h","Revisar backlinks y menciones de Jaguar Maya Tours y Selva Maya Tours","Requiere herramienta/acceso."],
+["f1i","Revisar plataformas externas: Facebook, Instagram, TripAdvisor, directorios, OTAs y WhatsApp","Pendiente: lista de perfiles del cliente."],
+["f1j","Revisar correo, formularios, reservas y automatizaciones antes de migrar","Parcial: MX y SPF documentados; falta probar formularios del sitio y reservas."],
+["f1k","Hacer inventario de URLs actuales que generan tráfico o ventas","Parcial: 53 URLs de Wix inventariadas + 466 del hosting antiguo. Falta cruzar con tráfico real."],
+["f1z","Respaldo completo del hosting antiguo antes de cualquier cambio","Hecho el 7-oct-2026 (466 + 202 páginas, 116 MB descargados, fuera del repositorio)."]
+];
+var DONE0={f1b:1,f1c:1,f1z:1};
+var F=[
+{t:"Fase 2 — Arquitectura de dominios",s:"Bloqueada por Fase 1",items:[
+ ["f2a","Confirmar que selvamayatours.com puede ser el dominio principal en Wix","Hoy es la inversa: el principal es jaguarmayatours.com. Decisión pendiente."],
+ ["f2b","Preparar mapa de redirecciones URL por URL","Propuesta: reglas por patrón para las ~466 URLs antiguas hacia las páginas de la Fase 3."],
+ ["f2c","Configurar redirecciones 301 permanentes","Las dos variantes del dominio ya dan 301 a la raíz; falta cubrir rutas profundas."],
+ ["f2d","Actualizar sitemap y revisar robots/canonicals","Corregir canonical /en/ en servicios y quitar páginas «copia-de» del sitemap."],
+ ["f2e","Actualizar enlaces internos al dominio principal",""],
+ ["f2f","Actualizar Google Business Profile y perfiles sociales",""],
+ ["f2g","Mantener jaguarmayatours.com registrado y renovado","Obligatorio: hoy es el dominio activo y tiene el correo Google Workspace."],
+ ["f2h","Monitorear Search Console después del cambio",""],
+ ["f2i","No eliminar el dominio antiguo inmediatamente",""]]},
+{t:"Fase 3 — Reconstrucción SEO y estructura web (octubre)",s:"Listo para planificar",items:[
+ ["f3a","Crear páginas ancla: /tikal, /yaxha, /tikal-sunrise, /tikal-sunset, /tours, /treks, /transfers, /flores, /lago-peten","Hoy existen 17 páginas de servicio y varias «copia-de»; ninguna con estas rutas."],
+ ["f3b","Crear /experiencias, /gastronomia, /concierge, /nosotros, /blog, /contacto, /reservar","/nosotros, /blog y /contacto ya existen."],
+ ["f3c","Páginas prioritarias: Tikal desde Flores, tour privado, amanecer, atardecer, Yaxhá, qué hacer en Flores, aeropuerto, lago Petén Itzá, tours personalizados","Contenido único por página; no repetir plantillas por ciudad."],
+ ["f3d","Reescribir títulos y descripciones de las 9 páginas principales y de los 17 servicios","Ver hallazgos."],
+ ["f3e","Consolidar o redirigir las 21 páginas «copia-de»","Ver hallazgos."]]},
+{t:"Fase 4 — Conversión: de visitante a cliente",s:"Parcial",items:[
+ ["f4a","Botón de WhatsApp visible y consistente","Ya presente en todas las páginas."],
+ ["f4b","Botón de reservar visible en las páginas principales","Existe «Reservar» en el encabezado."],
+ ["f4c","Precio o «desde» cuándo convenga","Pendiente."],
+ ["f4d","Qué incluye / qué no incluye","Falta en las páginas de servicio."],
+ ["f4e","Duración y horarios; punto de encuentro","Falta en las páginas de servicio."],
+ ["f4f","Política de cancelación y preguntas frecuentes","FAQ existe pero está mal titulada."],
+ ["f4g","Testimonios reales y fotos reales de clientes",""],
+ ["f4h","Presentación clara de la persona/equipo","Existen /nosotros, /acerca-de y /team (duplicadas)."]]},
+{t:"Fase 5 — Selva Maya 365 en la web",s:"Por definir con el cliente",items:[
+ ["f5a","Definir 1–2 líneas complementarias de bajo costo (transporte, concierge, gastronomía, fotografía, productos)","Principio del plan: bajo costo operativo primero."]]},
+{t:"Fase 6 — Contenido y blog",s:"Sin iniciar",items:[
+ ["f6a","Calendario editorial por pilares (educación, autoridad, confianza, prueba social, inspiración, venta)","Hoy hay 1 artículo."],
+ ["f6b","Frecuencia objetivo: 2–3 piezas por semana",""]]},
+{t:"Fase 7 — Medición y tablero",s:"Bloqueada por accesos",items:[
+ ["f7a","Instalar/validar GA4 con eventos de clic a WhatsApp, formularios y reservas","Requiere acceso a GA4."],
+ ["f7b","Tablero mensual: visitas orgánicas, consultas, reservas, valor medio, ingresos por línea",""]]},
+{t:"Fase 8 — Calendario de ejecución",s:"El plan indica septiembre; hoy es 7 de octubre",items:[
+ ["f8a","Auditoría (semana 1 de septiembre)","Ejecutada con retraso: 7-oct-2026, parcialmente por falta de accesos."],
+ ["f8b","Decisión de dominio principal",""],
+ ["f8c","Migración (3–4 de septiembre) — solo si procede","Fuera de calendario; depende de la decisión."],
+ ["f8d","SEO, conversión y Selva Maya 365 (octubre)",""],
+ ["f8e","Contenido y control mensual (desde noviembre)",""]]}
+];
+var PEND=[
+["pn1","Acceso de lectura a Search Console de jaguarmayatours.com y selvamayatours.com"],
+["pn2","Acceso de lectura a Google Analytics (GA4)"],
+["pn3","Acceso a Google Business Profile (o capturas)"],
+["pn4","Titular y acceso al registrador de selvamayatours.com y jaguarmayatours.com"],
+["pn5","Acceso al panel de Wix (exportar zona DNS, redirecciones 301, idiomas)"],
+["pn6","Lista de buzones activos en @selvamayatours.com y en @jaguarmayatours.com"],
+["pn7","Lista de perfiles externos (Facebook, Instagram, TripAdvisor, OTAs, directorios)"],
+["pn8","Cuál es el número oficial de WhatsApp y el correo comercial definitivo"],
+["pn9","Decisión del cliente sobre las 21 páginas «copia-de-…» (conservar, consolidar o eliminar)"]
+];
+var RULES=[
+["r1","NO hacer una migración de dominio sin copia/documentación de la configuración actual","Respaldo del hosting hecho; falta exportar DNS de Wix."],
+["r2","NO cancelar jaguarmayatours.com después de una migración; conservarlo","Es el dominio activo hoy."],
+["r3","NO cambiar el correo comercial sin comprobar continuidad de recepción y envío","Ver sección 7."],
+["r4","NO borrar páginas con tráfico o enlaces sin definir su destino","Falta cruzar con Search Console."],
+["r5","NO crear páginas masivas de ciudades solo para posicionarse","El sitio antiguo tenía ~466 de este tipo."],
+["r6","NO invertir mucho dinero en nuevas líneas de negocio antes de probar demanda",""],
+["r7","NO medir el éxito solo por visitas: medir consultas, reservas e ingresos",""]
+];
+function chkRow(it,pre){var id=it[0],on=st.chk[id]!==undefined?st.chk[id]:!!DONE0[id];
+  return '<div class="chk'+(on?" done":"")+'"><input type="checkbox" id="c_'+id+'" data-c="'+id+'" '+(on?"checked":"")+'><label for="c_'+id+'"><span>'+it[1]+'</span>'+(it[2]?'<span class="note">'+it[2]+'</span>':"")+'</label></div>'}
+function drawLists(){
+  $("#f1list").innerHTML=F1.map(chkRow).join("");
+  $("#pend").innerHTML=PEND.map(chkRow).join("");
+  $("#reglas").innerHTML=RULES.map(chkRow).join("");
+  $("#fases-list").innerHTML=F.map(function(f,i){var d=f.items.filter(function(x){return st.chk[x[0]]}).length;
+    return '<details'+(i<2?" open":"")+'><summary>'+f.t+' <span class="badge b-pend">'+f.s+'</span> <span class="small">'+d+'/'+f.items.length+'</span></summary><div class="in">'+f.items.map(chkRow).join("")+'</div></details>'}).join("");
+}
+document.addEventListener("change",function(e){var id=e.target.getAttribute&&e.target.getAttribute("data-c");if(id){st.chk[id]=e.target.checked;save();e.target.closest(".chk").classList.toggle("done",e.target.checked);progress();
+  var det=e.target.closest("details");if(det){var f=F.filter(function(x){return x.items.some(function(i){return i[0]===id})})[0];if(f)det.querySelector("summary .small").textContent=f.items.filter(function(x){return st.chk[x[0]]}).length+"/"+f.items.length}}});
+function progress(){var tot=F1.length,d=F1.filter(function(x){var v=st.chk[x[0]];return v!==undefined?v:!!DONE0[x[0]]}).length;
+  $("#pgTxt").textContent=d+" de "+tot+" tareas · "+ansCount()+" de 7 criterios";$("#pgBar").style.width=Math.round((d/tot)*100)+"%"}
+
+/* ---------- redirecciones ---------- */
+var RED=[
+["http://selvamayatours.com/","301 → https://selvamayatours.com/ → 301 → https://www.jaguarmayatours.com/","warn","2 saltos"],
+["https://selvamayatours.com/","301 → https://www.jaguarmayatours.com/","ok","Correcto, 1 salto"],
+["https://www.selvamayatours.com/","301 → https://www.jaguarmayatours.com/","ok","Correcto"],
+["https://jaguarmayatours.com/","301 → https://www.jaguarmayatours.com/","ok","Correcto"],
+["https://selvamayatours.com/robots.txt","200 (robots de Wix, sin redirigir)","warn","Declara sitemap de www.selvamayatours.com, que a su vez redirige a jaguarmayatours.com"],
+["https://selvamayatours.com/sitemap.xml","301 → https://www.jaguarmayatours.com/sitemap.xml","ok","Correcto"],
+["https://selvamayatours.com/amanecer-tikal-belleza-nuevo-dia-alemania.html","301 → misma ruta en jaguarmayatours.com → 400","bad","Página antigua: termina en error"],
+["https://selvamayatours.com/tours-tikal-explora-maravilla-maya-selva-peten.html","301 → misma ruta en jaguarmayatours.com → 400","bad","Página antigua: termina en error"],
+["https://www.jaguarmayatours.com/index.html","400","bad","Debería redirigir a la home"],
+["https://www.jaguarmayatours.com/no-existe-xyz","404","ok","Comportamiento normal para una URL inexistente"]
+];
+$("#tRed").innerHTML=RED.map(function(r){return '<tr><td><code>'+esc(r[0])+'</code></td><td>'+esc(r[1])+'</td><td><span class="badge b-'+r[2]+'">'+esc(r[3])+'</span></td></tr>'}).join("");
+
+/* ---------- tabla de URLs ---------- */
+function drawUrls(){
+  var q=$("#uTxt").value.toLowerCase(),t=$("#uTipo").value,f=$("#uFlag").value;
+  var rows=URLS.filter(function(u){
+    if(q&&(u.p+" "+u.title).toLowerCase().indexOf(q)<0)return false;
+    if(t&&u.t!==t)return false;
+    if(f==="cp"&&!u.cp)return false;if(f==="mis"&&!u.mis)return false;if(f==="dl0"&&!(u.dl===0))return false;
+    if(f==="thin"&&u.w>=300)return false;if(f==="na"&&!u.na)return false;if(f==="empty"&&!u.empty)return false;return true});
+  $("#uCount").textContent=rows.length+" de "+N;
+  $("#tUrls").innerHTML=rows.map(function(u){var tg=[];
+    if(u.cp)tg.push('<span class="tag">copia</span>');if(u.mis)tg.push('<span class="badge b-bad">título cruzado</span>');
+    if(u.empty)tg.push('<span class="badge b-bad">vacía</span>');if(u.en)tg.push('<span class="badge b-warn">canonical /en/</span>');
+    return '<tr><td><code>'+esc(u.p)+'</code></td><td>'+u.t+'</td><td>'+esc(u.title||"—")+'</td><td>'+(u.dl?u.dl:'<span class="badge b-bad">0</span>')+'</td><td>'+u.h1+'</td><td>'+u.w+'</td><td>'+u.na+'/'+u.i+'</td><td>'+tg.join(" ")+'</td></tr>'}).join("");
+}
+["uTxt","uTipo","uFlag"].forEach(function(i){$("#"+i).oninput=drawUrls;$("#"+i).onchange=drawUrls});
+
+/* ---------- decisiones ---------- */
+function drawDec(){
+  if(!st.dec.length)st.dec=[{f:"2026-10-07",d:"Respaldo completo del hosting antiguo antes de cualquier cambio",m:"Regla de oro del plan: documentar y respaldar antes de tocar",r:"Equipo técnico",e:"Hecho"},
+    {f:"2026-10-07",d:"No migrar dominios hasta cerrar la Fase 1",m:"Faltan datos de Search Console, GA4 y Business Profile",r:"Cliente / equipo",e:"Vigente"}];
+  $("#tDec").innerHTML=st.dec.map(function(r,i){return '<tr>'+["f","d","m","r","e"].map(function(k){return '<td><input type="text" style="width:100%" data-d="'+i+'" data-k="'+k+'" value="'+esc(r[k])+'"></td>'}).join("")+'</tr>'}).join("");
+}
+$("#tDec").addEventListener("input",function(e){var i=e.target.getAttribute("data-d");if(i!==null){st.dec[i][e.target.getAttribute("data-k")]=e.target.value;save()}});
+$("#addDec").onclick=function(){st.dec.push({f:new Date().toISOString().slice(0,10),d:"",m:"",r:"",e:""});save();drawDec()};
+$("#expJson").onclick=function(){var b=new Blob([JSON.stringify(st,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="auditoria-smt-estado.json";a.click()};
+$("#reset").onclick=function(){if(confirm("¿Borrar todas las marcas, respuestas y decisiones guardadas en este navegador?")){st={chk:{},ans:{},dec:[],note:{}};save();init()}};
+
+/* ---------- tabs resaltado ---------- */
+var links=[].slice.call(document.querySelectorAll("nav.tabs a"));
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-30% 0px -65% 0px"});
+  document.querySelectorAll("main section").forEach(function(s){io.observe(s)})}
+
+function init(){drawCrit();drawLists();drawUrls();drawDec();progress()}
+init();
+})();
+</script>
+</body>
+</html>
