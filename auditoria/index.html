@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Auditoría Fase 1 · Selva Maya Tours</title>
+<style>
+:root{
+  --bg:#f6f7f4;--card:#fff;--ink:#1c2420;--mute:#5d6a63;--line:#dfe4de;
+  --brand:#2a4931;--brand2:#3f6b4a;--soft:#e8f0e9;
+  --ok:#1f7a3d;--okbg:#e3f3e8;--warn:#9a6700;--warnbg:#fff3d1;--bad:#b42318;--badbg:#fde7e4;--pend:#475467;--pendbg:#eceff3;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#111613;--card:#192019;--ink:#e8eee9;--mute:#9db0a3;--line:#2a352d;--brand:#7fc18e;--brand2:#9bd3a7;--soft:#1f2c22;
+  --ok:#6fd08a;--okbg:#18311f;--warn:#f0c14b;--warnbg:#3a2f0e;--bad:#ff8f84;--badbg:#3d1815;--pend:#b4bfcc;--pendbg:#232a33;}}
+:root[data-theme=dark]{--bg:#111613;--card:#192019;--ink:#e8eee9;--mute:#9db0a3;--line:#2a352d;--brand:#7fc18e;--brand2:#9bd3a7;--soft:#1f2c22;--ok:#6fd08a;--okbg:#18311f;--warn:#f0c14b;--warnbg:#3a2f0e;--bad:#ff8f84;--badbg:#3d1815;--pend:#b4bfcc;--pendbg:#232a33}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--brand2)}
+code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:.88em;word-break:break-all}
+header.top{background:var(--brand);color:#fff;padding:28px 16px 22px}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) header.top{background:#1d3324;color:#e8eee9}}
+:root[data-theme=dark] header.top{background:#1d3324;color:#e8eee9}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header.top h1{margin:0 0 4px;font-size:26px}
+header.top p{margin:0;opacity:.85}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:13px;opacity:.9}
+nav.tabs{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;padding:0 8px;align-items:center}
+nav.tabs a{padding:12px 11px;text-decoration:none;color:var(--mute);white-space:nowrap;font-size:14px;border-bottom:3px solid transparent}
+nav.tabs a:hover,nav.tabs a.on{color:var(--brand);border-bottom-color:var(--brand)}
+nav.tabs button{margin-left:auto;flex:none}
+main{padding:22px 0 60px}
+section{margin:0 0 34px}
+h2{font-size:21px;margin:0 0 6px;color:var(--brand)}
+h3{font-size:16px;margin:18px 0 8px}
+.lead{color:var(--mute);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:26px;line-height:1.1;color:var(--brand)}
+.kpi span{color:var(--mute);font-size:13px}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.b-ok{background:var(--okbg);color:var(--ok)}.b-warn{background:var(--warnbg);color:var(--warn)}.b-bad{background:var(--badbg);color:var(--bad)}.b-pend{background:var(--pendbg);color:var(--pend)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th,td{padding:9px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--soft);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--mute);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto;border-radius:10px}
+.tw.tall{max-height:560px;overflow:auto}
+.find{border-left:5px solid var(--line)}
+.find.p1{border-left-color:var(--bad)}.find.p2{border-left-color:var(--warn)}.find.p3{border-left-color:var(--brand2)}
+.find h3{margin:0 0 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.find p{margin:6px 0}
+.find .ev{font-size:13px;color:var(--mute)}
+.find .act{background:var(--soft);padding:8px 10px;border-radius:8px;font-size:14px;margin-top:8px}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand2);width:0;transition:width .3s}
+.chk{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+.chk:last-child{border-bottom:0}
+.chk input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--brand2)}
+.chk label{flex:1;cursor:pointer}
+.chk .note{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.chk.done label>span:first-child{text-decoration:line-through;opacity:.6}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+input[type=search],select,textarea,input[type=text]{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+textarea{width:100%;min-height:54px;resize:vertical}
+button,.btn{font:inherit;cursor:pointer;background:var(--brand);color:#fff;border:0;border-radius:8px;padding:7px 13px;text-decoration:none;display:inline-block}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) button,:root:not([data-theme=light]) .btn{color:#10200f}}
+:root[data-theme=dark] button,:root[data-theme=dark] .btn{color:#10200f}
+button.ghost{background:transparent;color:var(--brand);border:1px solid var(--line)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"▸";color:var(--brand2);transition:transform .15s}
+details[open]>summary:before{transform:rotate(90deg)}
+details>.in{padding:0 14px 14px}
+.flow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:14px}
+.flow span.n{background:var(--soft);padding:6px 10px;border-radius:8px;border:1px solid var(--line)}
+.flow span.n.x{background:var(--badbg);color:var(--bad);border-color:transparent}
+.two{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.small{font-size:13px;color:var(--mute)}
+.tag{background:var(--soft);border-radius:6px;padding:1px 7px;font-size:12px;margin-right:4px;display:inline-block}
+@media print{nav.tabs,.tools,button,.noprint{display:none!important}details{break-inside:avoid}details>.in{display:block}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>Auditoría técnica y SEO — Fase 1</h1>
+  <p>Selva Maya Tours · respuesta al Plan Estratégico Digital 2026–2027</p>
+  <div class="meta"><span>📅 Revisión: 7 de octubre de 2026</span><span>🌐 selvamayatours.com · jaguarmayatours.com</span><span>📊 Incluye datos de Search Console (jun-2025 a oct-2026)</span><span>🔎 Solo lectura: no se modificó ningún sitio, DNS ni correo</span></div>
+</div></header>
+
+<nav class="tabs"><div class="wrap">
+  <a href="#resumen">Resumen</a><a href="#gsc">Search Console</a><a href="#comp">Competencia</a><a href="#hallazgos">Hallazgos</a><a href="#base">Línea base</a><a href="#criterios">Criterios Fase 1</a>
+  <a href="#redirecciones">Redirecciones</a><a href="#mapa">Mapa 301</a><a href="#urls">URLs del sitio</a><a href="#correo">DNS y correo</a><a href="#hosting">Hosting antiguo</a>
+  <a href="#fases">Fases 2–8</a><a href="#plan">Plan de trabajo</a><a href="#pendientes">Pendientes</a><a href="#decisiones">Decisiones</a>
+  <button class="ghost" id="theme" title="Cambiar tema">◐</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<section id="resumen">
+  <h2>1. Resumen ejecutivo</h2>
+  <p class="lead">La auditoría confirma el principio del plan: <b>antes de migrar hay que ordenar</b>. Hoy el dominio principal real ya es <code>jaguarmayatours.com</code>, y <code>selvamayatours.com</code> ya redirige hacia él. El plan propone lo contrario, y hay varios riesgos que resolver antes de invertir esa dirección. <b>Los datos de Search Console muestran que más de la mitad de los clics de los últimos 16 meses (631 de 1.171) llegan hoy a páginas que dan error.</b></p>
+
+  <div class="card">
+    <div class="flow">
+      <span class="n">selvamayatours.com</span>→<span class="n">301</span>→<span class="n">www.jaguarmayatours.com</span><span class="badge b-warn">situación actual</span>
+    </div>
+    <p class="small" style="margin:8px 0 0">El plan 2026 propone la dirección inversa: <b>selvamayatours.com como principal</b> y jaguarmayatours.com con 301 hacia él. Esa decisión sigue <b>sin aprobarse</b> hasta responder las 7 preguntas de la sección «Criterios Fase 1» (faltan datos de Search Console, GA4 y Business Profile).</p>
+  </div>
+
+  <div class="grid" id="kpis"></div>
+
+  <h3>Veredicto sobre el criterio de aprobación de la Fase 1</h3>
+  <div class="card"><span class="badge b-bad">No aprobada</span> De las 7 preguntas obligatorias, <b id="kpiAns">0</b> tienen respuesta documentada. Las restantes dependen de accesos que el cliente debe dar (ver «Pendientes»). <b>No se debe ejecutar la migración de dominios todavía.</b></div>
+
+  <div class="card noprint"><b>Progreso de la Fase 1</b> <span class="small" id="pgTxt"></span>
+    <div class="bar" style="margin-top:8px"><i id="pgBar"></i></div></div>
+</section>
+
+<section id="gsc">
+  <h2>2. Datos de Search Console (16 meses)</h2>
+  <p class="lead">Informe de Rendimiento en la búsqueda web de ambos dominios, del 5-jun-2025 al 4-oct-2026. Cada URL con tráfico se probó contra el sitio en vivo el 7-oct-2026.</p>
+  <div class="tw"><table><thead><tr><th>Indicador</th><th>selvamayatours.com</th><th>jaguarmayatours.com</th></tr></thead><tbody id="tGsc"></tbody></table></div>
+  <div class="card" style="margin-top:12px"><b>Clics por mes</b> <span class="small">(azul = jaguarmayatours.com · verde = selvamayatours.com)</span><div id="chart" style="margin-top:8px"></div></div>
+  <div class="two">
+    <div class="card"><h3 style="margin-top:0">Consultas principales · jaguarmayatours.com</h3><div id="qJ"></div></div>
+    <div class="card"><h3 style="margin-top:0">Consultas principales · selvamayatours.com</h3><div id="qS"></div></div>
+  </div>
+  <p class="small">Nota de método: el gráfico de Search Console y la tabla de páginas suman cifras algo distintas (jaguarmayatours.com: 785 contra 796 clics; impresiones 19.898 contra 21.812). La causa es el propio informe de Google. Los totales por dominio usan el gráfico; el cálculo de URLs con error usa la tabla de páginas.</p>
+  <div class="card"><b>Lectura:</b>
+    <ul style="margin:6px 0 0;padding-left:20px">
+      <li><b>jaguarmayatours.com recibe 2,1 veces más clics</b> (785 contra 375) con impresiones casi iguales (~19.900) y mejor CTR (3,95 % contra 1,91 %). La consulta «selva maya tours» ya lleva a jaguarmayatours.com en posición 2,5.</li>
+      <li><b>El 100 % del tráfico de selvamayatours.com cae en error.</b> Sus 375 clics y 19.943 impresiones están en 103 URLs <code>.html</code> del sitio antiguo; hoy todas dan error 400. Seguía recibiendo unos 24 clics en septiembre 2026.</li>
+      <li><b>jaguarmayatours.com pierde 256 clics en 91 URLs que hoy dan 404</b>, casi todas <code>/product-page/…</code> de la tienda anterior de Wix. Incluye los «fragmentos de productos» (201 clics, 5.175 impresiones) que ya no tienen página.</li>
+      <li><b>Caída reciente:</b> jaguarmayatours.com bajó de unos 90 clics y 2.700 impresiones por mes (marzo 2026) a 41 clics y 723 impresiones (septiembre). La causa exacta no se puede fijar con estos datos.</li>
+    </ul></div>
+</section>
+
+<section id="comp">
+  <h2>3. Comparación con la competencia</h2>
+  <p class="lead">Competidores indicados por el cliente: <b>tikalgo.com</b>, <b>tikalexpedition.com</b> y <b>tikaladventures.com</b>. Datos públicos medidos el 7-oct-2026 desde sus sitios, sitemaps y robots.txt. <b>No incluye tráfico ni enlaces de la competencia</b>: eso requiere una herramienta de pago (Ahrefs, Semrush o Similarweb) y queda como pendiente.</p>
+  <div class="tw"><table><thead><tr><th>Indicador</th><th>Selva Maya Tours</th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody>
+  <tr><td><b>Plataforma</b></td><td>Wix</td><td>WordPress + Elementor</td><td>WordPress + Elementor + WooCommerce</td><td>WordPress + WooCommerce + WPML</td></tr>
+  <tr><td><b>URLs en el sitemap</b></td><td>53</td><td>195</td><td>205</td><td>567 (377 son etiquetas de producto)</td></tr>
+  <tr><td><b>Páginas de tour/destino</b></td><td>17 servicios, ~150 palabras cada una</td><td>129 páginas</td><td>123 páginas de destino</td><td>36 productos</td></tr>
+  <tr><td><b>Artículos de blog</b></td><td><span class="badge b-bad">1</span></td><td>13 (+52 etiquetas)</td><td>10</td><td>5</td></tr>
+  <tr><td><b>Idiomas</b></td><td>es / en</td><td>en / es / pt-br</td><td>es / en</td><td>es / en</td></tr>
+  <tr><td><b>Texto en la home</b></td><td>~400 palabras</td><td>~7.400</td><td>~3.450</td><td>~830</td></tr>
+  <tr><td><b>Peso del HTML de la home</b></td><td><span class="badge b-bad">~994 KB</span></td><td>307 KB</td><td>470 KB</td><td>312 KB</td></tr>
+  <tr><td><b>Datos estructurados (home)</b></td><td>LocalBusiness</td><td>TravelAgency, FAQPage, OfferCatalog, Breadcrumb</td><td>Organization, WebSite</td><td>Organization, WebSite</td></tr>
+  <tr><td><b>Reseñas visibles</b></td><td><span class="badge b-bad">no detectadas</span></td><td>TripAdvisor + reseñas de Google</td><td>TripAdvisor + reseñas de Google</td><td>2 menciones de TripAdvisor</td></tr>
+  <tr><td><b>WhatsApp</b></td><td><span class="badge b-ok">sí (8 enlaces)</span></td><td>no detectado en el HTML</td><td>sí (plugin)</td><td>sí (plugin)</td></tr>
+  <tr><td><b>Reserva en línea con calendario</b></td><td><span class="badge b-ok">sí (Wix Bookings)</span></td><td>no verificado</td><td>sí (WooCommerce)</td><td>sí (WooCommerce Bookings)</td></tr>
+  </tbody></table></div>
+  <div class="two" style="margin-top:12px">
+    <div class="card"><h3 style="margin-top:0">Lo que hacen mejor</h3><ul style="margin:0;padding-left:20px">
+      <li><b>Páginas largas por destino y tema.</b> Tikal Expedition tiene <code>/el-mirador-and-la-danta/</code> con ~1.700 palabras, 16 subtítulos, precio, qué incluye y preguntas frecuentes. Es exactamente el tema donde jaguarmayatours perdió su URL con más clics (94, La Danta).</li>
+      <li><b>Reseñas en la home</b> (TripAdvisor y Google) en Tikal Go y Tikal Expedition.</li>
+      <li><b>Datos estructurados ricos</b> en Tikal Go (FAQPage, TravelAgency, catálogo de ofertas).</li>
+      <li><b>Más contenido informativo</b>: guías de qué hacer en Petén, Atitlán, Yaxhá, Uaxactún y Flores. Tikal Go publica en tres idiomas.</li>
+      <li>Páginas de producto con precio y «qué incluye» (Tikal Adventures).</li></ul></div>
+    <div class="card"><h3 style="margin-top:0">Lo que Selva Maya ya hace bien</h3><ul style="margin:0;padding-left:20px">
+      <li><b>Búsqueda de marca fuerte</b>: «selva maya tours» en posición 2,5 con 44 clics.</li>
+      <li><b>WhatsApp en todas las páginas</b> y reserva en línea con calendario.</li>
+      <li><b>12 rutas de transporte desde Flores</b> (Belice, México, Río Dulce, Livingston, Lanquín, Antigua, Panajachel y más) con su propia página y calendario. Tikal Adventures también vende traslados, así que no es una ventaja exclusiva.</li>
+      <li><b>Mejor CTR</b> de la zona: 3,95 % en jaguarmayatours.com.</li>
+      <li>Fragmentos de producto en Google (201 clics), hoy rotos por las páginas 404.</li></ul></div>
+  </div>
+  <div class="card"><b>Oportunidades concretas</b> (todas realizables sin cambiar de plataforma):
+    <ol style="margin:6px 0 0;padding-left:20px">
+      <li>Crear páginas largas por tema, con precio, qué incluye, horarios y preguntas frecuentes: <code>/treks</code> (La Danta y El Mirador), <code>/tikal</code>, <code>/lago-peten</code>, <code>/flores</code>, <code>/belice</code>.</li>
+      <li>Agregar reseñas reales de TripAdvisor o Google en la home y en cada página de servicio.</li>
+      <li>Agregar datos estructurados (FAQPage y TouristTrip/Product) a las páginas de servicio.</li>
+      <li>Reducir el peso de la home (hoy ~994 KB de HTML, el triple que dos competidores).</li>
+      <li>Publicar guías de calidad (qué llevar a Tikal, Tikal contra Yaxhá, amanecer contra atardecer) siguiendo el plan de blog.</li></ol></div>
+  <h3 id="pvd">Percepción del cliente contra datos medidos</h3>
+  <p class="small">El cliente ubica a Tikal Go en 1.º lugar, Tikal Expedition en 2.º y Tikal Adventures en 3.º. Esto es lo que se pudo medir de forma objetiva:</p>
+  <div class="tw"><table><thead><tr><th>Dato medido</th><th>Selva Maya</th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody>
+    <tr><td><b>Percepción del cliente</b></td><td>—</td><td><span class="badge b-ok">1.º</span></td><td><span class="badge b-warn">2.º</span></td><td><span class="badge b-pend">3.º</span></td></tr>
+    <tr><td><b>Dominio registrado</b></td><td><span class="badge b-bad">2024</span> jaguarmayatours.com<br>2025 selvamayatours.com</td><td>2016 (10 años)</td><td>2020 (5 años)</td><td>2016 (10 años)</td></tr>
+    <tr><td><b>Primera captura en Internet Archive</b></td><td>may-2024</td><td>ago-2018</td><td>may-2021</td><td>jul-2017</td></tr>
+    <tr><td><b>Respuesta del servidor (TTFB)</b></td><td><span class="badge b-ok">0,14 s</span></td><td>0,35 s</td><td><span class="badge b-bad">2,43 s</span></td><td><span class="badge b-bad">2,01 s</span></td></tr>
+    <tr><td><b>HTML de la home comprimido</b></td><td>198 KB (994 KB sin comprimir)</td><td>55 KB</td><td>73 KB</td><td>52 KB</td></tr>
+    <tr><td><b>Contenido, datos estructurados y reseñas</b></td><td>bajo</td><td><span class="badge b-ok">alto</span></td><td>medio-alto</td><td>medio</td></tr>
+  </tbody></table></div>
+  <div class="card"><b>Lectura:</b> el orden del cliente coincide con lo que se mide en la propia web: Tikal Go lidera en contenido (~7.400 palabras en la home), datos estructurados y reseñas; Tikal Expedition lo sigue con 123 páginas de destino y reseñas; Tikal Adventures tiene más URLs, pero 377 de 567 son etiquetas de producto. Selva Maya tiene el dominio más joven (2 años contra 5 a 10) y el servidor más rápido. <b>Esto mide la calidad de cada sitio, no sus posiciones en Google ni su tráfico.</b> Para eso sirve la hoja siguiente.
+  <br><span class="small">Mediciones desde un solo lugar, 3 tomas por sitio. Fechas de registro: RDAP de Verisign. Capturas: Internet Archive.</span></div>
+
+  <h3 id="swTraffic">Tráfico estimado (Similarweb, septiembre 2026)</h3>
+  <p class="small">Estimaciones de la extensión gratuita de Similarweb para los cuatro sitios, cargadas a mano por el equipo. Para comparar entre sitios hay que usar <b>solo</b> las filas de Similarweb. La fila de Search Console es el dato real de Selva Maya y sirve para calibrar.</p>
+  <div class="tw"><table><thead><tr><th>Indicador</th><th>Selva Maya</th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody>
+    <tr><td><b>Visitas mensuales (Similarweb)</b></td><td>1,5 mil</td><td><span class="badge b-ok">41,4 mil</span></td><td>927</td><td>1,5 mil</td></tr>
+    <tr><td><b>Tráfico orgánico estimado (Similarweb)</b></td><td>~545<br><span class="small">(36,3 % de 1,5 mil)</span></td><td>~10.900<br><span class="small">(26,3 %)</span></td><td>~270<br><span class="small">(28,7 %)</span></td><td>~480<br><span class="small">(31,9 %)</span></td></tr>
+    <tr><td><b>Clics reales desde Google (Search Console)</b></td><td><span class="badge b-ok">~65</span><br><span class="small">(41 jaguarmayatours + 24 selvamayatours)</span></td><td>no disponible</td><td>no disponible</td><td>no disponible</td></tr>
+    <tr><td><b>Ranking global</b></td><td>#12.076.689</td><td>#721.414</td><td>#10.605.034</td><td>#7.758.947</td></tr>
+    <tr><td><b>Ranking en Guatemala</b></td><td>sin datos</td><td>#3.290</td><td>sin datos</td><td>sin datos</td></tr>
+    <tr><td><b>Rebote / páginas por visita / duración</b></td><td>40,26 % / 1,01 / sin dato</td><td>23,75 % / 2,54 / 0:34</td><td>53,28 % / 1,01 / sin dato</td><td>31,09 % / 3,1 / 5:24</td></tr>
+    <tr><td><b>Países principales (Similarweb)</b></td><td>México 47,6 %, Colombia 23,4 %, Perú 18,8 %, España 10,2 %</td><td>Guatemala 46,6 %, EE. UU. 36,1 %, México 17,3 %</td><td>Guatemala 62,1 %, Colombia 37,9 %</td><td>Guatemala 57,5 %, México 42,5 %</td></tr>
+    <tr><td><b>Fuentes de tráfico</b></td><td>Orgánico 36,3 %, directo 26,5 %, búsqueda de pago 8,9 %, referidos 7,9 %, display 5,6 %, afiliados 4,9 %</td><td>Directo 26,8 %, orgánico 26,3 %, display 16,0 %, referidos 7,9 %, afiliados 7,4 %, búsqueda de pago 6,9 %</td><td>Directo 34,9 %, orgánico 28,7 %, referidos 11,4 %, display 6,0 %, búsqueda de pago 4,6 %</td><td>Directo 33,0 %, orgánico 31,9 %, referidos 11,2 %, búsqueda de pago 6,0 %, display 4,9 %</td></tr>
+    <tr><td><b>Palabras clave principales</b></td><td>yaxhá al atardecer, bacalar to guatemala (ambas con 0 visitas medidas)</td><td>subir Acatenango en 4x4 (210), tu nahual (180), tikal tour from folres (100)</td><td>lago de Atitlán (30), blue crater guatemala tour (30), shuttle Palenque to Flores (20), la Danta maya (10)</td><td>tour de un día a Tikal desde Antigua (340), tikal tour company (50), Aguateca (10)</td></tr>
+  </tbody></table></div>
+  <div class="card"><b>Lo que dicen los datos:</b>
+    <ul style="margin:6px 0 0;padding-left:20px">
+      <li><b>Calibración: Similarweb sobreestima a Selva Maya unas 8 veces.</b> Estima ~545 visitas orgánicas; Search Console, que es el dato real, registra ~65 clics de Google en septiembre. Parte de la diferencia es que Similarweb incluye otros buscadores, pero la brecha es grande. Con sitios tan pequeños las cifras de Similarweb son <b>orden de magnitud</b>, no cifras precisas.</li>
+      <li><b>Comparando solo dentro de Similarweb:</b> Tikal Go tiene unas <b>27 veces</b> las visitas de Selva Maya (41,4 mil contra 1,5 mil). Tikal Adventures está <b>igual</b> (1,5 mil). Tikal Expedition está <b>por debajo</b> (927 contra 1,5 mil).</li>
+      <li><b>Entonces solo Tikal Go está claramente por delante.</b> Los competidores que el cliente ubica en 2.º y 3.º lugar están en la misma banda de tráfico que Selva Maya. <span class="badge b-warn">No coincide</span> con la percepción del cliente: por tráfico no hay una brecha clara.</li>
+      <li><b>Adventures contra Expedition:</b> por tráfico, Adventures (1,5 mil) supera a Expedition (927), al revés del orden del cliente. La diferencia está dentro del margen de error.</li>
+      <li><b>Los países no coinciden con Search Console.</b> Similarweb pone a México, Colombia y Perú primero (y solo escritorio). Los clics reales de Google vienen sobre todo de Guatemala (35 %), España (16 %) y México (8 %). Para Selva Maya hay que confiar en Search Console.</li>
+      <li><b>El tráfico de Tikal Go no viene de lo que vende Selva Maya:</b> sus palabras clave principales son Acatenango y «tu nahual». Tikal Adventures vive de «tour de un día a Tikal desde Antigua». Ninguno gana tráfico con «tour a Tikal desde Flores», Yaxhá o transfers a Belice.</li>
+      <li><b>Tikal Go compra tráfico</b> (display 16 %, búsqueda de pago 6,9 %) y el 36 % de su audiencia está en EE. UU. con un sitio en inglés.</li>
+      <li><b>Referidos y afiliados</b> (enlaces de otros sitios) suman 15,3 % en Tikal Go, 11,4 % en Expedition y 14,3 % en Adventures; en Selva Maya, 12,8 %. En porcentaje no hay una brecha grande: lo que cambia es el volumen total.</li></ul></div>
+  <h3 id="posSheet">Hoja de medición de posiciones en Google</h3>
+  <p class="small"><b>Cómo llenarla (≈15 minutos):</b> abrir una ventana de incógnito, entrar a <code>google.com.gt</code> y buscar cada consulta. Anotar la <b>posición orgánica</b> (sin contar anuncios) del primer resultado de cada sitio. Si no aparece en los primeros 30, escribir <b>31</b>. La columna de Selva Maya ya viene con el promedio real de Search Console (16 meses, mejor de ambos dominios), así que no hay que llenarla.</p>
+  <div class="tw"><table id="tPos"><thead><tr><th>Consulta</th><th>Selva Maya <span class="small">(Search Console)</span></th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody></tbody><tfoot id="fPos"></tfoot></table></div>
+  <div class="card" id="posRes" style="margin-top:12px"><span class="small">Complete las posiciones de la competencia para ver el resultado.</span></div>
+  <div class="card"><b>Para medir tráfico y enlaces reales de la competencia</b> hace falta una herramienta con datos propios. Opciones: autorizar el conector de <b>Similarweb</b> o de <b>Ahrefs</b> en la configuración de conectores de Claude (entonces se traen tráfico orgánico estimado, palabras clave y enlaces de los cuatro dominios), o una cuenta de Semrush/DataForSEO. Sin ellas, esta hoja es la forma de medir sin pagar.</div>
+  <div class="card"><span class="badge b-warn">Límites</span> El orden que da el cliente (1.º Tikal Go, 2.º Tikal Expedition, 3.º Tikal Adventures) es su percepción; las posiciones reales se miden con la hoja de arriba. Una búsqueda de prueba en inglés («tour a Tikal desde Flores», «Tikal sunrise tour from Flores») muestra sobre todo agencias de reserva (Expedia, Travelocity, Viator) y ninguno de estos cuatro sitios. Es una foto de un solo buscador desde EE. UU., no el ranking real en Guatemala.</div>
+</section>
+
+<section id="hallazgos">
+  <h2>4. Hallazgos priorizados</h2>
+  <p class="lead">Ordenados por impacto en visibilidad e ingresos. Cada uno incluye la evidencia medida y la acción propuesta.</p>
+  <div class="tools noprint">
+    <select id="fPrio"><option value="">Todas las prioridades</option><option value="p1">Críticos</option><option value="p2">Importantes</option><option value="p3">Mejoras</option></select>
+    <input type="search" id="fTxt" placeholder="Buscar en hallazgos…">
+  </div>
+  <div id="finds"></div>
+</section>
+
+<section id="base">
+  <h2>5. Línea base: situación actual</h2>
+  <p class="lead">Sección 2 del plan, completada con lo que se pudo verificar desde fuera. <b>Pendiente</b> = requiere acceso del cliente.</p>
+  <div class="tw"><table id="tBase"><thead><tr><th>Área</th><th>Estado</th><th>Lo que encontramos</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section id="criterios">
+  <h2>6. Criterios de aprobación de la Fase 1</h2>
+  <p class="lead">Las 7 preguntas que el plan exige responder antes de migrar.</p>
+  <div id="crit"></div>
+  <h3>Checklist de la Fase 1</h3>
+  <div class="card" id="f1list"></div>
+</section>
+
+<section id="redirecciones">
+  <h2>7. Pruebas de redirección</h2>
+  <p class="lead">Se siguieron las redirecciones reales de cada variante del dominio.</p>
+  <div class="tw"><table><thead><tr><th>URL probada</th><th>Resultado</th><th>Lectura</th></tr></thead><tbody id="tRed"></tbody></table></div>
+</section>
+
+<section id="urls">
+  <h2>8. Inventario de URLs del sitio actual (Wix)</h2>
+  <p class="lead">53 URLs únicas publicadas en el sitemap de <code>www.jaguarmayatours.com</code>. Se revisó título, descripción, H1, contenido e imágenes de cada una.</p>
+  <div class="tools noprint">
+    <input type="search" id="uTxt" placeholder="Filtrar por URL o título…">
+    <select id="uTipo"><option value="">Todos los tipos</option><option>página</option><option>servicio</option><option>blog</option></select>
+    <select id="uFlag"><option value="">Todos los estados</option><option value="cp">Páginas «copia-de»</option><option value="mis">Título no corresponde a la URL</option><option value="dl0">Sin meta descripción</option><option value="thin">Contenido corto (&lt;300 palabras)</option><option value="na">Imágenes sin texto alternativo</option><option value="empty">Página vacía</option></select>
+    <span class="small" id="uCount"></span>
+  </div>
+  <div class="tw tall"><table><thead><tr><th>URL</th><th>Tipo</th><th>Título (&lt;title&gt;)</th><th>Desc.</th><th>H1</th><th>Palabras</th><th>Imgs sin alt</th><th>Señales</th></tr></thead><tbody id="tUrls"></tbody></table></div>
+</section>
+
+<section id="mapa">
+  <h2>9. Mapa de redirecciones 301 propuesto</h2>
+  <p class="lead">Propuesta construida con las URLs que Search Console muestra con tráfico y hoy dan error. Las rutas con prefijo <code>/en</code>, <code>/es</code>, <code>/de</code> o <code>/fr</code> se resuelven igual que su versión sin prefijo y no están en la tabla.</p>
+  <div class="grid" id="mapKpi"></div>
+  <div class="card" style="margin-top:12px"><span class="badge b-ok">auto</span> destino claro y definitivo · <span class="badge b-warn">provisional</span> la página ideal aún no existe: se redirige a la más cercana (301) y se recomienda crear la página indicada en la Fase 3 para no perder la intención de búsqueda.<br><span class="small">Las páginas antiguas eran clones: compartían el mismo cuerpo (texto de Tikal y lista de reservas) y solo cambiaban título y H1. Se redirige por el tema de búsqueda del título, no por contenido propio perdido.</span><br>
+  <a class="btn noprint" style="margin-top:10px" href="mapa-redirecciones-propuesto.csv" download>Descargar CSV (137 filas, con motivo)</a>
+  <span class="small"> Wix permite redirecciones en bloque desde SEO &gt; Gestor de redirecciones; verificar el formato antes de importar.</span></div>
+  <div class="tools noprint">
+    <input type="search" id="mTxt" placeholder="Filtrar URL…">
+    <select id="mDom"><option value="">Ambos dominios</option><option>selvamayatours.com</option><option>jaguarmayatours.com</option></select>
+    <select id="mConf"><option value="">Toda confianza</option><option value="auto">auto</option><option value="provisional">provisional</option></select>
+    <span class="small" id="mCount"></span>
+  </div>
+  <div class="tw tall"><table><thead><tr><th>Dominio</th><th>URL antigua</th><th>Clics 16 m</th><th>Impr.</th><th>Estado</th><th>Destino propuesto</th><th>Confianza</th><th>Motivo</th></tr></thead><tbody id="tMap"></tbody></table></div>
+</section>
+
+<section id="correo">
+  <h2>10. DNS y correo</h2>
+  <p class="lead">Es el punto más sensible: el plan dice «NO cambiar el correo comercial sin comprobar continuidad».</p>
+  <div class="two">
+    <div class="card"><h3 style="margin-top:0">selvamayatours.com</h3>
+      <p><b>Nameservers:</b> <code>ns14/ns15.wixdns.net</code> (Wix)</p>
+      <p><b>Web:</b> IPs de Wix → 301 a jaguarmayatours.com</p>
+      <p><b>Correo (MX):</b> <code>mx1/mx2/mx3-hosting.jellyfish.systems</code> → <span class="badge b-warn">hosting cPanel antiguo</span></p>
+      <p><b>SPF:</b> incluye IPs y <code>spf.web-hosting.com</code> del hosting</p>
+      <p><b>Verificación Google:</b> no hay registro TXT visible</p></div>
+    <div class="card"><h3 style="margin-top:0">jaguarmayatours.com</h3>
+      <p><b>Nameservers:</b> <code>ns14/ns15.wixdns.net</code> (Wix)</p>
+      <p><b>Web:</b> sitio Wix (<code>www</code>)</p>
+      <p><b>Correo (MX):</b> <code>aspmx.l.google.com</code> → <span class="badge b-ok">Google Workspace</span></p>
+      <p><b>SPF:</b> <code>_spf.google.com</code></p>
+      <p><b>Verificación Google:</b> TXT <code>google-site-verification</code> presente → <span class="badge b-ok">Search Console probable</span></p></div>
+  </div>
+  <div class="card"><span class="badge b-bad">Riesgo</span> El correo de <b>selvamayatours.com</b> depende del hosting cPanel antiguo, que ya no sirve la web. Si ese hosting se cancela, vence o se cambian los DNS sin copiar el registro MX, <b>se pierde el correo</b> de ese dominio. El sitio publica <code>selvamaya@jaguarmayatours.com</code> (Google Workspace).<br><span class="small">Acción: antes de tocar DNS, exportar la zona DNS completa desde Wix, respaldar buzones del hosting y decidir un único dominio de correo.</span></div>
+</section>
+
+<section id="hosting">
+  <h2>11. Hosting antiguo (cPanel)</h2>
+  <p class="lead">Se accedió por FTP en solo lectura y se hizo un respaldo completo fuera del repositorio.</p>
+  <div class="grid">
+    <div class="kpi"><b>466</b><span>páginas HTML en <code>public_html</code> (de ellas 65 no estaban en el repositorio)</span></div>
+    <div class="kpi"><b>202</b><span>páginas en el subdominio <code>seo.</code></span></div>
+    <div class="kpi"><b>0</b><span>robots.txt / .htaccess en el hosting</span></div>
+    <div class="kpi"><b>mayo 2025</b><span>fecha de los archivos: nunca se desplegaron las mejoras SEO posteriores</span></div>
+  </div>
+  <div class="card" style="margin-top:12px"><b>Lectura:</b> son páginas casi idénticas por país o ciudad (<code>amanecer-tikal-belleza-nuevo-dia-alemania.html</code>, <code>…-benin.html</code>, <code>…-bermuda.html</code>…). El propio plan pide <i>evitar crear cientos de páginas casi idénticas</i>. Hoy <b>ya no se sirven</b>: el dominio apunta a Wix y las 103 URLs con tráfico responden error 400.</div>
+</section>
+
+<section id="fases">
+  <h2>12. Fases 2 a 8 del plan: estado y próximo paso</h2>
+  <p class="lead">Marque lo que se vaya completando; el avance se guarda en este navegador.</p>
+  <div id="fases-list"></div>
+</section>
+
+<section id="plan">
+  <h2>13. Plan de trabajo: lo listo y lo que va en Wix</h2>
+  <p class="lead">Primero todo lo que se puede preparar sin entrar a Wix. Lo que exige el panel de Wix queda al final.</p>
+  <h3>A. Listo para usar (nuestro lado)</h3>
+  <div class="grid">
+    <div class="card"><b>Mapa de redirecciones 301</b><p class="small">137 URLs con destino, motivo y página a crear.</p><a class="btn" href="mapa-redirecciones-propuesto.csv" download>mapa-redirecciones-propuesto.csv</a></div>
+    <div class="card"><b>Archivo para importar en Wix</b><p class="small">Dos columnas: URL antigua y URL nueva. Verificar el formato en el gestor de redirecciones antes de cargar.</p><a class="btn" href="wix-redirecciones-import.csv" download>wix-redirecciones-import.csv</a></div>
+    <div class="card"><b>Títulos y descripciones</b><p class="small">25 páginas (principales y 17 servicios). Títulos de hasta 60 caracteres y descripciones de 120 a 160. Revisar datos con el cliente antes de publicar.</p><a class="btn" href="titulos-y-descripciones.csv" download>titulos-y-descripciones.csv</a></div>
+  </div>
+  <h3>B. Briefs de las páginas nuevas</h3>
+  <p class="small">Estructura y metadatos propuestos. No incluyen precios ni horarios: esos datos los debe dar el cliente.</p>
+  <details><summary><code>/treks</code> </summary><div class="in"><p><b>Título SEO:</b> Trek a La Danta y El Mirador desde Flores | Selva Maya Tours <span class="small">(60)</span><br><b>Descripción:</b> Trek a El Mirador y la pirámide La Danta desde Flores, Petén. Duración, dificultad, qué incluye y cómo reservar tu expedición por la selva. <span class="small">(139)</span></p><p class="small"><b>Por qué:</b> Reemplaza la URL con más clics perdida (94). Competencia: tikalexpedition.com tiene una página de ~1.700 palabras sobre este tema.</p><div class="two"><div><b>Estructura</b><ul><li>Qué es El Mirador y La Danta (historia en 3 párrafos)</li><li>Opciones del trek: duración, dificultad, época del año</li><li>Qué incluye y qué no incluye</li><li>Itinerario día por día</li><li>Qué llevar y preparación física</li><li>Preguntas frecuentes (5–8)</li><li>Botón de reserva y WhatsApp</li></ul></div><div><b>Lo que debe aportar el cliente</b> (no inventar)<ul><li>Cuántos días ofrecen y precio desde</li><li>Qué incluye (guía, comida, mulas, camping)</li><li>Fechas de salida y tamaño de grupo</li><li>Fotos reales propias</li></ul></div></div></div></details><details><summary><code>/tikal</code> </summary><div class="in"><p><b>Título SEO:</b> Guía de Tikal: cómo visitar la pirámide desde Flores | Selva Maya Tours <span class="small">(71)</span><br><b>Descripción:</b> Todo para visitar Tikal desde Flores: horarios, cuánto dura, qué ver, cuándo ir y cómo elegir entre día, amanecer y atardecer. <span class="small">(126)</span></p><p class="small"><b>Por qué:</b> Cubre «pirámide de Tikal» (6.920 impresiones y 11 clics en la URL antigua). Es una búsqueda informativa: necesita contenido, no solo un tour.</p><div class="two"><div><b>Estructura</b><ul><li>Resumen: qué es Tikal y por qué ir</li><li>Cómo llegar desde Flores y cuánto tarda</li><li>Qué ver: Templo IV, Gran Plaza, Mundo Perdido</li><li>Día, amanecer o atardecer: tabla comparativa</li><li>Qué llevar y consejos</li><li>Entradas y horarios del parque</li><li>Preguntas frecuentes</li><li>Enlaces a los 3 tours de Tikal</li></ul></div><div><b>Lo que debe aportar el cliente</b> (no inventar)<ul><li>Horarios reales de salida de cada tour</li><li>Qué incluye cada tour</li><li>Precio desde</li><li>Fotos reales</li></ul></div></div></div></details><details><summary><code>/belice</code> </summary><div class="in"><p><b>Título SEO:</b> Belice desde Flores: tours y transfers | Selva Maya Tours <span class="small">(57)</span><br><b>Descripción:</b> Viaja de Flores, Petén, a Belice: San Ignacio, Ciudad de Belice, Caye Caulker y San Pedro. Rutas, horarios y reserva en línea. <span class="small">(126)</span></p><p class="small"><b>Por qué:</b> Recibía 73 clics (la 2.ª URL perdida). Agrupa las 5 rutas a Belice que ya existen como servicio.</p><div class="two"><div><b>Estructura</b><ul><li>Introducción: cruzar de Petén a Belice</li><li>Tabla de rutas: destino, duración, desde cuánto</li><li>Frontera: documentos y tiempos de cruce</li><li>Qué hacer en cada destino (2 líneas)</li><li>Preguntas frecuentes</li><li>Botón de reserva por ruta</li></ul></div><div><b>Lo que debe aportar el cliente</b> (no inventar)<ul><li>Duración real de cada ruta</li><li>Documentos y costos de frontera</li><li>Horarios de salida</li><li>Precio desde por ruta</li></ul></div></div></div></details><details><summary><code>/lago-peten</code> </summary><div class="in"><p><b>Título SEO:</b> Lago Petén Itzá: playas, Chechenal y paseos | Selva Maya Tours <span class="small">(62)</span><br><b>Descripción:</b> Qué hacer en el lago Petén Itzá: playas de arena blanca como Chechenal, paseos en lancha y atardeceres cerca de Flores. <span class="small">(119)</span></p><p class="small"><b>Por qué:</b> Cubre Chechenal (12 clics, 1.890 impresiones) y el tema lago.</p><div class="two"><div><b>Estructura</b><ul><li>Qué es el lago y dónde está respecto a Flores</li><li>Playas y paradas: Chechenal y otras</li><li>Cómo llegar y cuánto cuesta</li><li>Mejor hora para ir</li><li>Preguntas frecuentes</li></ul></div><div><b>Lo que debe aportar el cliente</b> (no inventar)<ul><li>Si Selva Maya ofrece este servicio (hoy no hay página)</li><li>Precio y duración</li><li>Fotos reales</li></ul></div></div></div></details><details><summary><code>/flores</code> </summary><div class="in"><p><b>Título SEO:</b> Qué hacer en Flores, Petén | Selva Maya Tours <span class="small">(45)</span><br><b>Descripción:</b> Guía de la isla de Flores: dónde comer, dormir y qué visitar. Base ideal para Tikal, Yaxhá y el lago Petén Itzá. <span class="small">(112)</span></p><p class="small"><b>Por qué:</b> Está en la lista prioritaria de la Fase 3 del plan.</p><div class="two"><div><b>Estructura</b><ul><li>Por qué Flores es el punto de partida</li><li>Qué ver en la isla y alrededores</li><li>Dónde comer y dormir (opcional, si hay alianzas)</li><li>Excursiones desde Flores</li><li>Cómo llegar: vuelo, bus, transfer</li></ul></div><div><b>Lo que debe aportar el cliente</b> (no inventar)<ul><li>Alianzas con restaurantes u hoteles, si las hay</li><li>Fotos reales</li></ul></div></div></div></details><details><summary><code>/transfers</code> </summary><div class="in"><p><b>Título SEO:</b> Transfers desde Flores: Belice, México y Guatemala | Selva Maya Tours <span class="small">(69)</span><br><b>Descripción:</b> Transporte desde Flores, Petén, a Belice, México, Río Dulce, Lanquín, Antigua y Panajachel. Elige tu ruta, horario y reserva en línea. <span class="small">(134)</span></p><p class="small"><b>Por qué:</b> Reúne las 12 rutas que ya existen como servicio individual.</p><div class="two"><div><b>Estructura</b><ul><li>Tabla de las 12 rutas con duración y precio desde</li><li>Cómo funciona: recogida, equipaje, tiempos</li><li>Servicio compartido o privado</li><li>Preguntas frecuentes</li><li>Botones de reserva por ruta</li></ul></div><div><b>Lo que debe aportar el cliente</b> (no inventar)<ul><li>Duración y precio de cada ruta</li><li>Si hay servicio privado</li><li>Punto de recogida</li></ul></div></div></div></details>
+  <h3>C. Mensaje para el cliente</h3>
+  <div class="card"><p id="msgTxt" style="white-space:pre-wrap;margin:0">Hola, te comparto el avance de la auditoría de la Fase 1. Hallazgo principal: más de la mitad de las visitas que llegan desde Google (631 de 1.171 clics en 16 meses) terminan hoy en una página con error, tanto del dominio selvamayatours.com como de jaguarmayatours.com. Eso se corrige con redirecciones y no requiere contenido nuevo. Ya tengo el mapa de 137 redirecciones, los títulos y descripciones nuevos y la comparación con Tikal Go, Tikal Expedition y Tikal Adventures. Para cerrar la Fase 1 necesito: (1) acceso de lectura a Search Console de ambos dominios, para exportar Páginas, Enlaces y Sitemaps; (2) acceso de lectura a Google Analytics; (3) acceso al panel de Wix para cargar las redirecciones y revisar la zona DNS; (4) la lista de correos activos en @selvamayatours.com y @jaguarmayatours.com; (5) tu decisión sobre las páginas &quot;copia-de&quot; y el número oficial de WhatsApp. Todo el detalle está en el documento de auditoría.</p><button class="noprint" style="margin-top:10px" id="cpMsg">Copiar mensaje</button></div>
+  <h3>D. Lo que va dentro de Wix (al final)</h3>
+  <div class="card" id="wixList"></div>
+</section>
+
+<section id="pendientes">
+  <h2>14. Pendientes del cliente</h2>
+  <p class="lead">Accesos o datos que no se pueden obtener desde fuera y bloquean el cierre de la Fase 1.</p>
+  <div class="card" id="pend"></div>
+</section>
+
+<section id="decisiones">
+  <h2>15. Riesgos y registro de decisiones</h2>
+  <h3>Reglas de seguridad del plan (sección 11)</h3>
+  <div class="card" id="reglas"></div>
+  <h3>Registro de decisiones y avances</h3>
+  <div class="tools noprint"><button id="addDec">+ Agregar fila</button><button class="ghost" id="expJson">Exportar estado (JSON)</button><button class="ghost" onclick="window.print()">Imprimir / PDF</button><button class="ghost" id="reset">Reiniciar marcas</button></div>
+  <div class="tw"><table><thead><tr><th style="width:120px">Fecha</th><th>Decisión</th><th>Motivo</th><th style="width:130px">Responsable</th><th style="width:130px">Estado</th></tr></thead><tbody id="tDec"></tbody></table></div>
+  <p class="small">Las marcas y notas se guardan solo en este navegador. Use «Exportar estado» para compartirlas.</p>
+</section>
+
+</div></main>
+
+<script id="scData" type="application/json">{"selva": {"clics": 375, "impr": 19599, "ctr": 1.91, "desde": "2025-06-05", "hasta": "2026-10-04", "mensual": [["2025-06", 2, 108], ["2025-07", 3, 116], ["2025-08", 3, 132], ["2025-09", 7, 144], ["2025-10", 8, 542], ["2025-11", 20, 887], ["2025-12", 30, 993], ["2026-01", 35, 1394], ["2026-02", 30, 1867], ["2026-03", 39, 2219], ["2026-04", 40, 2008], ["2026-05", 28, 2322], ["2026-06", 27, 1493], ["2026-07", 44, 1432], ["2026-08", 33, 1909], ["2026-09", 24, 1774], ["2026-10", 2, 259]], "q": [["tour a tikal desde flores", 6, 49, 12.47], ["piramide tikal", 2, 1365, 9.52], ["piramide de tikal", 2, 1099, 10.92], ["playa chechenal", 2, 319, 9.08], ["jungla maya", 2, 217, 7.87], ["pirámide de tikal", 1, 668, 10.75], ["templos mayas", 1, 440, 8.05], ["pirámide tikal", 1, 320, 10.62]], "paises": [["Guatemala", 92, 7127], ["España", 82, 1876], ["México", 40, 3144], ["Colombia", 25, 866], ["Chile", 24, 645]], "disp": [["Móviles", 229], ["Ordenador", 143], ["Tablet", 3]], "urls": 104, "ok": [1, 0, 3], "err": [103, 375, 19943]}, "jag": {"clics": 785, "impr": 19898, "ctr": 3.95, "desde": "2025-06-05", "hasta": "2026-10-04", "mensual": [["2025-06", 15, 533], ["2025-07", 24, 603], ["2025-08", 30, 420], ["2025-09", 27, 490], ["2025-10", 45, 813], ["2025-11", 39, 1109], ["2025-12", 80, 1485], ["2026-01", 80, 2040], ["2026-02", 65, 2667], ["2026-03", 90, 2693], ["2026-04", 57, 1315], ["2026-05", 26, 1223], ["2026-06", 65, 1445], ["2026-07", 53, 1222], ["2026-08", 46, 1039], ["2026-09", 41, 723], ["2026-10", 2, 78]], "q": [["selva maya tours", 44, 324, 2.53], ["atardecer en yaxha", 8, 283, 8.36], ["yaxha atardecer", 7, 209, 8.58], ["maya tours", 4, 424, 6.91], ["tour amanecer tikal", 4, 137, 8.32], ["atardecer yaxha", 3, 138, 7.46], ["flores to san ignacio shuttle", 3, 86, 7.78], ["tour tikal amanecer", 3, 53, 9.7]], "paises": [["Guatemala", 275, 8603], ["España", 124, 1792], ["México", 65, 2167], ["Estados Unidos", 39, 1937], ["Colombia", 38, 721]], "disp": [["Móviles", 466], ["Ordenador", 308], ["Tablet", 11]], "urls": 169, "ok": [78, 540, 12001], "err": [91, 256, 9811], "snippets": [201, 5175]}}</script>
+<script id="mapData" type="application/json">[{"dom": "selvamayatours.com", "old": "/trek-piramide-la-danta-aventura-selva-profunda.html", "clics": 94, "impr": 1257, "status": "400", "nuevo": "/tours", "conf": "provisional:/treks", "motivo": "Trek a La Danta (94 clics): no hay página de treks. Crear /treks; sin ella se pierde la intención de búsqueda."}, {"dom": "selvamayatours.com", "old": "/belice-flores-viaje-selva-mar-caribe.html", "clics": 73, "impr": 899, "status": "400", "nuevo": "/service-page/flores-a-ciudad-de-belice", "conf": "provisional:/belice", "motivo": "Belice desde Flores: ruta principal a Ciudad de Belice. Crear /belice con todos los destinos de Belice."}, {"dom": "jaguarmayatours.com", "old": "/product-page/atardecer-yaxha-1", "clics": 38, "impr": 898, "status": "404", "nuevo": "/service-page/atardecer-yaxha-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-amanecer-en-grupo", "clics": 33, "impr": 960, "status": "404", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/lanquin-flores-viaje-cuevas-semuc-champey.html", "clics": 26, "impr": 468, "status": "400", "nuevo": "/service-page/flores-a-lanquín", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/biosfera-aventura-explora-reserva-natural-mas-grande-guatemala.html", "clics": 23, "impr": 413, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "jaguarmayatours.com", "old": "/product-page/atardecer-yaxha", "clics": 19, "impr": 602, "status": "404", "nuevo": "/service-page/atardecer-yaxha-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-caye-caulker", "clics": 19, "impr": 418, "status": "404", "nuevo": "/service-page/flores-a-caye-caulker", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-atardecer-en-grupo", "clics": 19, "impr": 374, "status": "404", "nuevo": "/service-page/tikal-atardecer-tour-grupo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-ciudad-de-belice", "clics": 17, "impr": 393, "status": "404", "nuevo": "/service-page/flores-a-ciudad-de-belice", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tour-selva-aventura-naturaleza-peten.html", "clics": 14, "impr": 1451, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/jungle-tour-adventure-peten-natural-beauty.html", "clics": 14, "impr": 321, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/flores-rio-dulce-navega-naturaleza-cultura.html", "clics": 14, "impr": 305, "status": "400", "nuevo": "/service-page/flores-a-río-dulce", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/flores-a-río-dulce", "clics": 14, "impr": 463, "status": "404", "nuevo": "/service-page/flores-a-río-dulce", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tour-tikal-flores-peten-explora-maravilla-maya.html", "clics": 13, "impr": 208, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/chechenal-playas-arena-blanca-lago-peten-itza.html", "clics": 12, "impr": 1890, "status": "400", "nuevo": "/tours", "conf": "provisional:/lago-peten", "motivo": "Playas del lago Petén Itzá: no hay página equivalente. Crear /lago-peten."}, {"dom": "selvamayatours.com", "old": "/piramide-tikal-estructura-imponente-civilizacion-maya.html", "clics": 11, "impr": 6920, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "provisional:/tikal", "motivo": "Pirámide de Tikal: búsqueda informativa (alto volumen, 6.920 impresiones). Crear /tikal con contenido; hoy el tour de Tikal es lo más cercano."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-chetumal-méxico", "clics": 11, "impr": 123, "status": "404", "nuevo": "/service-page/flores-a-chetumal-méxico", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/post/https-www-jaguarmayatours-com", "clics": 10, "impr": 2798, "status": "404", "nuevo": "/blog", "conf": "auto", "motivo": "Entrada de blog sin contenido propio; el blog es su equivalente."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-travelers-guatemala-discover-mayan-jungle.html", "clics": 9, "impr": 510, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/jungla-maya-viaje-tierra-antiguos-mayas.html", "clics": 9, "impr": 505, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/jungla-jaguar-explora-habitat-felino-majestuoso.html", "clics": 8, "impr": 252, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-antigua-guatemala", "clics": 6, "impr": 328, "status": "404", "nuevo": "/service-page/flores-a-antigua-guatemala-directo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-panajachel", "clics": 6, "impr": 272, "status": "404", "nuevo": "/service-page/flores-a-panajachel", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/guatemala-tours-discover-natural-cultural-treasures.html", "clics": 5, "impr": 161, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tour-crater-azul-paraiso-aguas-cristalinas-peten.html", "clics": 5, "impr": 158, "status": "400", "nuevo": "/tours", "conf": "provisional:/experiencias", "motivo": "Cráter Azul: no hay tour equivalente. Incluir en /experiencias o crear página propia."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia.html", "clics": 5, "impr": 99, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/piramide-guatemala-descubre-templos-mayas-impresionantes.html", "clics": 4, "impr": 1803, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "provisional:/tikal", "motivo": "Pirámides/templos mayas: el tour a Tikal es lo más cercano; sumar contenido en /tikal."}, {"dom": "selvamayatours.com", "old": "/jungla-aventura-vive-emocion-explorar-selva-maya.html", "clics": 4, "impr": 70, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "jaguarmayatours.com", "old": "/post/tikal-amanecer-desde-floresguatemala", "clics": 4, "impr": 98, "status": "404", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: Tikal al amanecer desde Flores."}, {"dom": "selvamayatours.com", "old": "/caye-caulker-beach-relajate-paraiso-caribeno-belice.html", "clics": 3, "impr": 119, "status": "400", "nuevo": "/service-page/flores-a-caye-caulker", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tikal-tour-descubre-maravilla-arqueologica-guatemala.html", "clics": 3, "impr": 111, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-izabal.html", "clics": 3, "impr": 65, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-caye-san-pedro", "clics": 3, "impr": 56, "status": "404", "nuevo": "/service-page/flores-a-caye-san-pedro", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tours-guatemala-adventure-history-nature-one-destination.html", "clics": 2, "impr": 230, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/jaguar-jungle-explore-habitat-majestic-feline.html", "clics": 2, "impr": 71, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-turistas-egipto-descubre-arquitectura-maya.html", "clics": 2, "impr": 56, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-travelers-united-kingdom-journey-mayan-jungle.html", "clics": 2, "impr": 16, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/sunset-tikal-magic-mayan-twilight.html", "clics": 2, "impr": 6, "status": "400", "nuevo": "/service-page/tikal-atardecer-tour-grupo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-lanquín", "clics": 2, "impr": 144, "status": "404", "nuevo": "/service-page/flores-a-lanquín", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-día-tour-en-grupo-8-00-am-salida", "clics": 2, "impr": 45, "status": "404", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/crater-azul-santuario-natural-aguas-cristalinas-peten.html", "clics": 1, "impr": 406, "status": "400", "nuevo": "/tours", "conf": "provisional:/experiencias", "motivo": "Cráter Azul: no hay tour equivalente. Incluir en /experiencias o crear página propia."}, {"dom": "selvamayatours.com", "old": "/jungla-explora-naturaleza-salvaje-peten.html", "clics": 1, "impr": 190, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/mopan-descubre-cultura-naturaleza-region.html", "clics": 1, "impr": 121, "status": "400", "nuevo": "/service-page/flores-a-san-ignacio-belice", "conf": "auto", "motivo": "Región Mopan, junto a San Ignacio (Belice): el servicio más cercano."}, {"dom": "selvamayatours.com", "old": "/imagen-selva-descubre-belleza-natural-selva-maya.html", "clics": 1, "impr": 110, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tours-flores-explora-tesoros-peten.html", "clics": 1, "impr": 93, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/transfer-flores-connection-adventure-peten.html", "clics": 1, "impr": 38, "status": "400", "nuevo": "/tours", "conf": "provisional:/transfers", "motivo": "Transfers: no hay página general. Crear /transfers."}, {"dom": "selvamayatours.com", "old": "/biosphere-adventure-explore-guatemala-largest-natural-reserve.html", "clics": 1, "impr": 36, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/mopan-discover-culture-nature-region.html", "clics": 1, "impr": 33, "status": "400", "nuevo": "/service-page/flores-a-san-ignacio-belice", "conf": "auto", "motivo": "Región Mopan, junto a San Ignacio (Belice): el servicio más cercano."}, {"dom": "selvamayatours.com", "old": "/lanquin-flores-journey-caves-semuc-champey.html", "clics": 1, "impr": 29, "status": "400", "nuevo": "/service-page/flores-a-lanquín", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/selva-maya-tours-explora-la-civilizacion-maya-en-tikal-y-peten-con-tours-guiados-reserva-desde-suiza.html", "clics": 1, "impr": 25, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-travelers-bangladesh-discover-mysteries-tikal.html", "clics": 1, "impr": 12, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-tourists-canada-journey-history-nature.html", "clics": 1, "impr": 12, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/antigua-tikal-tour-colonial-charm-mayan-wonders.html", "clics": 1, "impr": 12, "status": "400", "nuevo": "/service-page/flores-a-antigua-guatemala-directo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-livinston", "clics": 1, "impr": 55, "status": "404", "nuevo": "/service-page/flores-a-livingston", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/category/all-products", "clics": 1, "impr": 47, "status": "404", "nuevo": "/tours", "conf": "auto", "motivo": "Catálogo completo de la tienda antigua → catálogo de tours."}, {"dom": "jaguarmayatours.com", "old": "/product-page/transfer-flores-a-guatemala", "clics": 1, "impr": 41, "status": "404", "nuevo": "/service-page/flores-a-ciudad-de-guatemala", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/yaxha-de-día", "clics": 1, "impr": 35, "status": "404", "nuevo": "/service-page/yaxha-de-día-tour-grupo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-día-tour-en-grupo", "clics": 1, "impr": 32, "status": "404", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/post/tikal-amanecer-desde-peten", "clics": 1, "impr": 29, "status": "404", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: Tikal al amanecer desde Flores."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-día-tour-en-grupo-10-00-am-salida", "clics": 1, "impr": 16, "status": "404", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/service-page/flores-livingston", "clics": 1, "impr": 1, "status": "404", "nuevo": "/service-page/flores-a-livingston", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-travelers-united-states-journey-mayan-culture.html", "clics": 0, "impr": 40, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-turistas-malasia-viaje-historia-antigua.html", "clics": 0, "impr": 32, "status": "400", "nuevo": "/service-page/flores-a-antigua-guatemala-directo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tikal-tour-flores-explore-mayan-wonder.html", "clics": 0, "impr": 29, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/chechenal-white-sand-beaches-lake-peten-itza.html", "clics": 0, "impr": 28, "status": "400", "nuevo": "/tours", "conf": "provisional:/lago-peten", "motivo": "Playas del lago Petén Itzá: no hay página equivalente. Crear /lago-peten."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-tourists-egypt-discover-mayan-architecture.html", "clics": 0, "impr": 23, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-rumania.html", "clics": 0, "impr": 22, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/aventura-mayas-vive-historia-naturaleza-solo-viaje.html", "clics": 0, "impr": 21, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-turistas-brasil-descubre-magia-tikal.html", "clics": 0, "impr": 19, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/guatemala-tours-descubre-magia-tierra-maya.html", "clics": 0, "impr": 18, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-japon.html", "clics": 0, "impr": 17, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-jalapa.html", "clics": 0, "impr": 15, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/caye-caulker-paraiso-caribeno-aventureros-viajeros.html", "clics": 0, "impr": 14, "status": "400", "nuevo": "/service-page/flores-a-caye-caulker", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/flores-maya-historia-cultura-isla-flores.html", "clics": 0, "impr": 11, "status": "400", "nuevo": "/tours", "conf": "provisional:/flores", "motivo": "Isla de Flores: no hay página equivalente. Crear /flores («Qué hacer en Flores»)."}, {"dom": "selvamayatours.com", "old": "/viajes-tikal-flores-peten-historia-naturaleza-tour.html", "clics": 0, "impr": 11, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/pyramid-tikal-monument-mayan-greatness.html", "clics": 0, "impr": 11, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "provisional:/tikal", "motivo": "Pirámide de Tikal: búsqueda informativa (alto volumen, 6.920 impresiones). Crear /tikal con contenido; hoy el tour de Tikal es lo más cercano."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-kenia.html", "clics": 0, "impr": 10, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-tunez.html", "clics": 0, "impr": 10, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tour-isla-flores-encanto-colonial-corazon-peten.html", "clics": 0, "impr": 10, "status": "400", "nuevo": "/tours", "conf": "provisional:/flores", "motivo": "Isla de Flores: no hay página equivalente. Crear /flores («Qué hacer en Flores»)."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-travelers-taiwan-explore-jungle-mayan-temples.html", "clics": 0, "impr": 9, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/image-jaguar-majesty-jungle-feline.html", "clics": 0, "impr": 8, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-viajeros-guatemala-descubre-selva-maya.html", "clics": 0, "impr": 7, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-adventurers-belize-explore-mayan-civilization.html", "clics": 0, "impr": 7, "status": "400", "nuevo": "/service-page/flores-a-ciudad-de-belice", "conf": "provisional:/belice", "motivo": "Belice desde Flores: ruta principal a Ciudad de Belice. Crear /belice con todos los destinos de Belice."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-solola.html", "clics": 0, "impr": 6, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/isla-flores-guatemala-colonial-charm-heart-peten.html", "clics": 0, "impr": 6, "status": "400", "nuevo": "/tours", "conf": "provisional:/flores", "motivo": "Isla de Flores: no hay página equivalente. Crear /flores («Qué hacer en Flores»)."}, {"dom": "selvamayatours.com", "old": "/caye-san-pedro-flores-aventura-relax-belice.html", "clics": 0, "impr": 6, "status": "400", "nuevo": "/service-page/flores-a-caye-san-pedro", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/isla-flores-guatemala-encanto-colonial-corazon-peten.html", "clics": 0, "impr": 4, "status": "400", "nuevo": "/tours", "conf": "provisional:/flores", "motivo": "Isla de Flores: no hay página equivalente. Crear /flores («Qué hacer en Flores»)."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-rusia.html", "clics": 0, "impr": 4, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/maya-tour-recorrido-historia-naturaleza.html", "clics": 0, "impr": 4, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-peten.html", "clics": 0, "impr": 4, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tikal-tours-guatemala-city-explore-mayan-wonder-capital.html", "clics": 0, "impr": 4, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/atardecer-yaxha-espectaculo-natural-laguna.html", "clics": 0, "impr": 3, "status": "400", "nuevo": "/service-page/atardecer-yaxha-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tour-tikal-flores-historical-adventure-mayan-jungle.html", "clics": 0, "impr": 3, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/caye-caulker-flores-relax-belizean-caribbean.html", "clics": 0, "impr": 3, "status": "400", "nuevo": "/service-page/flores-a-caye-caulker", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-zacapa.html", "clics": 0, "impr": 3, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/rio-dulce-flores-sail-nature-culture.html", "clics": 0, "impr": 3, "status": "400", "nuevo": "/service-page/flores-a-río-dulce", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/flores-rio-dulce-sail-through-nature-culture.html", "clics": 0, "impr": 3, "status": "400", "nuevo": "/service-page/flores-a-río-dulce", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-la-india.html", "clics": 0, "impr": 2, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-explorers-vietnam-history-nature-tour.html", "clics": 0, "impr": 2, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/flores-maya-history-culture-isla-flores.html", "clics": 0, "impr": 2, "status": "400", "nuevo": "/tours", "conf": "provisional:/flores", "motivo": "Isla de Flores: no hay página equivalente. Crear /flores («Qué hacer en Flores»)."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-quiche.html", "clics": 0, "impr": 2, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/crater-azul-paradise-crystal-clear-waters-peten.html", "clics": 0, "impr": 2, "status": "400", "nuevo": "/tours", "conf": "provisional:/experiencias", "motivo": "Cráter Azul: no hay tour equivalente. Incluir en /experiencias o crear página propia."}, {"dom": "selvamayatours.com", "old": "/guatemala-tours-discover-magic-mayan-land.html", "clics": 0, "impr": 2, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-exploradores-vietnam-historia-naturaleza-tour.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-flores-explore-treasures-peten.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-tourists-brazil-discover-magic-tikal.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-tourists-turkey-experience-magic-mayan-culture.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/sunrise-tikal-beauty-new-day.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-ecuador.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-usa.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/caye-caulker-flores-relajate-caribe-beliceno.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/flores-a-caye-caulker", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tikal-tour-antigua-viaja-ciudad-colonial-selva-maya.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/flores-a-antigua-guatemala-directo", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-tourists-mexico-experience-mayan-adventure.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/amanecer-tikal-belleza-nuevo-dia-mexico.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-turistas-italia-recorrido-historia-naturaleza.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/chetumal-caye-caulker-mexico-caribbean-paradise.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/flores-a-caye-caulker", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/lanquin-guatemala-journey-caves-semuc-champey.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/flores-a-lanquín", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/tours-expediciones-flores-peten-tikal-viajeros-taiwan-explora-selva-templos-mayas.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/crater-azul-paraiso-aguas-cristalinas-peten.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/tours", "conf": "provisional:/experiencias", "motivo": "Cráter Azul: no hay tour equivalente. Incluir en /experiencias o crear página propia."}, {"dom": "selvamayatours.com", "old": "/tours-expeditions-flores-peten-tikal-travelers-peru-discover-secrets-mayan-civilization.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/jaguar-maya-simbolo-poder-civilizacion-maya.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/tours", "conf": "auto", "motivo": "Tema general de selva/Petén: catálogo de tours."}, {"dom": "selvamayatours.com", "old": "/lanquin-guatemala-viaje-cuevas-semuc-champey.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/flores-a-lanquín", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "selvamayatours.com", "old": "/flores-tikal-puerta-entrada-civilizacion-maya.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "selvamayatours.com", "old": "/belice-paraiso-caribeno-tu-alcance.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/flores-a-ciudad-de-belice", "conf": "provisional:/belice", "motivo": "Belice desde Flores: ruta principal a Ciudad de Belice. Crear /belice con todos los destinos de Belice."}, {"dom": "selvamayatours.com", "old": "/tikal-tours-guatemala-city-explora-maravilla-maya-capital.html", "clics": 0, "impr": 1, "status": "400", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal desde Flores."}, {"dom": "jaguarmayatours.com", "old": "/category/tikal-tours", "clics": 0, "impr": 45, "status": "404", "nuevo": "/tours", "conf": "auto", "motivo": "Categoría de la tienda antigua → catálogo de tours."}, {"dom": "jaguarmayatours.com", "old": "/post/tour-a-tikal-desde-peten", "clics": 0, "impr": 31, "status": "404", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Mismo tema: tour a Tikal."}, {"dom": "jaguarmayatours.com", "old": "/category/belice-1", "clics": 0, "impr": 18, "status": "404", "nuevo": "/tours", "conf": "provisional:/belice", "motivo": "Categoría de Belice; no hay página equivalente. Crear /belice con los 5 servicios a Belice."}, {"dom": "jaguarmayatours.com", "old": "/blog/categories/tours", "clics": 0, "impr": 14, "status": "404", "nuevo": "/blog/categories/tours-1", "conf": "auto", "motivo": "La categoría existe hoy con otro slug."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-día-tour-en-grupo-6-00-am-salida", "clics": 0, "impr": 9, "status": "404", "nuevo": "/service-page/tikal-de-día-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}, {"dom": "jaguarmayatours.com", "old": "/product-page/tikal-tour-personalizado", "clics": 0, "impr": 8, "status": "404", "nuevo": "/tours", "conf": "provisional:/tours-personalizados", "motivo": "Tour personalizado: no existe esa página (está en la lista prioritaria de la Fase 3)."}, {"dom": "jaguarmayatours.com", "old": "/category/guatemala-magica-1", "clics": 0, "impr": 6, "status": "404", "nuevo": "/tours", "conf": "auto", "motivo": "Categoría de la tienda antigua → catálogo de tours."}, {"dom": "jaguarmayatours.com", "old": "/blog/categories/tikal", "clics": 0, "impr": 4, "status": "404", "nuevo": "/blog/categories/tikal-1", "conf": "auto", "motivo": "La categoría existe hoy con otro slug."}, {"dom": "jaguarmayatours.com", "old": "/copia-de-nosotros", "clics": 0, "impr": 2, "status": "404", "nuevo": "/nosotros", "conf": "auto", "motivo": "Copia de la página Nosotros."}, {"dom": "jaguarmayatours.com", "old": "/copia-de-flores-san-ignacio-belize", "clics": 0, "impr": 1, "status": "404", "nuevo": "/service-page/flores-a-san-ignacio-belice", "conf": "auto", "motivo": "Mismo tema: Flores a San Ignacio, Belice."}, {"dom": "jaguarmayatours.com", "old": "/service-page/tikal-amanecer-en-grupo", "clics": 0, "impr": 1, "status": "404", "nuevo": "/service-page/tikal-amanecer-tour-grupo-1", "conf": "auto", "motivo": "Equivalencia directa entre la página antigua y la de servicio actual."}]</script>
+<script id="urlData" type="application/json">[{"p": "/copia-de-tours", "t": "página", "title": "TRANSFERS", "dl": 166, "h1": 1, "w": 387, "i": 15, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-bacalar-méxico", "t": "página", "title": "Lanquín", "dl": 167, "h1": 1, "w": 375, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-lanquín", "t": "página", "title": "Río Dulce", "dl": 168, "h1": 1, "w": 318, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-chetumal-méxico", "t": "página", "title": "Bacalar, México", "dl": 173, "h1": 1, "w": 384, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/contacto", "t": "página", "title": "Contactar", "dl": 130, "h1": 1, "w": 130, "i": 3, "na": 1, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-livingston", "t": "página", "title": "Ciudad de Guatemala", "dl": 155, "h1": 1, "w": 378, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-caye-san-pedro", "t": "página", "title": "Chetumal, México", "dl": 162, "h1": 1, "w": 363, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/", "t": "página", "title": "Tikal Sunrise | Tikal a Tours", "dl": 157, "h1": 2, "w": 400, "i": 23, "na": 2, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-tikal", "t": "página", "title": "TIKAL TOURS", "dl": 163, "h1": 1, "w": 325, "i": 7, "na": 0, "cp": true, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-treks", "t": "página", "title": "Tikal Tour", "dl": 149, "h1": 1, "w": 273, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-caye-caulker", "t": "página", "title": "Caye San Pedro", "dl": 154, "h1": 1, "w": 485, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/términos-y-condiciones", "t": "página", "title": "Términos y Condiciones", "dl": 202, "h1": 1, "w": 217, "i": 2, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-tikal-día-en-grupo", "t": "página", "title": "Tikal Amanecer", "dl": 161, "h1": 1, "w": 334, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-río-dulce", "t": "página", "title": "Livingston", "dl": 165, "h1": 1, "w": 353, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-flores-a-san-ignacio-belize", "t": "página", "title": "Ciudad de Belice", "dl": 172, "h1": 1, "w": 349, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-atardecer-yaxha", "t": "página", "title": "San Ignacio Belize", "dl": 187, "h1": 1, "w": 398, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/acerca-de", "t": "página", "title": "Acerca de", "dl": 161, "h1": 1, "w": 460, "i": 6, "na": 1, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/team", "t": "página", "title": "Team (List)", "dl": 0, "h1": 1, "w": 120, "i": 3, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/faqs", "t": "página", "title": "GALLERIA", "dl": 202, "h1": 0, "w": 92, "i": 11, "na": 8, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-antigua-guatemala", "t": "página", "title": "Panajachel", "dl": 166, "h1": 1, "w": 322, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/tours", "t": "página", "title": "TIKAL", "dl": 160, "h1": 1, "w": 812, "i": 21, "na": 16, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-términos-y-condiciones", "t": "página", "title": "FAQs", "dl": 202, "h1": 0, "w": 569, "i": 2, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-ejemplo-de-categorias", "t": "página", "title": "", "dl": 0, "h1": 0, "w": 0, "i": 0, "na": 0, "cp": true, "mis": false, "en": false, "empty": true}, {"p": "/nosotros", "t": "página", "title": "NOSOTROS", "dl": 330, "h1": 0, "w": 256, "i": 3, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-treks-aventura", "t": "página", "title": "TOURS", "dl": 147, "h1": 1, "w": 360, "i": 10, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-tikal-amanecer-atardecer-g-1", "t": "página", "title": "Tikal Atardecer", "dl": 150, "h1": 1, "w": 432, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/política-de-privacidad", "t": "página", "title": "Política de Privacidad", "dl": 200, "h1": 1, "w": 282, "i": 2, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/copia-de-ciudad-de-belice", "t": "página", "title": "Caye Caulker", "dl": 159, "h1": 1, "w": 498, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-ciudad-de-guatemala", "t": "página", "title": "Antigua Guatemala", "dl": 183, "h1": 1, "w": 322, "i": 3, "na": 1, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/copia-de-tikal-atardecer", "t": "página", "title": "Atardecer Yaxha", "dl": 168, "h1": 1, "w": 377, "i": 3, "na": 0, "cp": true, "mis": true, "en": false, "empty": false}, {"p": "/blog", "t": "blog", "title": "BLOG", "dl": 135, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/service-page/flores-a-caye-san-pedro", "t": "servicio", "title": "Flores a Caye San Pedro", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-lanquín", "t": "servicio", "title": "Flores a Lanquín", "dl": 0, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/tikal-amanecer-tour-grupo-1", "t": "servicio", "title": "Tikal Amanecer - Tour Grupo", "dl": 56, "h1": 1, "w": 146, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-caye-caulker", "t": "servicio", "title": "Flores a Caye Caulker", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-chetumal-méxico", "t": "servicio", "title": "Flores a Chetumal, México", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/yaxha-de-día-tour-grupo", "t": "servicio", "title": "Yaxha de Día - Tour Grupo", "dl": 0, "h1": 1, "w": 146, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-ciudad-de-belice", "t": "servicio", "title": "Flores a Ciudad de Belice", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-ciudad-de-guatemala", "t": "servicio", "title": "Flores a Ciudad de Guatemala", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-livingston", "t": "servicio", "title": "Flores a Livingston", "dl": 0, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-bacalar-méxico", "t": "servicio", "title": "Flores a Bacalar, México", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-san-ignacio-belice", "t": "servicio", "title": "Flores a San Ignacio Belice", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/tikal-de-día-tour-grupo-1", "t": "servicio", "title": "Tikal de Día - Tour Grupo", "dl": 56, "h1": 1, "w": 224, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/tikal-atardecer-tour-grupo", "t": "servicio", "title": "Tikal Atardecer - Tour Grupo", "dl": 0, "h1": 1, "w": 152, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-panajachel", "t": "servicio", "title": "Flores a Panajachel", "dl": 0, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/atardecer-yaxha-tour-grupo-1", "t": "servicio", "title": "Atardecer Yaxha - Tour Grupo", "dl": 55, "h1": 1, "w": 147, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-río-dulce", "t": "servicio", "title": "Flores a Río Dulce", "dl": 0, "h1": 1, "w": 150, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/service-page/flores-a-antigua-guatemala-directo", "t": "servicio", "title": "Flores a Antigua Guatemala - Directo", "dl": 0, "h1": 1, "w": 153, "i": 2, "na": 0, "cp": false, "mis": false, "en": true, "empty": false}, {"p": "/post/jaguar-live-in-tikal", "t": "blog", "title": "JAGUAR LIVES IN TIKAL", "dl": 0, "h1": 1, "w": 195, "i": 3, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/turismo", "t": "blog", "title": "Turismo", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/tikal-1", "t": "blog", "title": "Tikal", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/tours-1", "t": "blog", "title": "Tours", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}, {"p": "/blog/categories/guatemala", "t": "blog", "title": "Guatemala", "dl": 0, "h1": 2, "w": 113, "i": 4, "na": 0, "cp": false, "mis": false, "en": false, "empty": false}]</script>
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var KEY="smt-auditoria-f1-v1", st={chk:{},ans:{},dec:[],note:{}};
+try{var s=localStorage.getItem(KEY);if(s)st=Object.assign(st,JSON.parse(s))}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+
+/* ---------- theme ---------- */
+$("#theme").onclick=function(){var r=document.documentElement,d=r.getAttribute("data-theme");
+  var dark=d?d==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.setAttribute("data-theme",dark?"light":"dark")};
+
+/* ---------- data ---------- */
+var URLS=JSON.parse($("#urlData").textContent);
+var cnt=function(f){return URLS.filter(f).length};
+var N=URLS.length, nCopia=cnt(function(u){return u.cp}), nMis=cnt(function(u){return u.mis}), nDl0=cnt(function(u){return !u.dl});
+var nThin=cnt(function(u){return u.w<300}), nNa=URLS.reduce(function(a,u){return a+u.na},0), nImg=URLS.reduce(function(a,u){return a+u.i},0);
+
+$("#kpis").innerHTML=[
+ [N,"URLs indexables en el sitemap de Wix"],
+ [nCopia,"páginas «copia-de-…» publicadas (duplicados/borradores)"],
+ [nMis+" de "+nCopia,"copias con título SEO de otra página"],
+ [nDl0,"URLs sin meta descripción"],
+ ["103 de 104","páginas con tráfico del sitio antiguo, probadas: dan error 400"],
+ ["1","artículo en el blog (el plan pide 2–3 por semana)"]
+].map(function(k){return '<div class="kpi"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join("");
+
+/* ---------- hallazgos ---------- */
+var FIND=[
+{p:"p1",t:"El 100 % del tráfico de selvamayatours.com termina en error 400",
+ d:"selvamayatours.com acumuló 375 clics y 19.943 impresiones en 16 meses sobre 103 URLs <code>.html</code> del sitio estático anterior. Todas dan error 400 hoy: el dominio redirige a jaguarmayatours.com, que no tiene esas rutas. Seguía recibiendo unos 24 clics al mes en septiembre.",
+ ev:"Search Console (Rendimiento, 5-jun-2025 a 4-oct-2026). Se probó el estado de las 104 URLs con tráfico: 103 dan 400 y 1 da 200. Con más clics: <code>trek-piramide-la-danta…</code> (94), <code>belice-flores-viaje-selva-mar-caribe</code> (73), <code>lanquin-flores-viaje-cuevas-semuc-champey</code> (26).",
+ a:"Aplicar el mapa 301 de la sección 9 (todas las URLs tienen destino). Crear después las páginas que faltan para no perder la intención de búsqueda: /treks (La Danta), /lago-peten (Chechenal), /tikal (pirámide), /belice y /transfers."},
+{p:"p1",t:"jaguarmayatours.com tiene 91 URLs con tráfico que dan 404 (256 clics)",
+ d:"Son sobre todo <code>/product-page/…</code> de la tienda de Wix anterior, hoy reemplazadas por <code>/service-page/…</code>. Incluyen los fragmentos de producto en Google (201 clics y 5.175 impresiones), que ya no apuntan a una página válida.",
+ ev:"Search Console: 169 URLs con impresiones; 78 responden 200 (540 clics) y 91 responden 404 (256 clics, 9.811 impresiones). Ej.: <code>/product-page/atardecer-yaxha-1</code> (38 clics), <code>/product-page/tikal-amanecer-en-grupo</code> (33).",
+ a:"Redirigir cada <code>/product-page/…</code> a su <code>/service-page/…</code> equivalente (todas con destino en el mapa). Es la acción de mayor retorno inmediato."},
+{p:"p1",t:"Más de la mitad de los clics de 16 meses terminan en una página con error",
+ d:"Entre ambos dominios, 631 de 1.171 clics (54 %) y 29.754 impresiones llevan hoy a error. Es tráfico que ya existe y se está perdiendo, antes de invertir en contenido nuevo.",
+ ev:"Suma de las URLs con error en las exportaciones de Search Console de los dos dominios.",
+ a:"Priorizar las redirecciones 301 antes que cualquier migración o contenido nuevo."},
+{p:"p1",t:"Los datos de hoy no respaldan invertir la dirección de dominio",
+ d:"jaguarmayatours.com recibe 785 clics frente a 375, con impresiones casi iguales, mejor CTR (3,95 % contra 1,91 %) y la búsqueda de marca en posición 2,5. Hacer de selvamayatours.com el principal obligaría a mover todo ese valor.",
+ ev:"Search Console. Faltan datos de enlaces externos e indexación para cerrar la decisión.",
+ a:"Mantener jaguarmayatours.com como destino técnico por ahora, recuperar el tráfico perdido y decidir el dominio principal con los datos de enlaces y GA4."},
+{p:"p1",t:"El correo @selvamayatours.com depende del hosting antiguo",
+ d:"Los registros MX de selvamayatours.com apuntan al hosting cPanel (jellyfish.systems). jaguarmayatours.com usa Google Workspace.",
+ ev:"MX y SPF verificados por DNS. El hosting conserva la carpeta <code>mail/</code> con datos de correo; falta confirmar qué buzones están activos.",
+ a:"Exportar la zona DNS de Wix, listar buzones activos, respaldarlos y decidir un solo dominio de correo antes de cancelar el hosting o tocar DNS."},
+{p:"p1",t:"19 de 21 páginas «copia-de-…» tienen el título SEO de otra página",
+ d:"El texto que Google muestra como título no coincide con la página. Ejemplos: <code>/copia-de-bacalar-méxico</code> se titula «Lanquín»; <code>/copia-de-livingston</code>, «Ciudad de Guatemala»; <code>/copia-de-términos-y-condiciones</code>, «FAQs». Además están en el sitemap, es decir, se piden a Google como páginas válidas.",
+ ev:"Comparación del slug contra el <code>&lt;title&gt;</code> de las 21 páginas «copia-de» (ver tabla de URLs, filtro «Título no corresponde»). Hay también una página vacía: <code>/copia-de-ejemplo-de-categorias</code>. Atención: 35 URLs «copia-de» aparecen en Search Console con 155 clics, así que <b>no deben borrarse</b>: hay que redirigirlas a la página correcta.",
+ a:"Redirigir con 301 cada «copia-de» a la página que corresponde y corregir título y descripción de las que se conserven. No eliminar sin redirección."},
+{p:"p1",t:"Las páginas que el plan quiere (/tikal, /yaxha, /transfers, /reservar…) no existen",
+ d:"La estructura actual mezcla páginas «copia-de-…» con 17 páginas de servicio. Faltan páginas ancla por intención de búsqueda (Tikal desde Flores, tour privado, amanecer/atardecer, Yaxhá, qué hacer en Flores, aeropuerto).",
+ ev:"Sitemap: 31 páginas, 17 servicios, 1 artículo, 4 categorías de blog. Ninguna ruta coincide con la Fase 3.",
+ a:"Crear las páginas prioritarias de la Fase 3 con contenido útil y único, y redirigir las «copia-de» a ellas."},
+{p:"p2",t:"Páginas de servicio: canonical con ruta /en/ que a su vez redirige",
+ d:"Las 17 páginas de servicio declaran como canonical una URL <code>/en/service-page/…</code>, y esa URL redirige a la versión sin <code>/en</code>. Google recibe una señal contradictoria sobre cuál es la URL oficial.",
+ ev:"Ej.: <code>/service-page/flores-a-caye-caulker</code> → canonical <code>/en/service-page/flores-a-caye-caulker</code> → 200 final en la ruta sin /en. Además no incluyen hreflang.",
+ a:"Corregir la configuración de idiomas de Wix para que el canonical coincida con la URL servida."},
+{p:"p2",t:"Páginas de servicio sin meta descripción y con poco contenido",
+ d:"Son las páginas que más deberían vender (Flores a Caye Caulker, Tikal amanecer, etc.). Tienen unas 150 palabras, 2 imágenes y casi ninguna tiene descripción.",
+ ev:"21 de 53 URLs sin meta descripción; 31 de 53 con menos de 300 palabras. El plan (Fase 4) pide qué incluye, duración, horarios, punto de recogida, política de cancelación y FAQ.",
+ a:"Plantilla de página de servicio con esos bloques y descripción única de 140–160 caracteres."},
+{p:"p2",t:"Página de inicio: título débil y etiqueta de idioma inconsistente",
+ d:"Título: «Tikal Sunrise | Tikal a Tours | Selva Maya Tours». Es confuso y mezcla idiomas. La raíz declara <code>lang=\"en\"</code> y hreflang <code>en-us</code>, aunque el contenido está en español; existe una copia en <code>/es</code> con el mismo título.",
+ ev:"Dos H1 en la home. La versión <code>/es</code> tiene <code>lang=\"es\"</code> y hreflang <code>es-gt</code>.",
+ a:"Un título claro (p. ej. «Tours a Tikal desde Flores, Petén | Selva Maya Tours»), un solo H1 y decidir cuál es el idioma principal."},
+{p:"p2",t:"Otros títulos mal puestos en páginas principales",
+ d:"<code>/faqs</code> se titula «GALLERIA», <code>/team</code> «Team (List)», <code>/tours</code> «TIKAL»; <code>/faqs</code> y <code>/nosotros</code> no tienen H1.",
+ ev:"Ver tabla de URLs.",a:"Reescribir título, descripción y H1 de las 9 páginas principales."},
+{p:"p2",t:"Blog casi vacío",
+ d:"Un solo artículo («Jaguar lives in Tikal», en inglés, sin meta descripción) y 4 páginas de categoría con unas 113 palabras. El plan prevé 2–3 piezas por semana.",
+ ev:"Sitemap de blog: 1 entrada.",a:"Calendario editorial por pilares (educación, autoridad, confianza, prueba social, inspiración, venta)."},
+{p:"p2",t:"Páginas legales y FAQ duplicadas",
+ d:"Hay «Términos y condiciones» y su «copia», con título distinto («FAQs»). Hay página de FAQs y la copia de términos se titula FAQs.",ev:"Tabla de URLs.",a:"Una sola versión de cada página legal y de FAQ."},
+{p:"p3",t:"Imágenes sin texto alternativo",
+ d:nNa+" de "+nImg+" imágenes sin <code>alt</code>, concentradas en <code>/tours</code> (16 de 21), <code>/faqs</code> (8 de 11) y la home (2 de 23).",
+ ev:"Conteo sobre el HTML publicado.",a:"Completar el texto alternativo en el editor de Wix."},
+{p:"p3",t:"Peso de la página de inicio",
+ d:"El HTML de la home pesa casi 1 MB antes de imágenes y scripts. Es probable que afecte la velocidad en móvil.",
+ ev:"La medición con PageSpeed no pudo completarse (cuota diaria de la API agotada). Quedó pendiente.",a:"Repetir con PageSpeed Insights o Search Console (Core Web Vitals)."},
+{p:"p3",t:"Datos de contacto: dos números según el sitio",
+ d:"El sitio Wix usa +502 5203 8784; el sitio antiguo declaraba +502 5466 7703. Ya no están publicados en paralelo, pero conviene unificar en Business Profile y redes.",
+ ev:"Enlaces <code>api.whatsapp.com/send?phone=50252038784</code> y <code>wa.me/message/…</code> en la home.",a:"Un único número de WhatsApp en toda la presencia digital."},
+{p:"p3",t:"Lo que ya está bien",
+ d:"HTTPS correcto; robots.txt permite el rastreo y declara el sitemap; el sitemap está generado y es válido; casi todas las páginas tienen etiqueta canonical (la excepción es una página vacía); JSON-LD de <code>LocalBusiness</code>; botón de WhatsApp visible en todas las páginas; redirecciones de variantes del dominio en un salto; <b>sin enlaces internos rotos</b>: de 123 enlaces internos únicos en las 48 páginas del sitemap, los 123 responden 200 (revisado a ritmo lento para evitar el límite de velocidad de Wix).",
+ ev:"Pruebas directas contra el sitio en vivo.",a:"Conservar."}
+];
+function drawFinds(){
+  var p=$("#fPrio").value,q=$("#fTxt").value.toLowerCase();
+  var L={p1:"Crítico",p2:"Importante",p3:"Mejora"},C={p1:"b-bad",p2:"b-warn",p3:"b-ok"};
+  $("#finds").innerHTML=FIND.filter(function(f){return (!p||f.p===p)&&(!q||(f.t+f.d).toLowerCase().indexOf(q)>-1)}).map(function(f){
+    return '<div class="card find '+f.p+'"><h3><span class="badge '+C[f.p]+'">'+L[f.p]+'</span>'+f.t+'</h3><p>'+f.d+'</p><p class="ev"><b>Evidencia:</b> '+f.ev+'</p><div class="act"><b>Acción:</b> '+f.a+'</div></div>'}).join("")||'<p class="small">Sin resultados.</p>';
+}
+$("#fPrio").onchange=drawFinds;$("#fTxt").oninput=drawFinds;drawFinds();
+
+/* ---------- línea base ---------- */
+var B=[
+["Marca","ok","«Selva Maya Tours» en título y descripción de la home. El dominio principal real es jaguarmayatours.com y el sitio muestra «La Ruta del Jaguar» en el encabezado."],
+["Sitio Wix","ok","Confirmado: www.jaguarmayatours.com sirve desde Wix. 53 URLs en sitemap, robots.txt y sitemap correctos."],
+["Dominio selvamayatours.com","warn","Nameservers de Wix; redirige 301 a jaguarmayatours.com. El registrador (¿Namecheap?) no se pudo confirmar desde fuera; falta quién es el titular y quién tiene el acceso administrativo."],
+["DNS","warn","Ambos dominios usan <code>ns14/ns15.wixdns.net</code>. Se documentaron A, MX, TXT y NS. Falta la captura de la zona desde el panel de Wix."],
+["Search Console","warn","Recibido el informe de Rendimiento de ambos dominios (16 meses). Faltan los informes de Páginas (indexación), Enlaces y Sitemaps."],
+["Analytics","pend","No se pudo verificar desde fuera si hay GA4 instalado ni qué conversiones tiene. Requiere acceso."],
+["Google Business Profile","pend","Requiere acceso: nombre, categoría, URL, teléfono y enlaces."],
+["Correo","warn","@selvamayatours.com → hosting cPanel; @jaguarmayatours.com → Google Workspace. El sitio publica selvamaya@jaguarmayatours.com. Ver sección 10."],
+["Backlinks","pend","Requiere herramienta (Search Console, Ahrefs, Semrush). Sin esos datos no se puede estimar la pérdida de la migración."],
+["Indexación Google","warn","Con impresiones en 16 meses: 169 URLs en jaguarmayatours.com y 104 en selvamayatours.com. El conteo de páginas indexadas requiere el informe de Páginas. 53 URLs en el sitemap de Wix."],
+["Reservas / WhatsApp","ok","Botón de WhatsApp (<code>api.whatsapp.com/send?phone=50252038784</code>) y enlace <code>wa.me/message/…</code> en todas las páginas. Falta medir clics y conversión."]
+];
+var BL={ok:["b-ok","Verificado"],warn:["b-warn","Parcial"],pend:["b-pend","Pendiente"]};
+$("#tBase tbody").innerHTML=B.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td><span class="badge '+BL[r[1]][0]+'">'+BL[r[1]][1]+'</span></td><td>'+r[2]+'</td></tr>'}).join("");
+
+/* ---------- criterios ---------- */
+var CR=[
+["¿Qué dominio recibe actualmente más tráfico orgánico?","ok","jaguarmayatours.com: 785 clics contra 375 en 16 meses, con las mismas impresiones (~19.900) y mejor CTR (3,95 % contra 1,91 %). Fuente: Search Console."],
+["¿Cuál tiene más páginas indexadas?","warn","Páginas con impresiones: jaguarmayatours.com 169, selvamayatours.com 104. Falta el informe de Páginas (indexación) de Search Console para el dato exacto."],
+["¿Cuál tiene más enlaces externos de calidad?","pend","Requiere herramienta de backlinks."],
+["¿Qué dominio aparece en Google Business Profile?","pend","Requiere acceso al perfil."],
+["¿Qué dominio usa el correo comercial?","ok","Ambos. El sitio publica selvamaya@jaguarmayatours.com (Google Workspace); selvamayatours.com mantiene buzones en el hosting antiguo."],
+["¿Qué URLs reciben más visitas y reservas?","warn","Visitas desde Google: la home de jaguarmayatours.com (297 clics), <code>/copia-de-flores-a-san-ignacio-belize</code> (45), <code>/product-page/atardecer-yaxha-1</code> (38, hoy 404) y, en selvamayatours.com, <code>trek-piramide-la-danta…</code> (94, hoy 400). Las reservas requieren GA4."],
+["¿Qué pérdidas podríamos tener si hacemos una migración?","ok","Ya se pierde tráfico: 631 de 1.171 clics (54 %) llegan a error 400/404. Riesgos adicionales: correo de selvamayatours.com en el hosting antiguo y mover el dominio con mejor desempeño (jaguarmayatours.com) sin redirecciones completas."]
+];
+function ansCount(){return CR.filter(function(c,i){return (st.ans[i]&&st.ans[i].done)||c[1]==="ok"}).length}
+function drawCrit(){
+  $("#crit").innerHTML=CR.map(function(c,i){
+    var a=st.ans[i]||{},done=a.done||c[1]==="ok",b=BL[done?"ok":c[1]];
+    return '<div class="card"><div><span class="badge '+b[0]+'">'+(done?"Respondida":b[1])+'</span> <b>'+(i+1)+'. '+c[0]+'</b></div><p style="margin:6px 0">'+c[2]+'</p>'+
+    '<textarea data-ans="'+i+'" placeholder="Respuesta documentada del cliente / equipo…">'+esc(a.txt||"")+'</textarea>'+
+    '<label class="small noprint"><input type="checkbox" data-done="'+i+'" '+(a.done?"checked":"")+'> Marcar como respondida</label></div>'}).join("");
+  $("#kpiAns").textContent=ansCount();
+}
+$("#crit").addEventListener("input",function(e){var i=e.target.getAttribute("data-ans");if(i!==null){(st.ans[i]=st.ans[i]||{}).txt=e.target.value;save()}});
+$("#crit").addEventListener("change",function(e){var i=e.target.getAttribute("data-done");if(i!==null){(st.ans[i]=st.ans[i]||{}).done=e.target.checked;save();drawCrit();progress()}});
+
+/* ---------- checklists ---------- */
+var F1=[
+["f1a","Confirmar propietario de cada dominio y quién tiene acceso administrativo","Pendiente de datos del cliente (registrador y cuentas)."],
+["f1b","Guardar capturas y exportaciones de la configuración DNS actual","Hecho desde fuera: registros A, NS, MX y TXT documentados en la sección 10. Falta exportar la zona desde el panel."],
+["f1c","Confirmar dónde está alojado cada dominio y qué responde en cada uno","Hecho: ambos en Wix (web); selvamayatours.com con correo en cPanel (server164.web-hosting.com)."],
+["f1d","Revisar Search Console de jaguarmayatours.com y selvamayatours.com","Hecho para Rendimiento. Faltan Páginas, Enlaces y Sitemaps."],
+["f1e","Revisar páginas indexadas y consultas con impresiones/clics","Hecho para consultas e impresiones; falta el informe de indexación."],
+["f1f","Revisar Google Analytics/GA4 y conversiones","Requiere acceso."],
+["f1g","Revisar Google Business Profile","Requiere acceso."],
+["f1h","Revisar backlinks y menciones de Jaguar Maya Tours y Selva Maya Tours","Requiere herramienta/acceso."],
+["f1i","Revisar plataformas externas: Facebook, Instagram, TripAdvisor, directorios, OTAs y WhatsApp","Pendiente: lista de perfiles del cliente."],
+["f1j","Revisar correo, formularios, reservas y automatizaciones antes de migrar","Parcial: MX y SPF documentados; falta probar formularios del sitio y reservas."],
+["f1k","Hacer inventario de URLs actuales que generan tráfico o ventas","Hecho para tráfico de Google: 53 URLs de Wix + 273 URLs con impresiones, cada una probada. Faltan las ventas (GA4)."],
+["f1z","Respaldo completo del hosting antiguo antes de cualquier cambio","Hecho el 7-oct-2026 (466 + 202 páginas, 116 MB descargados, fuera del repositorio)."]
+];
+var DONE0={f1b:1,f1c:1,f1z:1};
+var F=[
+{t:"Fase 2 — Arquitectura de dominios",s:"Bloqueada por Fase 1",items:[
+ ["f2a","Confirmar que selvamayatours.com puede ser el dominio principal en Wix","Hoy es la inversa: el principal es jaguarmayatours.com. Decisión pendiente."],
+ ["f2b","Preparar mapa de redirecciones URL por URL","Mapa propuesto en la sección 9: 137 URLs con tráfico, todas con destino (116 definitivos, 21 provisionales)."],
+ ["f2c","Configurar redirecciones 301 permanentes","Las dos variantes del dominio ya dan 301 a la raíz; falta cubrir rutas profundas."],
+ ["f2d","Actualizar sitemap y revisar robots/canonicals","Corregir canonical /en/ en servicios y quitar páginas «copia-de» del sitemap."],
+ ["f2e","Actualizar enlaces internos al dominio principal",""],
+ ["f2f","Actualizar Google Business Profile y perfiles sociales",""],
+ ["f2g","Mantener jaguarmayatours.com registrado y renovado","Obligatorio: hoy es el dominio activo y tiene el correo Google Workspace."],
+ ["f2h","Monitorear Search Console después del cambio",""],
+ ["f2i","No eliminar el dominio antiguo inmediatamente",""]]},
+{t:"Fase 3 — Reconstrucción SEO y estructura web (octubre)",s:"Listo para planificar",items:[
+ ["f3a","Crear páginas ancla: /tikal, /yaxha, /tikal-sunrise, /tikal-sunset, /tours, /treks, /transfers, /flores, /lago-peten","Hoy existen 17 páginas de servicio y varias «copia-de»; ninguna con estas rutas."],
+ ["f3b","Crear /experiencias, /gastronomia, /concierge, /nosotros, /blog, /contacto, /reservar","/nosotros, /blog y /contacto ya existen."],
+ ["f3c","Páginas prioritarias: Tikal desde Flores, tour privado, amanecer, atardecer, Yaxhá, qué hacer en Flores, aeropuerto, lago Petén Itzá, tours personalizados","Contenido único por página; no repetir plantillas por ciudad."],
+ ["f3d","Reescribir títulos y descripciones de las 9 páginas principales y de los 17 servicios","Ver hallazgos."],
+ ["f3e","Consolidar o redirigir las 21 páginas «copia-de»","Ver hallazgos."]]},
+{t:"Fase 4 — Conversión: de visitante a cliente",s:"Parcial",items:[
+ ["f4a","Botón de WhatsApp visible y consistente","Ya presente en todas las páginas."],
+ ["f4b","Botón de reservar visible en las páginas principales","Existe «Reservar» en el encabezado."],
+ ["f4c","Precio o «desde» cuándo convenga","Pendiente."],
+ ["f4d","Qué incluye / qué no incluye","Falta en las páginas de servicio."],
+ ["f4e","Duración y horarios; punto de encuentro","Falta en las páginas de servicio."],
+ ["f4f","Política de cancelación y preguntas frecuentes","FAQ existe pero está mal titulada."],
+ ["f4g","Testimonios reales y fotos reales de clientes",""],
+ ["f4h","Presentación clara de la persona/equipo","Existen /nosotros, /acerca-de y /team (duplicadas)."]]},
+{t:"Fase 5 — Selva Maya 365 en la web",s:"Por definir con el cliente",items:[
+ ["f5a","Definir 1–2 líneas complementarias de bajo costo (transporte, concierge, gastronomía, fotografía, productos)","Principio del plan: bajo costo operativo primero."]]},
+{t:"Fase 6 — Contenido y blog",s:"Sin iniciar",items:[
+ ["f6a","Calendario editorial por pilares (educación, autoridad, confianza, prueba social, inspiración, venta)","Hoy hay 1 artículo."],
+ ["f6b","Frecuencia objetivo: 2–3 piezas por semana",""]]},
+{t:"Fase 7 — Medición y tablero",s:"Bloqueada por accesos",items:[
+ ["f7a","Instalar/validar GA4 con eventos de clic a WhatsApp, formularios y reservas","Requiere acceso a GA4."],
+ ["f7b","Tablero mensual: visitas orgánicas, consultas, reservas, valor medio, ingresos por línea",""]]},
+{t:"Fase 8 — Calendario de ejecución",s:"El plan indica septiembre; hoy es 7 de octubre",items:[
+ ["f8a","Auditoría (semana 1 de septiembre)","Ejecutada con retraso: 7-oct-2026, parcialmente por falta de accesos."],
+ ["f8b","Decisión de dominio principal",""],
+ ["f8c","Migración (3–4 de septiembre) — solo si procede","Fuera de calendario; depende de la decisión."],
+ ["f8d","SEO, conversión y Selva Maya 365 (octubre)",""],
+ ["f8e","Contenido y control mensual (desde noviembre)",""]]}
+];
+var WIX=[
+["w1","Exportar la zona DNS completa de ambos dominios (A, MX, TXT, NS) y guardarla","Antes de tocar nada. Protege el correo de selvamayatours.com."],
+["w2","Cargar el archivo de redirecciones 301 en SEO > Gestor de redirecciones","Empezar por las 116 «auto» (definitivas), ordenadas por clics: product-page de la tienda anterior y páginas de Tikal, Río Dulce y Lanquín."],
+["w3","Probar 10 redirecciones a mano y en Search Console («Inspección de URL»)","Revisar que no se encadenen: desde selvamayatours.com ya hay un salto previo."],
+["w4","Corregir el canonical /en/ de las 17 páginas de servicio (Ajustes de idioma / SEO)","El canonical apunta a una URL que redirige."],
+["w5","Aplicar los títulos y descripciones nuevos (CSV) en SEO de cada página","Primero la home, /tours y los 5 servicios con más tráfico."],
+["w6","Resolver las 21 páginas «copia-de»: redirigir y despublicar, o renombrar y corregir título","No borrar: tienen 155 clics."],
+["w7","Quitar las páginas «copia-de» y la página vacía del sitemap (ocultar de buscadores o despublicar)",""],
+["w8","Definir idioma principal de la raíz (hoy declara en-US con contenido en español) y un solo H1 en la home",""],
+["w9","Completar el texto alternativo de las imágenes (38 sin alt, sobre todo /tours y /faqs)",""],
+["w10","Crear las páginas /treks, /tikal, /belice, /lago-peten, /flores, /transfers con los briefs",""],
+["w11","Añadir reseñas reales y datos estructurados (FAQ) a las páginas de servicio",""],
+["w12","Reducir el peso de la home (HTML de ~994 KB): menos galerías/elementos, imágenes optimizadas",""],
+["w13","Revisar en Wix el correo de selvamayatours.com y la verificación de Search Console de ese dominio",""]
+];
+var PEND=[
+["pn1","Search Console de ambos dominios: exportar Páginas (indexación), Enlaces y Sitemaps (el Rendimiento ya se recibió)"],
+["pn2","Acceso de lectura a Google Analytics (GA4)"],
+["pn3","Acceso a Google Business Profile (o capturas)"],
+["pn4","Titular y acceso al registrador de selvamayatours.com y jaguarmayatours.com"],
+["pn5","Acceso al panel de Wix (exportar zona DNS, redirecciones 301, idiomas)"],
+["pn6","Lista de buzones activos en @selvamayatours.com y en @jaguarmayatours.com"],
+["pn7","Lista de perfiles externos (Facebook, Instagram, TripAdvisor, OTAs, directorios)"],
+["pn8","Cuál es el número oficial de WhatsApp y el correo comercial definitivo"],
+["pn9","Decisión del cliente sobre las 21 páginas «copia-de-…» (conservar, consolidar o eliminar)"]
+];
+var RULES=[
+["r1","NO hacer una migración de dominio sin copia/documentación de la configuración actual","Respaldo del hosting hecho; falta exportar DNS de Wix."],
+["r2","NO cancelar jaguarmayatours.com después de una migración; conservarlo","Es el dominio activo hoy."],
+["r3","NO cambiar el correo comercial sin comprobar continuidad de recepción y envío","Ver sección 10."],
+["r4","NO borrar páginas con tráfico o enlaces sin definir su destino","Falta cruzar con Search Console."],
+["r5","NO crear páginas masivas de ciudades solo para posicionarse","El sitio antiguo tenía ~466 de este tipo."],
+["r6","NO invertir mucho dinero en nuevas líneas de negocio antes de probar demanda",""],
+["r7","NO medir el éxito solo por visitas: medir consultas, reservas e ingresos",""]
+];
+function chkRow(it,pre){var id=it[0],on=st.chk[id]!==undefined?st.chk[id]:!!DONE0[id];
+  return '<div class="chk'+(on?" done":"")+'"><input type="checkbox" id="c_'+id+'" data-c="'+id+'" '+(on?"checked":"")+'><label for="c_'+id+'"><span>'+it[1]+'</span>'+(it[2]?'<span class="note">'+it[2]+'</span>':"")+'</label></div>'}
+function drawLists(){
+  $("#f1list").innerHTML=F1.map(chkRow).join("");
+  $("#pend").innerHTML=PEND.map(chkRow).join("");
+  $("#wixList").innerHTML=WIX.map(chkRow).join("");
+  $("#reglas").innerHTML=RULES.map(chkRow).join("");
+  $("#fases-list").innerHTML=F.map(function(f,i){var d=f.items.filter(function(x){return st.chk[x[0]]}).length;
+    return '<details'+(i<2?" open":"")+'><summary>'+f.t+' <span class="badge b-pend">'+f.s+'</span> <span class="small">'+d+'/'+f.items.length+'</span></summary><div class="in">'+f.items.map(chkRow).join("")+'</div></details>'}).join("");
+}
+document.addEventListener("change",function(e){var id=e.target.getAttribute&&e.target.getAttribute("data-c");if(id){st.chk[id]=e.target.checked;save();e.target.closest(".chk").classList.toggle("done",e.target.checked);progress();
+  var det=e.target.closest("details");if(det){var f=F.filter(function(x){return x.items.some(function(i){return i[0]===id})})[0];if(f)det.querySelector("summary .small").textContent=f.items.filter(function(x){return st.chk[x[0]]}).length+"/"+f.items.length}}});
+function progress(){var tot=F1.length,d=F1.filter(function(x){var v=st.chk[x[0]];return v!==undefined?v:!!DONE0[x[0]]}).length;
+  $("#pgTxt").textContent=d+" de "+tot+" tareas · "+ansCount()+" de 7 criterios";$("#pgBar").style.width=Math.round((d/tot)*100)+"%"}
+
+/* ---------- redirecciones ---------- */
+var RED=[
+["http://selvamayatours.com/","301 → https://selvamayatours.com/ → 301 → https://www.jaguarmayatours.com/","warn","2 saltos"],
+["https://selvamayatours.com/","301 → https://www.jaguarmayatours.com/","ok","Correcto, 1 salto"],
+["https://www.selvamayatours.com/","301 → https://www.jaguarmayatours.com/","ok","Correcto"],
+["https://jaguarmayatours.com/","301 → https://www.jaguarmayatours.com/","ok","Correcto"],
+["https://selvamayatours.com/robots.txt","200 (robots de Wix, sin redirigir)","warn","Declara sitemap de www.selvamayatours.com, que a su vez redirige a jaguarmayatours.com"],
+["https://selvamayatours.com/sitemap.xml","301 → https://www.jaguarmayatours.com/sitemap.xml","ok","Correcto"],
+["https://selvamayatours.com/amanecer-tikal-belleza-nuevo-dia-alemania.html","301 → misma ruta en jaguarmayatours.com → 400","bad","Página antigua: termina en error"],
+["https://selvamayatours.com/tours-tikal-explora-maravilla-maya-selva-peten.html","301 → misma ruta en jaguarmayatours.com → 400","bad","Página antigua: termina en error"],
+["https://www.jaguarmayatours.com/index.html","400","bad","Debería redirigir a la home"],
+["https://www.jaguarmayatours.com/no-existe-xyz","404","ok","Comportamiento normal para una URL inexistente"]
+];
+$("#tRed").innerHTML=RED.map(function(r){return '<tr><td><code>'+esc(r[0])+'</code></td><td>'+esc(r[1])+'</td><td><span class="badge b-'+r[2]+'">'+esc(r[3])+'</span></td></tr>'}).join("");
+
+/* ---------- tabla de URLs ---------- */
+function drawUrls(){
+  var q=$("#uTxt").value.toLowerCase(),t=$("#uTipo").value,f=$("#uFlag").value;
+  var rows=URLS.filter(function(u){
+    if(q&&(u.p+" "+u.title).toLowerCase().indexOf(q)<0)return false;
+    if(t&&u.t!==t)return false;
+    if(f==="cp"&&!u.cp)return false;if(f==="mis"&&!u.mis)return false;if(f==="dl0"&&!(u.dl===0))return false;
+    if(f==="thin"&&u.w>=300)return false;if(f==="na"&&!u.na)return false;if(f==="empty"&&!u.empty)return false;return true});
+  $("#uCount").textContent=rows.length+" de "+N;
+  $("#tUrls").innerHTML=rows.map(function(u){var tg=[];
+    if(u.cp)tg.push('<span class="tag">copia</span>');if(u.mis)tg.push('<span class="badge b-bad">título cruzado</span>');
+    if(u.empty)tg.push('<span class="badge b-bad">vacía</span>');if(u.en)tg.push('<span class="badge b-warn">canonical /en/</span>');
+    return '<tr><td><code>'+esc(u.p)+'</code></td><td>'+u.t+'</td><td>'+esc(u.title||"—")+'</td><td>'+(u.dl?u.dl:'<span class="badge b-bad">0</span>')+'</td><td>'+u.h1+'</td><td>'+u.w+'</td><td>'+u.na+'/'+u.i+'</td><td>'+tg.join(" ")+'</td></tr>'}).join("");
+}
+["uTxt","uTipo","uFlag"].forEach(function(i){$("#"+i).oninput=drawUrls;$("#"+i).onchange=drawUrls});
+
+/* ---------- decisiones ---------- */
+function drawDec(){
+  if(!st.dec.length)st.dec=[{f:"2026-10-07",d:"Respaldo completo del hosting antiguo antes de cualquier cambio",m:"Regla de oro del plan: documentar y respaldar antes de tocar",r:"Equipo técnico",e:"Hecho"},
+    {f:"2026-10-07",d:"No migrar dominios hasta cerrar la Fase 1",m:"Faltan datos de Search Console, GA4 y Business Profile",r:"Cliente / equipo",e:"Vigente"}];
+  $("#tDec").innerHTML=st.dec.map(function(r,i){return '<tr>'+["f","d","m","r","e"].map(function(k){return '<td><input type="text" style="width:100%" data-d="'+i+'" data-k="'+k+'" value="'+esc(r[k])+'"></td>'}).join("")+'</tr>'}).join("");
+}
+$("#tDec").addEventListener("input",function(e){var i=e.target.getAttribute("data-d");if(i!==null){st.dec[i][e.target.getAttribute("data-k")]=e.target.value;save()}});
+$("#addDec").onclick=function(){st.dec.push({f:new Date().toISOString().slice(0,10),d:"",m:"",r:"",e:""});save();drawDec()};
+$("#expJson").onclick=function(){var b=new Blob([JSON.stringify(st,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="auditoria-smt-estado.json";a.click()};
+$("#reset").onclick=function(){if(confirm("¿Borrar todas las marcas, respuestas y decisiones guardadas en este navegador?")){st={chk:{},ans:{},dec:[],note:{}};save();init()}};
+
+/* ---------- tabs resaltado ---------- */
+var links=[].slice.call(document.querySelectorAll("nav.tabs a"));
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-30% 0px -65% 0px"});
+  document.querySelectorAll("main section").forEach(function(s){io.observe(s)})}
+
+/* ---------- Search Console ---------- */
+var SC=JSON.parse($("#scData").textContent), MAP=JSON.parse($("#mapData").textContent);
+var fmt=function(n){return n.toLocaleString("es-ES")};
+function drawGsc(){
+  var s=SC.selva,j=SC.jag;
+  var rows=[["Clics (16 meses)",fmt(s.clics),fmt(j.clics)],["Impresiones",fmt(s.impr),fmt(j.impr)],["CTR",String(s.ctr).replace(".",",")+" %",String(j.ctr).replace(".",",")+" %"],
+   ["URLs con impresiones",s.urls,j.urls],
+   ["…que responden 200 hoy",s.ok[0]+" ("+fmt(s.ok[1])+" clics)",j.ok[0]+" ("+fmt(j.ok[1])+" clics)"],
+   ["…que dan error hoy",'<span class="badge b-bad">'+s.err[0]+'</span> ('+fmt(s.err[1])+' clics, '+fmt(s.err[2])+' impr.)','<span class="badge b-bad">'+j.err[0]+'</span> ('+fmt(j.err[1])+' clics, '+fmt(j.err[2])+' impr.)'],
+   ["Dispositivo principal","Móviles ("+s.disp[0][1]+" clics)","Móviles ("+j.disp[0][1]+" clics)"],
+   ["País principal",s.paises[0][0]+" ("+s.paises[0][1]+" clics)",j.paises[0][0]+" ("+j.paises[0][1]+" clics)"],
+   ["Fragmentos de productos","—",j.snippets[0]+" clics · "+fmt(j.snippets[1])+" impr."]];
+  $("#tGsc").innerHTML=rows.map(function(r){return "<tr><td><b>"+r[0]+"</b></td><td>"+r[1]+"</td><td>"+r[2]+"</td></tr>"}).join("");
+  var q=function(a){return '<div class="tw"><table><thead><tr><th>Consulta</th><th>Clics</th><th>Impr.</th><th>Pos.</th></tr></thead><tbody>'+a.map(function(x){return "<tr><td>"+esc(x[0])+"</td><td>"+x[1]+"</td><td>"+fmt(x[2])+"</td><td>"+String(x[3]).replace(".",",")+"</td></tr>"}).join("")+"</tbody></table></div>"};
+  $("#qJ").innerHTML=q(j.q);$("#qS").innerHTML=q(s.q);
+  var M=j.mensual.map(function(m,i){return {m:m[0],j:m[1],s:s.mensual[i]?s.mensual[i][1]:0}}).filter(function(x){return x.m<"2026-10"});
+  var max=Math.max.apply(null,M.map(function(x){return Math.max(x.j,x.s)})),W=820,H=210,pl=30,pb=26,bw=(W-pl)/M.length,g=['#2f6fb5','#3f8a52'];
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Clics por mes en cada dominio" style="max-width:100%;height:auto">';
+  [0,.5,1].forEach(function(f){var y=H-pb-(H-pb-10)*f;svg+='<line x1="'+pl+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="currentColor" opacity=".12"/><text x="0" y="'+(y+4)+'" font-size="11" fill="currentColor" opacity=".6">'+Math.round(max*f)+'</text>'});
+  M.forEach(function(x,i){var x0=pl+i*bw+bw*.12,w=bw*.38;
+    [x.j,x.s].forEach(function(v,k){var h=(H-pb-10)*v/max;svg+='<rect x="'+(x0+k*(w+1))+'" y="'+(H-pb-h)+'" width="'+w+'" height="'+h+'" rx="2" fill="'+g[k]+'"><title>'+x.m+(k?" selvamayatours.com: ":" jaguarmayatours.com: ")+v+" clics</title></rect>"});
+    svg+='<text x="'+(pl+i*bw+bw/2)+'" y="'+(H-8)+'" font-size="10" text-anchor="middle" fill="currentColor" opacity=".65">'+x.m.slice(2).replace("-","/")+"</text>"});
+  $("#chart").innerHTML=svg+"</svg>";
+}
+function drawMap(){
+  var q=$("#mTxt").value.toLowerCase(),d=$("#mDom").value,c=$("#mConf").value;
+  var rows=MAP.filter(function(r){return (!q||r.old.toLowerCase().indexOf(q)>-1||r.nuevo.toLowerCase().indexOf(q)>-1)&&(!d||r.dom===d)&&(!c||r.conf.split(":")[0]===c)});
+  $("#mCount").textContent=rows.length+" de "+MAP.length;
+  var B={auto:"b-ok",provisional:"b-warn"};
+  $("#tMap").innerHTML=rows.map(function(r){var k=r.conf.split(":")[0];
+    return "<tr><td>"+r.dom.replace(".com","")+"</td><td><code>"+esc(r.old)+"</code></td><td>"+r.clics+"</td><td>"+fmt(r.impr)+"</td><td>"+r.status+'</td><td><code>'+esc(r.nuevo)+'</code></td><td><span class="badge '+B[k]+'">'+k+"</span>"+(r.conf.indexOf(":")>-1?' <span class="small">crear '+esc(r.conf.split(":")[1])+"</span>":"")+'</td><td class="small">'+esc(r.motivo||"")+"</td></tr>"}).join("");
+}
+["mTxt","mDom","mConf"].forEach(function(i){$("#"+i).oninput=drawMap;$("#"+i).onchange=drawMap});
+(function(){var sum=function(k){return MAP.filter(function(r){return r.conf.split(":")[0]===k})};
+  $("#mapKpi").innerHTML=["auto","provisional"].map(function(k){var a=sum(k);return '<div class="kpi"><b>'+a.length+'</b><span>URLs «'+k+'» · '+a.reduce(function(t,r){return t+r.clics},0)+' clics en 16 meses</span></div>'}).join("")})();
+
+$("#cpMsg").onclick=function(){var b=this;try{navigator.clipboard.writeText($("#msgTxt").textContent).then(function(){b.textContent="Copiado ✓"})}catch(e){var r=document.createRange();r.selectNodeContents($("#msgTxt"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="Seleccionado: copia con Ctrl+C"}};
+/* ---------- hoja de posiciones ---------- */
+var QS=[["atardecer en yaxha",8.4],["tour amanecer tikal",8.3],["amanecer en tikal",7.2],["tikal amanecer",10.3],["atardecer en tikal",11],["pirámide de tikal",10.8],["tour a tikal desde flores",12.5],["flores to san ignacio shuttle",7.8],["flores to livingston",9],["cayo caulker belice como llegar",9.5],["flores to antigua",19.1],["playa chechenal",9.1],["danta tours",15.6],["selva de guatemala",6.5]];
+var CO=[["Selva Maya",null],["Tikal Go",1],["Tikal Expedition",2],["Tikal Adventures",3]];
+st.pos=st.pos||{};
+function drawPos(){
+  st.pos=st.pos||{};
+  $("#tPos tbody").innerHTML=QS.map(function(q,i){
+    return "<tr><td>"+esc(q[0])+'</td><td><b>'+String(q[1]).replace(".",",")+'</b></td>'+[1,2,3].map(function(c){var v=(st.pos[i]||{})[c];return '<td><input type="number" min="1" max="31" style="width:72px" data-pi="'+i+'" data-pc="'+c+'" value="'+(v==null?"":v)+'"></td>'}).join("")+"</tr>"}).join("");
+  calcPos();
+}
+function calcPos(){
+  var S=[QS.map(function(q){return q[1]}),[],[],[]];
+  [1,2,3].forEach(function(c){S[c]=QS.map(function(q,i){var v=(st.pos[i]||{})[c];return v==null||v===""?null:Number(v)})});
+  var stats=CO.map(function(co,k){var a=S[k].filter(function(v){return v!=null}),score=Math.round(a.reduce(function(t,v){return t+Math.max(0,11-v)},0)*10)/10;
+    return {n:co[0],per:co[1],cnt:a.length,avg:a.length?a.reduce(function(t,v){return t+v},0)/a.length:null,t3:a.filter(function(v){return v<=3}).length,t10:a.filter(function(v){return v<=10}).length,score:score}});
+  $("#fPos").innerHTML='<tr><th>Promedio de posición</th>'+stats.map(function(s){return "<th>"+(s.avg==null?"—":s.avg.toFixed(1).replace(".",","))+"</th>"}).join("")+"</tr><tr><th>En el top 10 / top 3</th>"+stats.map(function(s){return "<th>"+(s.cnt?s.t10+" / "+s.t3:"—")+"</th>"}).join("")+"</tr>";
+  var comp=stats.slice(1),done=comp.every(function(s){return s.cnt>=5});
+  if(!done){$("#posRes").innerHTML='<span class="small">Complete al menos 5 consultas de cada competidor para ver el resultado. Llevan: '+comp.map(function(s){return s.n+" "+s.cnt}).join(" · ")+".</span>";return}
+  var all=stats.slice().sort(function(a,b){return b.score-a.score}),meas=comp.slice().sort(function(a,b){return b.score-a.score});
+  var percep=comp.slice().sort(function(a,b){return a.per-b.per}).map(function(s){return s.n}),m=meas.map(function(s){return s.n});
+  var same=percep.join()===m.join();
+  $("#posRes").innerHTML='<b>Resultado</b> (índice = suma de 11 menos la posición en cada consulta; más alto = mejor visibilidad)<div class="tw" style="margin-top:8px"><table><thead><tr><th>Puesto medido</th><th>Sitio</th><th>Índice</th><th>Promedio</th><th>Top 10</th><th>Puesto según el cliente</th></tr></thead><tbody>'+all.map(function(s,i){return "<tr><td>"+(i+1)+".º</td><td>"+s.n+"</td><td>"+String(s.score).replace(".",",")+"</td><td>"+(s.avg==null?"—":s.avg.toFixed(1).replace(".",","))+"</td><td>"+s.t10+"</td><td>"+(s.per?s.per+".º":"—")+"</td></tr>"}).join("")+'</tbody></table></div><p style="margin:8px 0 0">'+(same?'<span class="badge b-ok">Coincide</span> El orden medido de los tres competidores coincide con la percepción del cliente.':'<span class="badge b-warn">No coincide</span> Los datos ordenan a los competidores así: '+m.join(", ")+'. El cliente los percibe: '+percep.join(", ")+".")+"</p>";
+}
+document.addEventListener("input",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-pi");if(i!==null&&i!==undefined){var c=e.target.getAttribute("data-pc");(st.pos[i]=st.pos[i]||{})[c]=e.target.value===""?null:Number(e.target.value);save();calcPos()}});
+function init(){drawPos();drawCrit();drawLists();drawUrls();drawDec();drawGsc();drawMap();progress()}
+init();
+})();
+</script>
+</body>
+</html>
