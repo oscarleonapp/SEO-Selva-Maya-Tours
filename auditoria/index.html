@@ -96,7 +96,7 @@ details>.in{padding:0 14px 14px}
 <nav class="tabs"><div class="wrap">
   <a href="#resumen">Resumen</a><a href="#gsc">Search Console</a><a href="#comp">Competencia</a><a href="#hallazgos">Hallazgos</a><a href="#base">Línea base</a><a href="#criterios">Criterios Fase 1</a>
   <a href="#redirecciones">Redirecciones</a><a href="#mapa">Mapa 301</a><a href="#urls">URLs del sitio</a><a href="#correo">DNS y correo</a><a href="#hosting">Hosting antiguo</a>
-  <a href="#fases">Fases 2–8</a><a href="#plan">Plan de trabajo</a><a href="#pendientes">Pendientes</a><a href="#decisiones">Decisiones</a>
+  <a href="#fases">Fases 2–8</a><a href="#oportunidades">Oportunidades</a><a href="#plan">Plan de trabajo</a><a href="#pendientes">Pendientes</a><a href="#decisiones">Decisiones</a>
   <button class="ghost" id="theme" title="Cambiar tema">◐</button>
 </div></nav>
 
@@ -326,13 +326,24 @@ details>.in{padding:0 14px 14px}
   <div id="fases-list"></div>
 </section>
 
+<section id="oportunidades">
+  <h2>13. Oportunidades de contenido (Search Console)</h2>
+  <p class="lead">Consultas con más de 40 impresiones y posición media entre 4 y 20 en los últimos 16 meses (sin marca): ya aparecen en Google pero casi no reciben clics. <b>56 consultas y 9.270 impresiones</b>, agrupadas por tema.</p>
+  <div class="tw"><table><thead><tr><th>Tema</th><th>Consultas</th><th>Impresiones</th><th>Clics</th><th>Posición media</th><th>Clics extra al mes*</th><th>Página destino</th><th>Nota</th></tr></thead><tbody><tr><td><b>Pirámide de Tikal y pirámides mayas</b></td><td>20</td><td>4924</td><td>8</td><td>10,2</td><td>≈24</td><td>/tikal (crear)</td><td class="small">Búsquedas informativas: el CTR real será menor al supuesto.</td></tr><tr><td><b>Selva de Petén / Guatemala / jungla maya</b></td><td>14</td><td>1607</td><td>7</td><td>8,7</td><td>≈8</td><td>/tours + guía en el blog</td><td class="small">Tema muy amplio; competir con portales y Wikipedia.</td></tr><tr><td><b>Chechenal y playas del lago Petén Itzá</b></td><td>5</td><td>850</td><td>4</td><td>9,4</td><td>≈4</td><td>/lago-peten (crear)</td><td class="small">Hay un tour real en la home (Tayasal y Chechenal Beach).</td></tr><tr><td><b>Atardecer en Yaxhá</b></td><td>3</td><td>630</td><td>18</td><td>8,3</td><td>≈2</td><td>Servicio «Atardecer Yaxha» (mejorar)</td><td class="small">Ya rinde: mejorar título y descripción.</td></tr><tr><td><b>Tikal al amanecer y atardecer</b></td><td>7</td><td>602</td><td>20</td><td>9,5</td><td>≈2</td><td>Servicios de Tikal (mejorar)</td><td class="small">Ya rinde: mejorar título y descripción.</td></tr><tr><td><b>Transfers desde Flores (Belice y Guatemala)</b></td><td>5</td><td>502</td><td>6</td><td>11,2</td><td>≈2</td><td>/transfers (crear) + servicios</td><td class="small">Dominan Rome2rio, Bookaway y GetYourGuide.</td></tr><tr><td><b>La Danta / El Mirador</b></td><td>1</td><td>107</td><td>0</td><td>15,6</td><td>≈1</td><td>/treks (crear)</td><td class="small">Tikal Expedition ya es 1.º.</td></tr></tbody></table></div>
+  <div class="card"><span class="small">*Ilustrativo: supone un CTR de 8 % si la página llegara al top 3, y resta los clics actuales. Las búsquedas informativas (pirámide de Tikal) convierten menos que ese 8 %. En total serían unos 42 clics al mes más sobre los ~65 actuales, y solo si se crean y posicionan las páginas.</span><br>
+  <b>Lectura:</b> el mayor volumen (4.924 impresiones, 53 % del total) es «pirámide de Tikal» con apenas 8 clics, porque quien busca eso quiere información, no un tour. Es contenido para atraer público y enlazar a los tours. Las consultas de Yaxhá y Tikal al amanecer son las únicas que ya convierten (CTR de ~3 %); ahí lo que falta es título y descripción.
+  <br><a class="btn noprint" style="margin-top:10px" href="oportunidades-palabras-clave.csv" download>oportunidades-palabras-clave.csv (56 consultas)</a></div>
+</section>
+
 <section id="plan">
-  <h2>13. Plan de trabajo: lo listo y lo que va en Wix</h2>
+  <h2>14. Plan de trabajo: lo listo y lo que va en Wix</h2>
   <p class="lead">Primero todo lo que se puede preparar sin entrar a Wix. Lo que exige el panel de Wix queda al final.</p>
   <h3>A. Listo para usar (nuestro lado)</h3>
   <div class="grid">
     <div class="card"><b>Mapa de redirecciones 301</b><p class="small">137 URLs con destino, motivo y página a crear.</p><a class="btn" href="mapa-redirecciones-propuesto.csv" download>mapa-redirecciones-propuesto.csv</a></div>
     <div class="card"><b>Archivo para importar en Wix</b><p class="small">Dos columnas: URL antigua y URL nueva. Verificar el formato en el gestor de redirecciones antes de cargar.</p><a class="btn" href="wix-redirecciones-import.csv" download>wix-redirecciones-import.csv</a></div>
+    <div class="card"><b>Verificador de redirecciones</b><p class="small">Script de solo lectura. Después de cargar las redirecciones en Wix, comprueba una por una que terminen en su destino. Probado: hoy reporta 0 de 8 OK, como se espera antes de cargarlas.</p><a class="btn" href="verificar-redirecciones.py" download>verificar-redirecciones.py</a><p class="small" style="margin-bottom:0"><code>python3 verificar-redirecciones.py --solo-fallos</code></p></div>
+    <div class="card"><b>Oportunidades de palabras clave</b><p class="small">56 consultas con impresiones y poco clic, por tema (sección 13).</p><a class="btn" href="oportunidades-palabras-clave.csv" download>oportunidades-palabras-clave.csv</a></div>
     <div class="card"><b>Títulos y descripciones</b><p class="small">25 páginas (principales y 17 servicios). Títulos de hasta 60 caracteres y descripciones de 120 a 160. Revisar datos con el cliente antes de publicar.</p><a class="btn" href="titulos-y-descripciones.csv" download>titulos-y-descripciones.csv</a></div>
   </div>
   <h3>B. Briefs de las páginas nuevas</h3>
@@ -345,13 +356,13 @@ details>.in{padding:0 14px 14px}
 </section>
 
 <section id="pendientes">
-  <h2>14. Pendientes del cliente</h2>
+  <h2>15. Pendientes del cliente</h2>
   <p class="lead">Accesos o datos que no se pueden obtener desde fuera y bloquean el cierre de la Fase 1.</p>
   <div class="card" id="pend"></div>
 </section>
 
 <section id="decisiones">
-  <h2>15. Riesgos y registro de decisiones</h2>
+  <h2>16. Riesgos y registro de decisiones</h2>
   <h3>Reglas de seguridad del plan (sección 11)</h3>
   <div class="card" id="reglas"></div>
   <h3>Registro de decisiones y avances</h3>
@@ -446,9 +457,14 @@ var FIND=[
 {p:"p3",t:"Imágenes sin texto alternativo",
  d:nNa+" de "+nImg+" imágenes sin <code>alt</code>, concentradas en <code>/tours</code> (16 de 21), <code>/faqs</code> (8 de 11) y la home (2 de 23).",
  ev:"Conteo sobre el HTML publicado.",a:"Completar el texto alternativo en el editor de Wix."},
-{p:"p3",t:"Peso de la página de inicio",
- d:"El HTML de la home pesa casi 1 MB antes de imágenes y scripts. Es probable que afecte la velocidad en móvil.",
- ev:"La medición con PageSpeed no pudo completarse (cuota diaria de la API agotada). Quedó pendiente.",a:"Repetir con PageSpeed Insights o Search Console (Core Web Vitals)."},
+{p:"p2",t:"La home pesa casi 1 MB de HTML y ~3 MB de imágenes por 17 tarjetas",
+ d:"El HTML de la home son 994 KB (198 KB comprimido): 543 KB de scripts (386 KB son el «modelo de página» de Wix, que crece con cada componente; hay 347 componentes para solo ~400 palabras), 250 KB de CSS en línea y 192 KB de marcado. Además hay 17 tarjetas de 290×498 px de entre 160 y 220 KB cada una (2.985 KB en total), que se cargan al desplazarse.",
+ ev:"Medido el 7-oct-2026 sobre el HTML publicado y el tamaño real de las 23 imágenes <code>&lt;img&gt;</code> (las de fondo no se midieron). Para comparar: Tikal Go 307 KB y Tikal Adventures 312 KB de HTML.",
+ a:"Dejar en la home 6 tarjetas destacadas y mover los 11 transfers a la página <code>/transfers</code> (que el plan ya pide): baja ~1,9 MB de imágenes (65 %) y ~190 componentes. No se midió la velocidad real (PageSpeed sin cuota); es una estimación por peso."},
+{p:"p2",t:"La home anuncia 6 tours y rutas que no tienen página de servicio",
+ d:"Entre las 17 tarjetas de la home figuran el Tour de Cráter Azul, el Tour de 3 Naciones, el Tour de Cataratas Mopan, el Tour por la Isla de Flores, el Tour de Tayasal y Chechenal Beach y un transfer desde Palenque. Ninguno aparece entre las 17 páginas de servicio del sitemap (5 tours de Tikal/Yaxhá y 12 transfers). Cráter Azul, Mopan y Chechenal coinciden con páginas antiguas que tenían impresiones.",
+ ev:"Textos alternativos de las tarjetas de la home contra la lista de servicios del sitemap de reservas. No se verificó a dónde enlaza cada tarjeta.",
+ a:"Confirmar con el cliente cuáles de esos tours siguen en venta. Los vigentes necesitan una página de servicio con reserva; encajan con las páginas <code>/lago-peten</code>, <code>/flores</code> y <code>/experiencias</code> del plan."},
 {p:"p3",t:"Datos de contacto: dos números según el sitio",
  d:"El sitio Wix usa +502 5203 8784; el sitio antiguo declaraba +502 5466 7703. Ya no están publicados en paralelo, pero conviene unificar en Business Profile y redes.",
  ev:"Enlaces <code>api.whatsapp.com/send?phone=50252038784</code> y <code>wa.me/message/…</code> en la home.",a:"Un único número de WhatsApp en toda la presencia digital."},
@@ -563,7 +579,7 @@ var F=[
 var WIX=[
 ["w1","Exportar la zona DNS completa de ambos dominios (A, MX, TXT, NS) y guardarla","Antes de tocar nada. Protege el correo de selvamayatours.com."],
 ["w2","Cargar el archivo de redirecciones 301 en SEO > Gestor de redirecciones","Empezar por las 116 «auto» (definitivas), ordenadas por clics: product-page de la tienda anterior y páginas de Tikal, Río Dulce y Lanquín."],
-["w3","Probar 10 redirecciones a mano y en Search Console («Inspección de URL»)","Revisar que no se encadenen: desde selvamayatours.com ya hay un salto previo."],
+["w3","Ejecutar verificar-redirecciones.py y probar 10 a mano en Search Console («Inspección de URL»)","El script debe dar 0 fallas. Desde selvamayatours.com ya hay un salto previo, es normal."],
 ["w4","Corregir el canonical /en/ de las 17 páginas de servicio (Ajustes de idioma / SEO)","El canonical apunta a una URL que redirige."],
 ["w5","Aplicar los títulos y descripciones nuevos (CSV) en SEO de cada página","Primero la home, /tours y los 5 servicios con más tráfico."],
 ["w6","Resolver las 21 páginas «copia-de»: redirigir y despublicar, o renombrar y corregir título","No borrar: tienen 155 clics."],
@@ -572,7 +588,7 @@ var WIX=[
 ["w9","Completar el texto alternativo de las imágenes (38 sin alt, sobre todo /tours y /faqs)",""],
 ["w10","Crear las páginas /treks, /tikal, /belice, /lago-peten, /flores, /transfers con los briefs",""],
 ["w11","Añadir reseñas reales y datos estructurados (FAQ) a las páginas de servicio",""],
-["w12","Reducir el peso de la home (HTML de ~994 KB): menos galerías/elementos, imágenes optimizadas",""],
+["w12","Reducir el peso de la home: dejar 6 tarjetas destacadas y mover los 11 transfers a /transfers","Baja ~1,9 MB de imágenes y ~190 componentes (sección 4, hallazgos)."],
 ["w13","Revisar en Wix el correo de selvamayatours.com y la verificación de Search Console de ese dominio",""]
 ];
 var PEND=[
