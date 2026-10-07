@@ -177,7 +177,25 @@ details>.in{padding:0 14px 14px}
       <li>Agregar datos estructurados (FAQPage y TouristTrip/Product) a las páginas de servicio.</li>
       <li>Reducir el peso de la home (hoy ~994 KB de HTML, el triple que dos competidores).</li>
       <li>Publicar guías de calidad (qué llevar a Tikal, Tikal contra Yaxhá, amanecer contra atardecer) siguiendo el plan de blog.</li></ol></div>
-  <div class="card"><span class="badge b-warn">Límites</span> El orden que da el cliente (1.º Tikal Go, 2.º Tikal Expedition, 3.º Tikal Adventures) es su percepción: no se pudo medir. Una búsqueda de prueba en inglés («tour a Tikal desde Flores», «Tikal sunrise tour from Flores») muestra sobre todo agencias de reserva (Expedia, Travelocity, Viator) y ninguno de estos cuatro sitios. Es una foto de un solo buscador desde EE. UU., no el ranking real en Guatemala.</div>
+  <h3 id="pvd">Percepción del cliente contra datos medidos</h3>
+  <p class="small">El cliente ubica a Tikal Go en 1.º lugar, Tikal Expedition en 2.º y Tikal Adventures en 3.º. Esto es lo que se pudo medir de forma objetiva:</p>
+  <div class="tw"><table><thead><tr><th>Dato medido</th><th>Selva Maya</th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody>
+    <tr><td><b>Percepción del cliente</b></td><td>—</td><td><span class="badge b-ok">1.º</span></td><td><span class="badge b-warn">2.º</span></td><td><span class="badge b-pend">3.º</span></td></tr>
+    <tr><td><b>Dominio registrado</b></td><td><span class="badge b-bad">2024</span> jaguarmayatours.com<br>2025 selvamayatours.com</td><td>2016 (10 años)</td><td>2020 (5 años)</td><td>2016 (10 años)</td></tr>
+    <tr><td><b>Primera captura en Internet Archive</b></td><td>may-2024</td><td>ago-2018</td><td>may-2021</td><td>jul-2017</td></tr>
+    <tr><td><b>Respuesta del servidor (TTFB)</b></td><td><span class="badge b-ok">0,14 s</span></td><td>0,35 s</td><td><span class="badge b-bad">2,43 s</span></td><td><span class="badge b-bad">2,01 s</span></td></tr>
+    <tr><td><b>HTML de la home comprimido</b></td><td>198 KB (994 KB sin comprimir)</td><td>55 KB</td><td>73 KB</td><td>52 KB</td></tr>
+    <tr><td><b>Contenido, datos estructurados y reseñas</b></td><td>bajo</td><td><span class="badge b-ok">alto</span></td><td>medio-alto</td><td>medio</td></tr>
+  </tbody></table></div>
+  <div class="card"><b>Lectura:</b> el orden del cliente coincide con lo que se mide en la propia web: Tikal Go lidera en contenido (~7.400 palabras en la home), datos estructurados y reseñas; Tikal Expedition lo sigue con 123 páginas de destino y reseñas; Tikal Adventures tiene más URLs, pero 377 de 567 son etiquetas de producto. Selva Maya tiene el dominio más joven (2 años contra 5 a 10) y el servidor más rápido. <b>Esto mide la calidad de cada sitio, no sus posiciones en Google ni su tráfico.</b> Para eso sirve la hoja siguiente.
+  <br><span class="small">Mediciones desde un solo lugar, 3 tomas por sitio. Fechas de registro: RDAP de Verisign. Capturas: Internet Archive.</span></div>
+
+  <h3 id="posSheet">Hoja de medición de posiciones en Google</h3>
+  <p class="small"><b>Cómo llenarla (≈15 minutos):</b> abrir una ventana de incógnito, entrar a <code>google.com.gt</code> y buscar cada consulta. Anotar la <b>posición orgánica</b> (sin contar anuncios) del primer resultado de cada sitio. Si no aparece en los primeros 30, escribir <b>31</b>. La columna de Selva Maya ya viene con el promedio real de Search Console (16 meses, mejor de ambos dominios), así que no hay que llenarla.</p>
+  <div class="tw"><table id="tPos"><thead><tr><th>Consulta</th><th>Selva Maya <span class="small">(Search Console)</span></th><th>Tikal Go</th><th>Tikal Expedition</th><th>Tikal Adventures</th></tr></thead><tbody></tbody><tfoot id="fPos"></tfoot></table></div>
+  <div class="card" id="posRes" style="margin-top:12px"><span class="small">Complete las posiciones de la competencia para ver el resultado.</span></div>
+  <div class="card"><b>Para medir tráfico y enlaces reales de la competencia</b> hace falta una herramienta con datos propios. Opciones: autorizar el conector de <b>Similarweb</b> o de <b>Ahrefs</b> en la configuración de conectores de Claude (entonces se traen tráfico orgánico estimado, palabras clave y enlaces de los cuatro dominios), o una cuenta de Semrush/DataForSEO. Sin ellas, esta hoja es la forma de medir sin pagar.</div>
+  <div class="card"><span class="badge b-warn">Límites</span> El orden que da el cliente (1.º Tikal Go, 2.º Tikal Expedition, 3.º Tikal Adventures) es su percepción; las posiciones reales se miden con la hoja de arriba. Una búsqueda de prueba en inglés («tour a Tikal desde Flores», «Tikal sunrise tour from Flores») muestra sobre todo agencias de reserva (Expedia, Travelocity, Viator) y ninguno de estos cuatro sitios. Es una foto de un solo buscador desde EE. UU., no el ranking real en Guatemala.</div>
 </section>
 
 <section id="hallazgos">
@@ -644,7 +662,31 @@ function drawMap(){
   $("#mapKpi").innerHTML=["auto","provisional"].map(function(k){var a=sum(k);return '<div class="kpi"><b>'+a.length+'</b><span>URLs «'+k+'» · '+a.reduce(function(t,r){return t+r.clics},0)+' clics en 16 meses</span></div>'}).join("")})();
 
 $("#cpMsg").onclick=function(){var b=this;try{navigator.clipboard.writeText($("#msgTxt").textContent).then(function(){b.textContent="Copiado ✓"})}catch(e){var r=document.createRange();r.selectNodeContents($("#msgTxt"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="Seleccionado: copia con Ctrl+C"}};
-function init(){drawCrit();drawLists();drawUrls();drawDec();drawGsc();drawMap();progress()}
+/* ---------- hoja de posiciones ---------- */
+var QS=[["atardecer en yaxha",8.4],["tour amanecer tikal",8.3],["amanecer en tikal",7.2],["tikal amanecer",10.3],["atardecer en tikal",11],["pirámide de tikal",10.8],["tour a tikal desde flores",12.5],["flores to san ignacio shuttle",7.8],["flores to livingston",9],["cayo caulker belice como llegar",9.5],["flores to antigua",19.1],["playa chechenal",9.1],["danta tours",15.6],["selva de guatemala",6.5]];
+var CO=[["Selva Maya",null],["Tikal Go",1],["Tikal Expedition",2],["Tikal Adventures",3]];
+st.pos=st.pos||{};
+function drawPos(){
+  st.pos=st.pos||{};
+  $("#tPos tbody").innerHTML=QS.map(function(q,i){
+    return "<tr><td>"+esc(q[0])+'</td><td><b>'+String(q[1]).replace(".",",")+'</b></td>'+[1,2,3].map(function(c){var v=(st.pos[i]||{})[c];return '<td><input type="number" min="1" max="31" style="width:72px" data-pi="'+i+'" data-pc="'+c+'" value="'+(v==null?"":v)+'"></td>'}).join("")+"</tr>"}).join("");
+  calcPos();
+}
+function calcPos(){
+  var S=[QS.map(function(q){return q[1]}),[],[],[]];
+  [1,2,3].forEach(function(c){S[c]=QS.map(function(q,i){var v=(st.pos[i]||{})[c];return v==null||v===""?null:Number(v)})});
+  var stats=CO.map(function(co,k){var a=S[k].filter(function(v){return v!=null}),score=Math.round(a.reduce(function(t,v){return t+Math.max(0,11-v)},0)*10)/10;
+    return {n:co[0],per:co[1],cnt:a.length,avg:a.length?a.reduce(function(t,v){return t+v},0)/a.length:null,t3:a.filter(function(v){return v<=3}).length,t10:a.filter(function(v){return v<=10}).length,score:score}});
+  $("#fPos").innerHTML='<tr><th>Promedio de posición</th>'+stats.map(function(s){return "<th>"+(s.avg==null?"—":s.avg.toFixed(1).replace(".",","))+"</th>"}).join("")+"</tr><tr><th>En el top 10 / top 3</th>"+stats.map(function(s){return "<th>"+(s.cnt?s.t10+" / "+s.t3:"—")+"</th>"}).join("")+"</tr>";
+  var comp=stats.slice(1),done=comp.every(function(s){return s.cnt>=5});
+  if(!done){$("#posRes").innerHTML='<span class="small">Complete al menos 5 consultas de cada competidor para ver el resultado. Llevan: '+comp.map(function(s){return s.n+" "+s.cnt}).join(" · ")+".</span>";return}
+  var all=stats.slice().sort(function(a,b){return b.score-a.score}),meas=comp.slice().sort(function(a,b){return b.score-a.score});
+  var percep=comp.slice().sort(function(a,b){return a.per-b.per}).map(function(s){return s.n}),m=meas.map(function(s){return s.n});
+  var same=percep.join()===m.join();
+  $("#posRes").innerHTML='<b>Resultado</b> (índice = suma de 11 menos la posición en cada consulta; más alto = mejor visibilidad)<div class="tw" style="margin-top:8px"><table><thead><tr><th>Puesto medido</th><th>Sitio</th><th>Índice</th><th>Promedio</th><th>Top 10</th><th>Puesto según el cliente</th></tr></thead><tbody>'+all.map(function(s,i){return "<tr><td>"+(i+1)+".º</td><td>"+s.n+"</td><td>"+String(s.score).replace(".",",")+"</td><td>"+(s.avg==null?"—":s.avg.toFixed(1).replace(".",","))+"</td><td>"+s.t10+"</td><td>"+(s.per?s.per+".º":"—")+"</td></tr>"}).join("")+'</tbody></table></div><p style="margin:8px 0 0">'+(same?'<span class="badge b-ok">Coincide</span> El orden medido de los tres competidores coincide con la percepción del cliente.':'<span class="badge b-warn">No coincide</span> Los datos ordenan a los competidores así: '+m.join(", ")+'. El cliente los percibe: '+percep.join(", ")+".")+"</p>";
+}
+document.addEventListener("input",function(e){var i=e.target.getAttribute&&e.target.getAttribute("data-pi");if(i!==null&&i!==undefined){var c=e.target.getAttribute("data-pc");(st.pos[i]=st.pos[i]||{})[c]=e.target.value===""?null:Number(e.target.value);save();calcPos()}});
+function init(){drawPos();drawCrit();drawLists();drawUrls();drawDec();drawGsc();drawMap();progress()}
 init();
 })();
 </script>
