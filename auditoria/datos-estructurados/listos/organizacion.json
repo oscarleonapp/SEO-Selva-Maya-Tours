@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Selva Maya Tours",
+  "url": "https://www.jaguarmayatours.com/",
+  "telephone": "+50252038784",
+  "email": "selvamaya@jaguarmayatours.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenida La Reforma",
+    "addressLocality": "Flores",
+    "addressRegion": "Petén",
+    "addressCountry": "GT"
+  },
+  "areaServed": [
+    "Petén, Guatemala",
+    "Belice",
+    "México"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/people/Selva-Maya-Tours/61556567518902/",
+    "https://www.instagram.com/toursmayas"
+  ]
+}

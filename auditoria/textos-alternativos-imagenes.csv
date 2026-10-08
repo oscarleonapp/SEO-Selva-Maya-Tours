@@ -1,0 +1,57 @@
+n,id_imagen,estado_actual,alt_actual,alt_propuesto,paginas_con_la_imagen,paginas,nota
+01,eb03a9ae84,nombre de archivo,san-ignacio.jpg,"Vista aérea de San Ignacio, Belice, con casas entre árboles",2,/copia-de-tours | /tours,
+02,f4daa1e3ef,nombre de archivo,belicide-ciudad.jpg,Puerto y edificios de Ciudad de Belice al atardecer,1,/copia-de-tours,
+03,3e97d9ac75,nombre de archivo,Caye-Caulker.jpg,"Vista aérea de Caye Caulker, Belice, con aguas turquesa",2,/copia-de-tours | /tours,
+04,c12721f5b9,nombre de archivo,san-pedro-caye.jpg,"Mujer frente al letrero de colores de San Pedro, Caye Ambergris, Belice",2,/copia-de-tours | /tours,
+05,28952d5f4d,nombre de archivo,chetumal.jpg,"Letrero «Chetumal, aquí inicia México» frente al mar",2,/copia-de-tours | /tours,
+06,d1ee58f99f,nombre de archivo,bacalar-mexico.jpg,"Persona con los brazos abiertos en una lancha sobre la laguna de Bacalar, México",2,/copia-de-tours | /tours,
+07,a5261dcf92,nombre de archivo,lanquin.jpg,Río de aguas turquesa y cascada entre rocas y selva cerca de Lanquín,2,/copia-de-tours | /tours,
+08,b16bb3c621,nombre de archivo,rio-dulce.jpg,"Puente sobre el Río Dulce y una isla boscosa, Izabal",2,/copia-de-tours | /tours,
+09,8c73851daa,nombre de archivo,livingston.jpg,"Vista aérea de Livingston, Izabal, junto a la costa",2,/copia-de-tours | /tours,
+10,05f3bcff4a,nombre de archivo,guatemala.jpeg,Catedral y plaza central de Ciudad de Guatemala con la bandera de Guatemala,1,/copia-de-tours,
+11,160f35d434,nombre de archivo,antigua-guatemala.jpg,Calle empedrada de Antigua Guatemala con el Arco de Santa Catalina al fondo,2,/copia-de-tours | /tours,
+12,9eace4a6b6,nombre de archivo,panajachel.jpg,Lago de Atitlán con volcanes y el pueblo de Panajachel,2,/copia-de-tours | /tours,
+13,2770128f13,sin alt,,Viajero sentado en una sala de aeropuerto con su maleta y un avión al fondo,8,/copia-de-antigua-guatemala | /copia-de-atardecer-yaxha | /copia-de-caye-caulker | /copia-de-caye-san-pedro | /copia-de-chetumal-méxico | /copia-de-ciudad-de-belice | /copia-de-ciudad-de-guatemala | /copia-de-flores-a-san-ignacio-belize,"Imagen genérica de viajero; si no aporta información, también puede marcarse como decorativa."
+14,d26900c3f5,sin alt,,,2,/acerca-de | /contacto,Imagen decorativa (líneas negras). Dejar el texto alternativo VACÍO a propósito.
+15,a0e786805f,sin alt,,Silueta de un templo de Tikal sobre la selva con neblina al amanecer,1,/,
+16,2aad16b0d8,genérico,Imagen para el Tour de Cráter Azul,Tour a Cráter Azul: persona haciendo snorkel en aguas cristalinas. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+17,ed68460e96,genérico,Imagen que hace referencia al Tour de 3 Naciones,Tour de 3 Naciones: muelle con palapa sobre aguas turquesa. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+18,5fa80fe947,genérico,Imagen que hace referencia al Tour de Cataratas Mopan,Tour a las Cataratas de Mopán: cascada y poza entre la selva. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+19,681b047ba9,genérico,Imagen que hace referencia al Tour por la Isla de Flores Petén,"Tour por la Isla de Flores, Petén, vista aérea de la isla. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+20,43ba058d5c,genérico,Imagen que hace referencia al Tour de Tayasal y Chechenal Beach,"Tour a Tayasal y Chechenal Beach, Petén. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+21,f986b2d6db,genérico,Imagen que hace referencia al Transfer Belize,"Shuttle de Flores a San Ignacio, Belice. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+22,cd361658ae,genérico,Imagen que hace referencia al Transfer desde Belice City,Shuttle de Flores a Ciudad de Belice. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+23,bbf3b42332,genérico,Imagen que hace referencia al Tranfers desde Caye Caulker,"Shuttle de Flores a Caye Caulker, Belice. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+24,f03492e0a8,genérico,Imagen que hace referencia al Transfer desde Caye San Pedro,"Shuttle de Flores a Caye San Pedro, Belice. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+25,6b2f05513c,genérico,Imagen que hace referencia al Transfer desde Antigua Guatemala,Shuttle de Flores a Antigua Guatemala. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+26,ff672a4e55,genérico,Imagen que hace referencia al Transfer desde Guatemala City,Shuttle de Flores a Ciudad de Guatemala. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+27,b1767c0cb7,genérico,Imagen que hace referencia al transfer desde Lanquin,Shuttle de Flores a Lanquín. Reserva al +502 5203-8784,1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+28,6feb0ceab3,genérico,Imagen que hace referencia al Transfer desde Chetumal,"Shuttle de Flores a Bacalar, México. Reserva al +502 5203-8784",1,/,El texto de la imagen dice «Balacar»: es una errata de Bacalar. Conviene corregir la imagen.
+29,350570f79f,nombre de archivo,18.png,"Shuttle de Flores a Chetumal, México. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+30,c63510065f,genérico,Imagen que hace referencia al Transfer desde Palenque,"Shuttle de Flores a Palenque, México. Reserva al +502 5203-8784",1,/,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+31,1351032f7c,nombre de archivo,"Toucan, Guatemala_edited.jpg",Tucán posado en las ramas de un árbol en la selva,1,/,
+32,4410181ad7,sin alt,,Selva densa sobre montañas bajo un cielo nublado,1,/,
+33,b739b319c7,nombre de archivo,amanecer-tikal2.jpg,Amanecer en Tikal: el sol sale detrás de la cima de un templo sobre la selva,2,/copia-de-tikal | /tours,
+34,c5c36b003b,nombre de archivo,tikal-atardecer.jpg,Atardecer en Tikal con cielo rosado sobre la selva,1,/copia-de-tikal,
+35,18796b31f4,sin alt,,Sol saliendo detrás de un templo de Tikal al amanecer,1,/copia-de-tikal-día-en-grupo,
+36,5d2e359457,sin alt,,Cuatro viajeros posando frente a una pirámide maya,1,/faqs,Verificar el lugar (podría ser Tikal) antes de nombrarlo.
+37,e32ffc765a,sin alt,,Viajera junto a una liana en un sendero de la selva,1,/faqs,
+38,e0c8786ee8,sin alt,,Grupo de viajeros en una banana boat sobre aguas turquesa junto a un muelle,1,/faqs,
+39,b4581774c5,sin alt,,Vista de un pueblo en una isla desde la proa de una lancha azul,1,/faqs,"Verificar con el cliente si es la isla de Flores; si lo es, usar «Vista de la isla de Flores desde una lancha azul en el lago Petén Itzá»."
+40,161bf6be52,sin alt,,Pareja de viajeros almorzando en un restaurante con jardín,1,/faqs,
+41,fdbb6d8c79,sin alt,,Dos viajeras frente a una pirámide maya escalonada,1,/faqs,Verificar el lugar antes de nombrarlo.
+42,d9637aecc7,sin alt,,Pareja de viajeros frente a una puerta antigua azul con marco amarillo,1,/faqs,
+43,2bf7a77f8a,sin alt,,Amanecer con sol y nubes sobre los templos de Tikal,1,/tours,
+44,c3767fe782,sin alt,,Grupo de viajeros viendo el atardecer sobre la selva desde lo alto de un templo,2,/copia-de-ejemplo-de-categorias | /tours,"Verificar con el cliente si es Yaxhá; si lo es, añadir «en Yaxhá»."
+45,4fa3d4f9a2,sin alt,,Viajera con sombrero frente a una pirámide maya escalonada,2,/copia-de-treks-aventura | /tours,Verificar el lugar antes de nombrarlo.
+46,7a5a8ac507,sin alt,,Transfer desde Flores a Belice. Reserva al +502 5203-8784,1,/tours,"Imagen con el texto y el teléfono dentro de la propia imagen: Google no lee ese texto; por eso el alt lo repite. Idealmente, usar foto + texto real en la página."
+47,d48783f2c4,sin alt,,Vista aérea de la isla de Flores sobre el lago Petén Itzá al atardecer,2,/copia-de-treks-aventura | /tours,
+48,f5681c5da8,nombre de archivo,Yaxha-nakum.jpg,Vista aérea de las ruinas de Yaxhá-Nakum rodeadas de selva,1,/copia-de-ejemplo-de-categorias,
+49,e46e67efd0,nombre de archivo,tour-selva-tikal.jpg,Excursionista caminando por un sendero de selva,1,/copia-de-ejemplo-de-categorias,
+50,5537b35f9c,nombre de archivo,tikal-grupo.jpg,Grupo de viajeros con los brazos en alto frente a un templo de Tikal,1,/nosotros,
+51,4d1b6bdc9e,nombre de archivo,yaxha-2.jpg,Pareja en lo alto de una pirámide escalonada de Yaxhá,1,/copia-de-treks-aventura,
+52,532b4ac9a9,nombre de archivo,crater-azul.jpg,Cráter Azul: poza de aguas azules rodeada de selva con una plataforma,1,/copia-de-treks-aventura,
+53,16cd69858a,nombre de archivo,tres-naciones.jpg,"Muelle con palapa en aguas turquesa poco profundas, Tour de 3 Naciones",1,/copia-de-treks-aventura,
+54,00fc3b107f,nombre de archivo,catarata-mopan.jpg,Cataratas de Mopán cayendo a una poza verde,1,/copia-de-treks-aventura,
+55,ccf7c965e3,nombre de archivo,chechenal.jpg,Muelle y playa de Chechenal sobre aguas turquesa del lago Petén Itzá,1,/copia-de-treks-aventura,
+56,8585035ff8,sin alt,,Atardecer naranja sobre la selva con la silueta de un templo,1,/copia-de-tikal-amanecer-atardecer-g-1,
