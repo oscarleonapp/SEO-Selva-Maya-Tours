@@ -1,0 +1,25 @@
+{
+  "redirects": [
+    {
+      "from": "/product-page/atardecer-yaxha-1",
+      "to": "/service-page/atardecer-yaxha-tour-grupo-1"
+    },
+    {
+      "from": "/product-page/atardecer-yaxha",
+      "to": "/service-page/flores-a-san-ignacio-belice"
+    },
+    {
+      "from": "/product-page/flores-a-río-dulce",
+      "to": "/service-page/flores-a-río-dulce"
+    },
+    {
+      "from": "/product-page/tikal-amanecer-en-grupo",
+      "to": "/service-page/tikal-amanecer-tour-grupo-1"
+    },
+    {
+      "from": "/lanquin-flores-viaje-cuevas-semuc-champey.html",
+      "to": "/service-page/flores-a-lanquín"
+    }
+  ],
+  "returnFullEntity": true
+}
