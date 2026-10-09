@@ -1,0 +1,11 @@
+{
+  "creadas": "2026-10-09",
+  "ids": [
+    "e9e72661-fda1-423e-a1d7-8a9f385a57fb",
+    "c7ec6316-4e4c-4e6e-8287-f8a0bd11ba0a",
+    "ad4eba2a-c9d7-4f58-abec-3e572041ff59",
+    "e0e6f2f3-ab4f-4368-ba8d-7f0a003ca490",
+    "12b31b02-6e58-4adf-a2c4-810f1ced2166"
+  ],
+  "para_deshacer": "POST /seo-redirects-service/v1/bulk/redirects/delete con {redirectIds:[...]}"
+}
