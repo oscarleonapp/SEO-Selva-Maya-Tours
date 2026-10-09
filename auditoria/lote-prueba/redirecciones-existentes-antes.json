@@ -1,0 +1,23 @@
+{
+  "redirects": [
+    {
+      "from": "/copia-de-treks-1",
+      "to": "/nosotros",
+      "options": {
+        "groupRedirect": false
+      },
+      "source": "PAGE_SLUG_RENAME",
+      "id": "fb4b021f-014a-4538-a24b-c177099aa088"
+    },
+    {
+      "from": "/blog-1",
+      "to": "/blog",
+      "options": {
+        "groupRedirect": false
+      },
+      "source": "PAGE_SLUG_RENAME",
+      "id": "70330fac-a131-41d7-a525-ce88ad1afa7b"
+    }
+  ],
+  "leido": "2026-10-08, solo lectura"
+}

@@ -1,0 +1,31 @@
+LOTE DE PRUEBA DE REDIRECCIONES 301 (Selva Maya Tours)
+
+Qué es: 5 redirecciones para probar el mecanismo antes de cargar las 140. Solo se prepararon; nada se creó en Wix.
+
+Las 5 filas (lote-prueba-redirecciones.csv)
+  1. /product-page/atardecer-yaxha-1   -> /service-page/atardecer-yaxha-tour-grupo-1   caso normal, 38 clics
+  2. /product-page/atardecer-yaxha     -> /service-page/flores-a-san-ignacio-belice    slug corregido (es el shuttle a San Ignacio), 19 clics
+  3. /product-page/flores-a-río-dulce  -> /service-page/flores-a-río-dulce             acento en origen y destino, 14 clics
+  4. /product-page/tikal-amanecer-en-grupo -> /service-page/tikal-amanecer-tour-grupo-1  Tikal, 33 clics
+  5. /lanquin-flores-viaje-cuevas-semuc-champey.html -> /service-page/flores-a-lanquín   dominio antiguo (selvamayatours.com) y .html, 26 clics
+
+Comprobaciones previas ya hechas (8-oct-2026, solo lectura)
+  - Reglas existentes en Wix: solo 2 (/copia-de-treks-1 y /blog-1). Copia en redirecciones-existentes-antes.json.
+  - Ningún origen coincide con una regla existente, ni ningún destino es el origen de una regla (no se borra nada).
+  - Sin cadenas ni bucles dentro del mapa de 140 filas.
+  - Los 140 orígenes dan hoy error 400 o 404: ninguna regla taparía una página real.
+
+Procedimiento (requiere aprobación explícita del responsable)
+  1. Volver a listar las redirecciones (GET /seo-redirects-service/v1/redirects) y repetir la comparación.
+  2. Crear el lote: POST /seo-redirects-service/v1/bulk/redirects/create con cuerpo-bulk-create-lote-prueba.json.
+     Revisar results[].itemMetadata fila por fila (error.code, p. ej. FROM_URL_EXISTS) y bulkActionMetadata.undetailedFailures.
+     No usar forceReplace.
+  3. Verificar: python3 ../verificar-redirecciones.py --csv lote-prueba/lote-prueba-verificacion.csv
+     Esperado: 5 OK (la fila 5 hace un salto previo desde selvamayatours.com, es normal).
+  4. Volver a listar: deben estar las 2 reglas originales más las 5 nuevas.
+  5. Si algo sale mal: borrar solo las reglas creadas con POST /bulk/redirects/delete usando los id devueltos en el paso 2. Las 2 originales no se tocan.
+  6. Si todo sale bien: cargar el resto con cuerpo-bulk-create-resto-1-de-2.json (100) y resto-2-de-2.json (35), verificando después de cada tanda.
+
+Qué NO hacer
+  - No crear nada fuera de este orden ni con forceReplace.
+  - No crear una redirección cuyo destino sea el origen de otra existente: Wix borra la existente sin posibilidad de deshacer.
