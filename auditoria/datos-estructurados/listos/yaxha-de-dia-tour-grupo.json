@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "TouristTrip",
   "name": "Yaxha de Día - Tour Grupo",
-  "description": "Tour en grupo de día a la ciudad maya de Yaxhá desde Flores, Petén.",
+  "description": "Tour en grupo de día a la ciudad maya de Yaxhá desde Flores, Petén. Duración: 9 h.",
   "url": "https://www.jaguarmayatours.com/service-page/yaxha-de-d%C3%ADa-tour-grupo",
   "provider": {
     "@type": "TravelAgency",

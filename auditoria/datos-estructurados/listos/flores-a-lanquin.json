@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Lanquín",
-  "description": "Traslado de Flores, Petén, a Lanquín. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Lanquín. Reserva en línea o por WhatsApp. Duración: 10 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-lanqu%C3%ADn",
   "provider": {
     "@type": "TravelAgency",

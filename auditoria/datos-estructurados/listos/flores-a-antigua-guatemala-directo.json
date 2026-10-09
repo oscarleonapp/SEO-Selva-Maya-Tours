@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Antigua Guatemala - Directo",
-  "description": "Traslado directo de Flores, Petén, a Antigua Guatemala. Reserva en línea o por WhatsApp.",
+  "description": "Traslado directo de Flores, Petén, a Antigua Guatemala. Reserva en línea o por WhatsApp. Duración: 12 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-antigua-guatemala-directo",
   "provider": {
     "@type": "TravelAgency",

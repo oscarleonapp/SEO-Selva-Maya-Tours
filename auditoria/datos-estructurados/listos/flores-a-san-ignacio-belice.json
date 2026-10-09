@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a San Ignacio Belice",
-  "description": "Traslado de Flores, Petén, a San Ignacio Belice. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a San Ignacio Belice. Reserva en línea o por WhatsApp. Duración: 4 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-san-ignacio-belice",
   "provider": {
     "@type": "TravelAgency",
