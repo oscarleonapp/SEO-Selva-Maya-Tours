@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Caye San Pedro",
-  "description": "Traslado de Flores, Petén, a Caye San Pedro. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Caye San Pedro. Reserva en línea o por WhatsApp. Duración: 10 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-caye-san-pedro",
   "provider": {
     "@type": "TravelAgency",

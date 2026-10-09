@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Ciudad de Belice",
-  "description": "Traslado de Flores, Petén, a Ciudad de Belice. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Ciudad de Belice. Reserva en línea o por WhatsApp. Duración: 6 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-ciudad-de-belice",
   "provider": {
     "@type": "TravelAgency",

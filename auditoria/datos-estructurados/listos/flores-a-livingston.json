@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Livingston",
-  "description": "Traslado de Flores, Petén, a Livingston. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Livingston. Reserva en línea o por WhatsApp. Duración: 8 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-livingston",
   "provider": {
     "@type": "TravelAgency",

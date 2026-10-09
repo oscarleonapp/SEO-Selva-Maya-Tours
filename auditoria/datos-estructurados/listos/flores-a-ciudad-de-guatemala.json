@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Ciudad de Guatemala",
-  "description": "Traslado de Flores, Petén, a Ciudad de Guatemala. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Ciudad de Guatemala. Reserva en línea o por WhatsApp. Duración: 10 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-ciudad-de-guatemala",
   "provider": {
     "@type": "TravelAgency",

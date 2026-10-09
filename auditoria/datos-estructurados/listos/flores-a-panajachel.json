@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Panajachel",
-  "description": "Traslado de Flores, Petén, a Panajachel. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Panajachel. Reserva en línea o por WhatsApp. Duración: 14 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-panajachel",
   "provider": {
     "@type": "TravelAgency",

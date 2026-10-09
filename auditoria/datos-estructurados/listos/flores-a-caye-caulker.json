@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Flores a Caye Caulker",
-  "description": "Traslado de Flores, Petén, a Caye Caulker. Reserva en línea o por WhatsApp.",
+  "description": "Traslado de Flores, Petén, a Caye Caulker. Reserva en línea o por WhatsApp. Duración: 8 h.",
   "url": "https://www.jaguarmayatours.com/service-page/flores-a-caye-caulker",
   "provider": {
     "@type": "TravelAgency",
